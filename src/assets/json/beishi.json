@@ -1,0 +1,50 @@
+{
+    "banners": [
+        "beishi_banner1.jpg",
+        "beishi_banner2.png",
+        "beishi_banner3.png"
+    ],
+    "luckDraw": false,
+    "mobile": "400-1616-787",
+    "logo": "beishi_logo.png",
+    "name": "海宁市倍世环保科技有限公司",
+    "description": "倍世企业是《家用和类似用途免拆洗滤网前置过滤器》净水行业团体标准的起草组长单位，拥有集研发、生产、销售一体的综合性产业园，掌握前置过滤器、漏水保护器、阻垢材料等预处理核心科技，团队专业预处理研发18年，目前拥有近500多项全球领先的预处理过滤材料、装置材料以及应用产品等核心专利技术，成为全球各行业500多家知名品牌预处理领域的战略合作伙伴，2021年生产能力超过千万台，是预处理技术、装置类的全球首选企业。",
+    "addressList": [
+        {
+            "name": "倍世康旗舰店",
+            "type": "online",
+            "website": "https://beishikangdq.tmall.com"
+        },
+        {
+            "name": "倍瑞康旗舰店",
+            "type": "online",
+            "website": "https://briskdq.tmall.com"
+        }
+    ],
+    "products": [
+        {
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "倍世企业在中央前置过滤器行业率先引入了免拆洗理念，先后发明了“集成排污”、“全效排污”、“净水反冲洗”、“高压净水反喷洗”、“智能全自动净水反喷洗”等免拆洗专利科技，开启了前置过滤器“免拆洗”时代！并成功研发并应用了前置过滤器装置材料防冰冻、防裂、滤网抗污、铜头隔铅等黑科技，极大的提升了前置过滤器的使用安全及健康安全性能，肩负推动行业发展之重任。"
+                },
+                {
+                    "type": "img",
+                    "value": "beishi1.png"
+                },
+                {
+                    "type": "img",
+                    "value": "beishi2.png"
+                },
+                {
+                    "type": "img",
+                    "value": "beishi3.png"
+                },
+                {
+                    "type": "img",
+                    "value": "beishi4.png"
+                }
+            ]
+        }
+    ]
+}

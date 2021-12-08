@@ -1,0 +1,69 @@
+{
+    "banners": [
+        "banner1.jpg",
+        "banner2.jpg",
+        "banner3.jpg"
+    ],
+    "luckDraw": false,
+    "mobile": "0573-87632571",
+    "logo": "xinmengxiang_logo.jpg",
+    "name": "浙江心梦享家居有限公司",
+    "description": "浙江心梦享家居有限公司是浙江海宁一家专业生产床芯床垫的企业，在十余年的发展中，心梦享凭借先进生产设备及强大研发能力不断突破创新，以确保产品更具竞争力。<br/>从‘心’出发，踏实做梦。心梦享以“为每一个人创造可以踏实做梦的睡眠产品”为愿景，致力成为行业内最有价值的睡眠家居企业。",
+    "addressList": [
+        {
+            "name": "浙江心梦享家居有限公司",
+            "type": "offline",
+            "address": "浙江省海宁市钱江工业园联保路5号心梦享家居",
+            "location": "B0FFG1RY7Q",
+            "mobile": "0573-87632571"
+        },
+        {
+            "name": "心梦享天猫旗舰店",
+            "type": "online",
+            "website": "https://xinmengxiang.tmall.com/"
+        }
+    ],
+    "products": [
+        {
+            "title": "心梦享 主营床垫S1",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "心梦享S1抗菌床垫，价格为：1.5m*2m=4159元、1.8m*2.0m=4589元。提供便捷卷压式包装，独立袋装弹簧给予更舒适支撑力；材质主打抑菌抗菌功能，99%抑菌率确保床垫持久清爽洁净，可拆卸设计方便清洗，六层科学结构实现更舒适的睡眠体验。"
+                },
+                {
+                    "type": "img",
+                    "value": "xmx1.png"
+                },
+                {
+                    "type": "img",
+                    "value": "xmx2.png"
+                },
+                {
+                    "type": "img",
+                    "value": "xmx3.png"
+                },
+                {
+                    "type": "img",
+                    "value": "xmx4.png"
+                },
+                {
+                    "type": "img",
+                    "value": "xmx5.png"
+                },
+                {
+                    "type": "img",
+                    "value": "xmx6.png"
+                },
+                {
+                    "type": "img",
+                    "value": "xmx7.png"
+                },
+                {
+                    "type": "img",
+                    "value": "xmx8.png"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,51 @@
+{
+    "banners": [
+        "banner.jpg"
+    ],
+    "luckDraw": true,
+    "prize": "杯子1个（中奖之后凭中奖信息在工厂店：海宁马桥经编园区沧海路198号领取）",
+    "mobile": "13750786608",
+    "logo": "yideng_logo.jpg",
+    "name": "海宁亿登服饰有限公司",
+    "description": "亿登服饰有限公司2014年成立于中国最大的经编产业基地，皮衣之都海宁。公司主营各种男女四季服装。以亲民奢简为品牌定位、以中国流行美学结合精湛工艺用心制作每一件成衣。公司成立八年来我们亿登人一直刻守这个宗旨，踏踏实实缝好每一针，服务好每一个客户。虽然我们还是年轻的公司，但是我们都是一群老手艺人组成的团队。一群人专注做一件事，力争把亿登这个品牌做大做扎实。",
+    "addressList": [
+        {
+            "name": "亿登羊绒大衣工厂店",
+            "type": "offline",
+            "address": "海宁马桥经编园区沧海路198号",
+            "location": "B0FFGZGKUW",
+            "mobile": "13750786608"
+        }
+    ],
+    "products": [
+        {
+            "title": "男女服饰",
+            "detail": [
+                {
+                    "type": "img",
+                    "value": "yideng5.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "yideng4.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "yideng6.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "yideng3.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "yideng2.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "yideng1.jpg"
+                }
+            ]
+        }
+    ]
+}

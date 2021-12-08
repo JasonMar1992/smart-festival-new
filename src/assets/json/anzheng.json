@@ -1,0 +1,93 @@
+{
+    "banners": [
+        "az.png"
+    ],
+    "luckDraw": false,
+    "mobile": "0573-80783588",
+    "logo": "anzheng_logo.png",
+    "name": "安正时尚集团股份有限公司",
+    "description": "安正时尚集团集研发、生产、品牌管理于一体，现已发展成为一家多品牌、集团化运作的知名时尚品牌企业。目前拥有“JZ玖姿”、“IMM尹默”、“安正男装”、“MOISSAC摩萨克”、“FIONACHEN斐娜晨”五大时装品牌。“安正之家”会所店是集团旗下的品牌集合店，提供购物、休闲娱乐、商务聚会等多功能服务。位于隆兴路的安正工厂店，则以集团品牌为基础，同时吸引众多男女童装品牌入驻，为消费者打造实惠、便利的一站式家庭购物消费平台。",
+    "addressList": [
+        {
+            "name": "安正之家会所店",
+            "type": "offline",
+            "address": "海宁市谷水路298号安正时尚集团-D5号楼1楼",
+            "location": "B0FFGK9B1O",
+            "mobile": "0573-80783588"
+        },
+        {
+            "name": "安正时尚直购中心（安正工厂店）",
+            "type": "offline",
+            "address": "海宁市海昌街道隆兴路110号",
+            "location": "B0FFHFXU2H",
+            "mobile": "0573-87657707"
+        }
+    ],
+    "products": [
+        {
+            "title": "JZ玖姿",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "向都市成熟女性，致力于修身着装的回归，强调优雅于心、自信从容的特点。"
+                },
+                {
+                    "type": "img",
+                    "value": "jz.png"
+                }
+            ]
+        },
+        {
+            "title": "IMM尹默",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "独立、知性、艺术，致力于为当代女性提供独特风格且高品质的着装体验。"
+                },
+                {
+                    "type": "img",
+                    "value": "imm.png"
+                }
+            ]
+        },
+        {
+            "title": "安正男装",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "凸显都市精英形象，打造休闲时尚风范。"
+                },
+                {
+                    "type": "img",
+                    "value": "nanzhuang.png"
+                }
+            ]
+        },
+        {
+            "title": "MOISSAC摩萨克",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "将一种“轻松的时髦感”带入日常，轻松惬意的法式时尚。"
+                },
+                {
+                    "type": "img",
+                    "value": "moissac.png"
+                }
+            ]
+        },
+        {
+            "title": "FIONACHEN斐娜晨",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "立足中国原创，创造当代玩味个性时尚。"
+                },
+                {
+                    "type": "img",
+                    "value": "FIONACHEN.png"
+                }
+            ]
+        }
+    ]
+}

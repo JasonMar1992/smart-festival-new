@@ -1,0 +1,164 @@
+{
+    "banners": [
+        "ruibao_banner1.png",
+        "ruibao_banner2.png",
+        "ruibao_banner3.png"
+    ],
+    "luckDraw": false,
+    "mobile": "0573-86451098",
+    "logo": "ruibao_logo.png",
+    "name": "嘉兴瑞宝集成家居有限公司",
+    "description": "嘉兴瑞宝集成家居有限公司是一家专业设计、生产、销售、服务为一体的高端实木家居企业，公司秉承“细节决定品质”的经营理念，设计独特新颖、工艺精湛，严格的质量管理，完善的售后服务赢得众多经销商、代理商和广大消费者依赖和好评，并在同行业脱颖而出，成为行业中的佼佼者，是广大家居客户、星级酒店的首选产品，产品畅销全国各大城市。嘉兴瑞宝集成家居有限公司。",
+    "addressList": [
+        {
+            "type": "offline",
+            "address": "安徽省合肥市蜀山区通和大厦B座山水空间装饰二楼",
+            "location": "B0G0S51R6O",
+            "mobile": "18715113873"
+        },
+        {
+            "type": "offline",
+            "address": "安徽省宣城市广德巿金恒建材市场科勒店",
+            "location": "B0FFKUXN8K",
+            "mobile": "15956369777"
+        },
+        {
+            "type": "offline",
+            "address": "江苏省泰州市高港区红星美凯龙TOTO卫浴",
+            "location": "B0FFGYGLQJ",
+            "mobile": "13601478345"
+        },
+        {
+            "type": "offline",
+            "address": "江苏省无锡市宜兴市广汇南路77号振兴建材",
+            "location": "B0FFGANXCW",
+            "mobile": "13601535823"
+        },
+        {
+            "type": "offline",
+            "address": "浙江省台州市三门装饰城B区2033-2037",
+            "location": "B0FFGEWN28",
+            "mobile": "13958536198"
+        },
+        {
+            "type": "offline",
+            "address": "江苏省扬州高邮市世贸家居生活馆TOTO卫浴",
+            "location": "B0FFGYH5GZ",
+            "mobile": "13901448058"
+        },
+        {
+            "type": "offline",
+            "address": "浙江省绍兴市诸暨育英路98号培苗装饰城",
+            "location": "B0FFGK9NWA",
+            "mobile": "13758573727"
+        },
+        {
+            "type": "offline",
+            "address": "浙江省湖州市安吉县东方世贸箭牌卫浴",
+            "location": "B0GDOCOTBJ",
+            "mobile": "13905821530"
+        },
+        {
+            "type": "offline",
+            "address": "浙江省金华市东阳市红星美凯龙TOTO卫浴",
+            "location": "B0FFJ2RFNT",
+            "mobile": "13515898188"
+        },
+        {
+            "type": "offline",
+            "address": "浙江省金华市永康市国际装饰城TOTO卫浴",
+            "location": "B0FFK4MY8V",
+            "mobile": "13806770729"
+        },
+        {
+            "type": "offline",
+            "address": "上海市浦东新区临御路518号红星美凯龙一楼",
+            "location": "B00156TJUY",
+            "mobile": "13764934580"
+        },
+        {
+            "type": "offline",
+            "address": "江苏省南通市如皋市红星美凯龙科勒店",
+            "location": "B0FFHIQ18K",
+            "mobile": "18921451996"
+        },
+        {
+            "type": "offline",
+            "address": "江苏省苏州市常熟市建材市场10幢华盛建陶",
+            "location": "B0FFLI73SG",
+            "mobile": "13776216111"
+        },
+        {
+            "type": "offline",
+            "address": "江苏省无锡市梁溪区华厦家居港格罗宝卫浴",
+            "location": "B0G29LSIVM",
+            "mobile": "13338775666"
+        },
+        {
+            "type": "offline",
+            "address": "河南省驻马店市驿城区居然之家一楼科勒卫浴",
+            "location": "B0FFLCLB8F",
+            "mobile": "18336192999"
+        },
+        {
+            "type": "offline",
+            "address": "安徽省宣城市宣州区红星美凯龙麦莎店B馆1楼",
+            "location": "B0FFKSXGBG",
+            "mobile": "13805639311"
+        }
+    ],
+    "products": [
+        {
+            "title": "原木橡木浴室柜",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "橡木直拼双A面板，天然原木，环保水性漆，进口岩板"
+                },
+                {
+                    "type": "img",
+                    "value": "ruibao1.png"
+                }
+            ]
+        },
+        {
+            "title": "原木新中式浴室柜",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "进口高端金丝黄檀木，环保水性漆，进口岩板"
+                },
+                {
+                    "type": "img",
+                    "value": "ruibao2.png"
+                }
+            ]
+        },
+        {
+            "title": "原木衣柜",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "轻奢，新中式风格"
+                },
+                {
+                    "type": "img",
+                    "value": "ruibao3.png"
+                }
+            ]
+        },
+        {
+            "title": "原木橱柜",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "轻奢，新中式风格"
+                },
+                {
+                    "type": "img",
+                    "value": "ruibao4.png"
+                }
+            ]
+        }
+    ]
+}

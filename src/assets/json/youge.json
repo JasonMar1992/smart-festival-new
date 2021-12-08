@@ -1,0 +1,39 @@
+{
+    "banners": [
+        "youge_banner1.jpg",
+        "youge_banner2.jpg"
+    ],
+    "luckDraw": false,
+    "mobile": "13586312920",
+    "logo": "youge_logo.png",
+    "name": "浙江优格实业有限公司",
+    "description": "浙江优格实业有限公司成立于2009年，由卡森国际（HK0496）控股集团投资创建，是国内高端集成厨电和高端整体橱柜及定制家居的专业服务商。专业从事集成厨房电器和整体橱柜及定制家居的研发、设计、生产、销售、安装、售后等完善配套服务。",
+    "addressList": [
+        {
+            "name": "优格实业有限公司",
+            "type": "offline",
+            "address": "海宁市海昌南路614-618号",
+            "location": "B0FFJKH3QP",
+            "mobile": "13586312920"
+        },
+        {
+            "name": "优格天猫旗舰店",
+            "type": "online",
+            "website": "https://ugodq.tmall.com/"
+        }
+    ],
+    "products": [
+        {
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "主营优格集成灶以及全屋定制产品，优格集成灶独家拥有行业核心专利流体隔膜技术，油烟吸净率高达99.7%；同时为保障厨房安全，优格集成灶也搭载了八大安全防护功能：无人看管技术、炉灶定时、空烧报警、急速防火墙、熄火保护、气敏检测、安全童锁、漏电保护。"
+                },
+                {
+                    "type": "img",
+                    "value": "youge3.jpg"
+                }
+            ]
+        }
+    ]
+}

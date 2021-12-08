@@ -1,0 +1,38 @@
+{
+    "banners": [
+        "shangge_pic.jpg"
+    ],
+    "luckDraw": false,
+    "mobile": "0573-89263939",
+    "logo": "shangge_logo.jpg",
+    "name": "浙江上格时装股份有限公司",
+    "description": "浙江上格时装股份有限公司成立于2007年，是一家专注于中高端时尚皮衣皮草及时装设计研发、生产制造、品牌运营、售后服务于一体的综合性现代化企业。自成立以来，上格注重设计团队的培养，长期保持与国际新锐设计师及设计机构的合作，同时与众多国内外知名品牌保持长期的ODM合作关系。公司旗下包括SOVOGUE、in see、Mansiaoni三大服装品牌，在国内众多零售渠道开设直营店铺，并且为国内众多买手集合店提供时尚潮流新品。上格用自己的时尚美学引领现代都市女性优雅、精致的生活方式，打造中国高端时尚服装品牌。",
+    "addressList": [
+        {
+            "name": "上格品牌展示中心",
+            "type": "offline",
+            "address": "海宁经济开发区双联路32号",
+            "location": "B0FFL1Y6S6",
+            "mobile": "0573-89263939"
+        }
+    ],
+    "products": [
+        {
+            "title": "时尚服饰",
+            "detail": [
+                {
+                    "type": "img",
+                    "value": "shangge1.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "shangge2.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "shangge3.jpg"
+                }
+            ]
+        }
+    ]
+}

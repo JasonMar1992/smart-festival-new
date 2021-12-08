@@ -1,0 +1,53 @@
+{
+    "banners": [
+        "banner1.jpg",
+        "banner2.jpg",
+        "banner3.jpg"
+    ],
+    "luckDraw": true,
+    "prize": "两双潮袜 ，凭中奖信息在线下门店（南关厢108号（汉保利罗））领取",
+    "mobile": "0573-87097029",
+    "logo": "hanbaoliluo_logo.jpg",
+    "name": "浙江汉保利罗针织股份有限公司",
+    "description": "江汉保利罗针织股份有限公司成立于1995年，坐落在美丽的观潮圣地——海宁。公司发展至今，厂房总面积达35000平方，拥有国内外先进袜机600多台，员工500余人，年产值逾2亿元，引进意大利罗纳蒂袜机，自动定型机。主要合作客户群体有阿迪达斯、彪马、gap、Champion、TOMMY等。公司拥有国家专利、著作权等10余项。2018年获得国家高新技术企业、海宁市亩产效益十强企业等荣誉。公司有能力接受各种复杂、高要求的订单，并保质保量完成。",
+    "addressList": [
+        {
+            "name": "汉保利罗轻呼吸潮袜直营店",
+            "type": "offline",
+            "address": "浙江省海宁市硖石街道南关厢108号",
+            "location": "B0GKU7J1RX",
+            "mobile": "0573-87097029"
+        }
+    ],
+    "products": [
+        {
+            "title": "成人潮袜花袜、保暖羊毛袜、抗菌防臭袜",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "每双价格在 10-15.8元不等"
+                },
+                {
+                    "type": "img",
+                    "value": "hbll1.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "hbll2.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "hbll3.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "hbll4.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "hbll5.jpg"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,192 @@
+[
+    [
+        {
+            "name": "浙江潮邦厨具电器有限公司",
+            "logo": "chaobang_logo.png",
+            "pic": "chaobang_pic.jpg",
+            "picType": "cover",
+            "value": "chaobang"
+        },
+        {
+            "name": "火星人厨具股份有限公司",
+            "logo": "huoxingren_logo.png",
+            "pic": "huoxingren_pic.jpg",
+            "picType": "contain",
+            "value": "huoxingren"
+        },
+        {
+            "name": "浙江乐瑞厨卫设备有限公司",
+            "logo": "lerui_logo.png",
+            "pic": "lerui_pic.jpg",
+            "picType": "cover",
+            "value": "lerui"
+        },
+        {
+            "name": "浙江优格实业有限公司",
+            "logo": "youge_logo.png",
+            "pic": "youge_pic.jpg",
+            "picType": "contain",
+            "value": "youge"
+        },
+        {
+            "name": "浙江爱尔卡厨卫科技有限公司",
+            "logo": "aierka_logo.png",
+            "pic": "aierka_pic.png",
+            "picType": "contain",
+            "value": "aierka"
+        },
+        {
+            "name": "海宁市倍世环保科技有限公司",
+            "logo": "beishi_logo.png",
+            "pic": "beishi_pic.jpg",
+            "picType": "contain",
+            "value": "beishi"
+        },
+        {
+            "name": "浙江世纪豪门家居科技有限公司",
+            "logo": "shijihaomen_logo.png",
+            "pic": "shijihaomen_pic.jpg",
+            "picType": "contain",
+            "value": "shijihaomen"
+        }
+    ],
+    [
+        {
+            "name": "海宁市德利家具有限公司",
+            "logo": "deli_logo.png",
+            "pic": "deli_pic.jpg",
+            "picType": "cover",
+            "value": "deli"
+        },
+        {
+            "name": "浙江海利得地板有限公司",
+            "logo": "hailide_logo.png",
+            "pic": "hailide_pic.jpg",
+            "picType": "cover",
+            "value": "hailide"
+        },
+        {
+            "name": "浙江海象新材料股份有限公司",
+            "logo": "haixiang_logo.png",
+            "pic": "haixiang_pic.jpg",
+            "picType": "cover",
+            "value": "haixiang"
+        },
+        {
+            "name": "嘉兴瑞宝集成家居有限公司",
+            "logo": "ruibao_logo.png",
+            "pic": "ruibao_pic.jpg",
+            "picType": "cover",
+            "value": "ruibao"
+        },
+        {
+            "name": "浙江心梦享家居有限公司",
+            "logo": "xinmengxiang_logo.jpg",
+            "pic": "xinmengxiang_pic.jpg",
+            "picType": "cover",
+            "value": "xinmengxiang"
+        },
+        {
+            "name": "浙江澳森实业有限公司",
+            "logo": "aosen_logo.png",
+            "pic": "aosen_pic.jpg",
+            "picType": "cover",
+            "value": "aosen"
+        }
+    ],
+    [
+        {
+            "name": "安正时尚集团股份有限公司",
+            "logo": "anzheng_logo.png",
+            "pic": "anzheng_pic.jpg",
+            "picType": "cover",
+            "value": "anzheng"
+        },
+        {
+            "name": "海宁市一铭服饰有限公司",
+            "logo": "yiming_logo.jpg",
+            "pic": "yiming_pic.png",
+            "picType": "contain",
+            "value": "yiming"
+        },
+        {
+            "name": "海宁亿登服饰有限公司",
+            "logo": "yideng_logo.jpg",
+            "pic": "yideng_pic.jpg",
+            "picType": "cover",
+            "value": "yideng"
+        },
+        {
+            "name": "浙江汉保利罗针织股份有限公司",
+            "logo": "hanbaoliluo_logo.jpg",
+            "pic": "hanbaoliluo_pic.jpg",
+            "picType": "cover",
+            "value": "hanbaoliluo"
+        },
+        {
+            "name": "海宁汉德袜业",
+            "logo": "hande_logo.jpg",
+            "pic": "hande_pic.jpg",
+            "picType": "cover",
+            "value": "hande"
+        },
+        {
+            "name": "浙江卡拉扬集团有限公司",
+            "logo": "kalayang_logo.png",
+            "pic": "kalayang_pic.jpg",
+            "picType": "cover",
+            "value": "kalayang"
+        },
+        {
+            "name": "浙江上格时装股份有限公司",
+            "logo": "shangge_logo.jpg",
+            "pic": "shangge_pic.jpg",
+            "picType": "cover",
+            "value": "shangge"
+        },
+        {
+            "name": "浙江峰佳针织有限公司",
+            "logo": "fengjia_logo.jpg",
+            "pic": "fengjia_pic.jpg",
+            "picType": "cover",
+            "value": "fengjia"
+        },
+        {
+            "name": "浙江针永体育用品有限公司",
+            "logo": "zhenyong_logo.png",
+            "pic": "zhenyong_pic.jpg",
+            "picType": "cover",
+            "value": "zhenyong"
+        }
+    ],
+    [
+        {
+            "name": "林肯电梯(中国)有限公司",
+            "logo": "linken_logo.png",
+            "pic": "linken_pic.jpg",
+            "picType": "cover",
+            "value": "linken"
+        },
+        {
+            "name": "浙江正星健身器有限公司",
+            "logo": "zhengxing_logo.png",
+            "pic": "zhengxing_pic.jpg",
+            "picType": "contain",
+            "value": "zhengxing"
+        },
+        {
+            "name": "杭州鐵三角科技有限公司",
+            "logo": "tiesanjiao_logo.png",
+            "pic": "tiesanjiao_pic.jpg",
+            "picType": "contain",
+            "value": "tiesanjiao"
+        },
+        {
+            "name": "浙江星驰汽车有限公司",
+            "logo": "xingchi_logo.png",
+            "pic": "xingchi_pic.png",
+            "picType": "cover",
+            "value": "xingchi"
+        }
+    ]
+]

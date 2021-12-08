@@ -1,0 +1,78 @@
+{
+    "banners": [
+        "lerui_banner1.jpg",
+        "lerui_banner2.jpg",
+        "lerui_banner3.jpg",
+        "lerui_banner4.jpg"
+    ],
+    "luckDraw": false,
+    "mobile": "15067387490",
+    "logo": "lerui_logo.png",
+    "name": "浙江乐瑞厨卫设备有限公司",
+    "description": "浙江乐瑞厨卫设备有限公司成立于2009年5月，注册资本600万美金，占地面积46000平方米，生产面积25000平方米，位于中国最大的皮革之城浙江海宁。上海复荣集团旗下的生产基地。主要生产淋浴房，淋浴屏、冲浪缸和电脑蒸汽房，产品主要畅销欧美各国。",
+    "addressList": [
+        {
+            "name": "浙江乐瑞厨卫设备有限公司",
+            "type": "offline",
+            "address": "浙江省海宁市尖山新区枕江路9号",
+            "location": "B023D0RE5X",
+            "mobile": "15067387490"
+        },
+        {
+            "name": "乐瑞卫浴旗舰店(天猫)",
+            "type": "online",
+            "website": "https://flory.tmall.com/"
+        },
+        {
+            "name": "FOVATT弗瓦蒂生活家电(淘宝)",
+            "type": "online",
+            "website": "https://flory.taobao.com/"
+        },
+        {
+            "name": "乐瑞卫浴旗舰店(京东)",
+            "type": "online",
+            "website": "https://mall.jd.com/index-44271.html"
+        }
+    ],
+    "products": [
+        {
+            "title": "乐瑞智能马桶盖板FDB630",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "1230元，即热恒温SP A冲洗、座圈加热、暖风烘干、即热恒温。"
+                },
+                {
+                    "type": "img",
+                    "value": "matonggai.jpg"
+                }
+            ]
+        },
+        {
+            "title": "FOVATT.弗瓦蒂 FV-IPA120空气消毒机",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "1280元，采用全球领先E5PCC技术，全方位净化空气，开启清新呼吸体验。唾眠模式和风扇速度调节、过滤器更换提醒显示、儿童锁、定时功能预过滤器+HEPA、香薰功能、触摸面板。"
+                },
+                {
+                    "type": "img",
+                    "value": "xiaoduji.jpg"
+                }
+            ]
+        },
+        {
+            "title": "FOVATT.弗瓦蒂空气消毒机FV-IPA550",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "用全球领先E5PCC技术，高压静电除尘器可以吸附0.01微米以上的颗粒物。ESPCC技术高频电晕放电产生臭氧，强氧化作用，使细胞膜氧化破裂，使酶失活，杀灭细菌。同时，产生多种活性氧O2-,OH+,H202等破坏病毒的生存生物场，使其丧失生存条件，杀灭病毒。多余的臭氧，经过耦合催化板转换为氧气，同时分解甲醛和TVOC等装修污染。"
+                },
+                {
+                    "type": "img",
+                    "value": "550.jpg"
+                }
+            ]
+        }
+    ]
+}

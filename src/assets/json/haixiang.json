@@ -1,0 +1,187 @@
+{
+    "banners": [
+        "haixiang_banner1.png",
+        "haixiang_banner2.png"
+    ],
+    "luckDraw": false,
+    "mobile": "0573-87509880",
+    "logo": "haixiang_logo.png",
+    "name": "浙江海象新材料股份有限公司",
+    "description": "浙江海象新材料股份有限公司成立于2013年，是国内领先的PVC地板专业制造商，国内高级弹性地板行业的骨干企业，公司已于2020年9月30日在深交所中小板挂牌上市。公司位于海宁经济开发区，是一家集PVC塑胶地板研发、生产和销售为一体的科技型企业。公司先后获得了“浙江省高新技术企业研究开发中心”、“嘉兴市高新技术研究开发中心”、“浙江省乙烯基装饰新材料研究院”、“中国地板行业十大家装品牌”、“中国弹性地板行业十大品牌（片材类）”，“2019年海宁市市长质量奖”，浙江制造标准发布及“品字标”认证企业，“2020年海宁市市长创新奖”等荣誉。",
+    "addressList": [
+        {
+            "name": "浙江海象新材料股份有限公司",
+            "type": "offline",
+            "address": "浙江省海宁市海丰路380号",
+            "location": "B0FFJ636SU",
+            "mobile": "0573-87509880"
+        }
+    ],
+    "products": [
+        {
+            "title": "PVC地板",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "是一种新型建筑装饰铺地材料，具有绿色环保（无甲醛）、超轻超薄、防火、防水、防潮、耐压、耐磨、耐用、安装维护简单、便捷等优点，是木质地板的理想替代品。在欧洲、美国普及率较高，被称为高级弹性地板。国内市场随着消费者对PVC产品的逐步认同和国家对环境保护的日趋重视，预估未来2-3年后也将进入高速发展期。"
+                }
+            ]
+        },
+        {
+            "title": "HXM201",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "尺寸：180*1200mm 厚度：4.0~6.0mm"
+                },
+                {
+                    "type": "img",
+                    "value": "HXM201.png"
+                }
+            ]
+        },
+        {
+            "title": "HXM217",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "尺寸：180*1200mm 厚度：4.0~6.0mm"
+                },
+                {
+                    "type": "img",
+                    "value": "HXM217.png"
+                }
+            ]
+        },
+        {
+            "title": "HXM275",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "尺寸：180*1200mm 厚度：4.0~6.0mm"
+                },
+                {
+                    "type": "img",
+                    "value": "HXM275.png"
+                }
+            ]
+        },
+        {
+            "title": "HXM281",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "尺寸：180*1200mm 厚度：4.0~6.0mm"
+                },
+                {
+                    "type": "img",
+                    "value": "HXM281.png"
+                }
+            ]
+        },
+        {
+            "title": "HXM282",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "尺寸：180*1200mm 厚度：4.0~6.0mm"
+                },
+                {
+                    "type": "img",
+                    "value": "HXM282.png"
+                }
+            ]
+        },
+        {
+            "title": "HXM283",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "尺寸：180*1200mm 厚度：4.0~6.0mm"
+                },
+                {
+                    "type": "img",
+                    "value": "HXM283.png"
+                }
+            ]
+        },
+        {
+            "title": "HXM284",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "尺寸：180*1200mm 厚度：4.0~6.0mm"
+                },
+                {
+                    "type": "img",
+                    "value": "HXM284.png"
+                }
+            ]
+        },
+        {
+            "title": "HXM285",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "尺寸：180*1200mm 厚度：4.0~6.0mm"
+                },
+                {
+                    "type": "img",
+                    "value": "HXM285.png"
+                }
+            ]
+        },
+        {
+            "title": "HXM286",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "尺寸：180*1200mm 厚度：4.0~6.0mm"
+                },
+                {
+                    "type": "img",
+                    "value": "HXM286.png"
+                }
+            ]
+        },
+        {
+            "title": "HXS157",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "尺寸：610*305mm 厚度：4.0~6.0mm"
+                },
+                {
+                    "type": "img",
+                    "value": "HXS157.png"
+                }
+            ]
+        },
+        {
+            "title": "HXS161",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "尺寸：610*610mm 厚度：4.0~6.0mm"
+                },
+                {
+                    "type": "img",
+                    "value": "HXS161.png"
+                }
+            ]
+        },
+        {
+            "title": "HXS163",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "尺寸：610*610mm 厚度：4.0~6.0mm"
+                },
+                {
+                    "type": "img",
+                    "value": "HXS163.png"
+                }
+            ]
+        }
+    ]
+}

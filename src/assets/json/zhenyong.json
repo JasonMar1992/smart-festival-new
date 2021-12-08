@@ -1,0 +1,62 @@
+{
+    "banners": [
+        "banner1.png",
+        "banner2.png",
+        "banner3.png",
+        "banner4.png"
+    ],
+    "luckDraw": true,
+    "prize": "精品袜（男女各1双），中奖后留下姓名电话及收货地址，奖品将邮寄快递",
+    "mobile": "",
+    "logo": "zhenyong_logo.png",
+    "name": "浙江针永体育用品有限公司",
+    "description": "浙江针永体育用品有限公司位于海宁市海宁经济开发区，是美国轻奢潮流品牌STANCE 的全球唯一生产基地；公司采用了世界上最先进的袜机和最先进的后道设备让袜子的编织及后加工都达到世界先进水平。<br/>020 年4 月针永完成了STANCE 品牌中国地区的收购； 7 月，STANCE 的全国首店在上海港汇正式开业。STANCE 品牌的出现，改变了传统袜子黑白灰的配色，将创意的元素融入袜子设计，同时采用更加复杂先进的工艺提升袜子质量，让袜子成为一件展现个性的艺术品。",
+    "addressList": [
+        {
+            "name": "stance天猫旗舰店",
+            "type": "online",
+            "website": "https://stance.tmall.com/"
+        },
+        {
+            "name": "stance京东旗舰店",
+            "type": "online",
+            "website": "https://mall.jd.com/index-10663076.html/"
+        }
+    ],
+    "products": [
+        {
+            "title": "STANCE双罗口拼接撞色潮牌男女中筒袜运动休闲袜叠穿袜专业训练袜",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "138元"
+                },
+                {
+                    "type": "txt",
+                    "value": "专利纱线混纺技术，大大增强高摩擦区域的耐磨性"
+                },
+                {
+                    "type": "img",
+                    "value": "zhenyong1.png"
+                }
+            ]
+        },
+        {
+            "title": "STANCE双罗口拼接撞色潮牌男女中筒袜运动休闲袜叠穿袜专业训练袜",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "138元"
+                },
+                {
+                    "type": "txt",
+                    "value": "STANCE联合《这！就是街舞》第四季，以TAKE a STANCE，EMBRACE ALL BATTLES”为主题，描述着面对battle的姿态和态度，不仅是舞蹈上的battle，更是对自我的内在battle，对世界的外在battle。"
+                },
+                {
+                    "type": "img",
+                    "value": "zhenyong2.png"
+                }
+            ]
+        }
+    ]
+}

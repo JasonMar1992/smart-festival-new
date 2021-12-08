@@ -1,0 +1,76 @@
+{
+    "banners": [
+        "hailide_banner1.jpg",
+        "hailide_banner2.jpg",
+        "hailide_banner3.jpg"
+    ],
+    "luckDraw": false,
+    "mobile": "15067378982",
+    "logo": "hailide_logo.png",
+    "name": "浙江海利得地板有限公司",
+    "description": "海利得地板于2014年由浙江海利得新材料股份有限公司（股票代码 002206)投资设立，工厂位于尖山新区，占地118亩，具备年产1200万平方米环保弹性地板的生产能力，是国内领先的集环保弹性地板研发、生产和销售于一体的现代化制造企业。",
+    "addressList": null,
+    "products": [
+        {
+            "title": "海利得地板整体优势",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "绿色环保、无毒、无辐射，零甲醛，防水、防潮、防滑，防火阻燃、防火等级达到B1级，超耐磨、更耐用，安装简单、施工便捷，保养方便。"
+                }
+            ]
+        },
+        {
+            "title": "LVT豪华弹性地板",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "有丰富的花色可以选择,提供美学和性能之间的完美平衡，而且独特的设计元素确保了商业和住宅区域的适用性。"
+                },
+                {
+                    "type": "img",
+                    "value": "LVT.jpg"
+                }
+            ]
+        },
+        {
+            "title": "LOOSELAY自沉式止滑地板",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "采用“特殊止滑底”专利设计，容易铺设，可小面积自行安装，节约成本快速铺装方便更换，享受DIY的乐趣，实现低成本、快速铺装。"
+                },
+                {
+                    "type": "img",
+                    "value": "LOOSELAY.jpg"
+                }
+            ]
+        },
+        {
+            "title": "SPC石晶锁扣地板",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "SPC石晶地板具有独特的刚性核心层，具有超强耐用性和尺寸稳定性，使用国际专利的锁扣系统，免胶铺装，使安装更便捷。"
+                },
+                {
+                    "type": "img",
+                    "value": "SPC.jpg"
+                }
+            ]
+        },
+        {
+            "title": "PP环保地板",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "以食品级原料制成的绿色环保型地板，是一款非PVC的创新地板，可回收易降解，有较高的耐磨性和抗刮性;有独特的环保和优良的物理性能。"
+                },
+                {
+                    "type": "img",
+                    "value": "PP.jpg"
+                }
+            ]
+        }
+    ]
+}

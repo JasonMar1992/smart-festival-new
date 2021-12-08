@@ -1,0 +1,104 @@
+{
+    "banners": [
+        "chaobang_banner.jpg"
+    ],
+    "luckDraw": false,
+    "mobile": "0573-87802229",
+    "logo": "chaobang_logo.png",
+    "name": "浙江潮邦厨具电器有限公司",
+    "description": "浙江潮邦厨具电器有限公司地处长江三角洲经济圈中心“一千里色中秋月，十万军生半夜潮”的钱塘江畔——海宁市尖山区，是一家专业从事集成厨电产品“研发、生产和营销”的现代化大型企业。<br/>公司于2009年斥资2亿元组建占地80000多平米的潮邦工业园，园区拥有近50000平米的标准化厂房与多条国内外整套先进生产线、检测设备，形成了年产30万台套集成灶的生产能力。同时与国内外多家高等院校、科研机构和专业公司建立广泛、持久的合作关系，使潮邦公司在产品研发、工艺设计、生产制造和市场营销等领域处在行业领先地位，构筑了潮邦品牌的核心竞争力。",
+    "addressList": [
+        {
+            "name": "潮邦天猫旗舰店",
+            "type": "online",
+            "website": "https://chaobang.tmall.com/"
+        }
+    ],
+    "products": [
+        {
+            "title": "K7zk（f）蒸烤分层集成灶",
+            "detail": [
+                {
+                    "type": "img",
+                    "value": "chaobang1.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang2.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang3.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang4.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang5.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang6.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang7.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang8.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang9.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang10.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang11.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang12.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang13.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang14.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang15.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang16.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang17.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang18.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang19.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "chaobang20.jpg"
+                }
+            ]
+        }
+    ]
+}
