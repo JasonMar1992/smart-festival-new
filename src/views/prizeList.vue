@@ -37,8 +37,10 @@
         奖品列表
       </div>
       <div
+        v-for="(item, i) in list"
+        :key="i"
         style="
-          margin: 0px 28px;
+          margin: 2px 28px;
           padding: 0px 4px;
           color: #515a6e;
           font-size: 12px;
@@ -58,7 +60,7 @@
                 font-weight: bold;
               "
             >
-              乳胶枕一个
+              {{ item.prize_name }}
             </div>
           </van-col>
           <van-col span="14"
@@ -70,9 +72,11 @@
                 font-weight: bold;
               "
             >
-              <div>浙江汉保利罗针织股份有限公司</div>
-              <van-tag type="primary">自提</van-tag
-              ><van-tag style="margin-left: 10px" type="success">已兑奖</van-tag>
+              <div>{{ item.shop_name }}</div>
+              <van-tag type="primary">{{ item.description }}</van-tag
+              ><van-tag style="margin-left: 10px" type="success">{{
+                statusFormate(item.status)
+              }}</van-tag>
             </div></van-col
           >
         </van-row>
@@ -81,6 +85,7 @@
   </div>
 </template>
 <script>
+import axios from 'axios';
 import picUrl from '../assets/images/bg.jpg';
 
 export default {
@@ -88,13 +93,64 @@ export default {
   data() {
     return {
       picUrl,
-      name: '章三',
-      mobile: '15888380989',
-      address:
-        '浙江省嘉兴市海宁市百合新城百合新城百合新城百合新城百合新城百合新城',
+      name: '',
+      mobile: '',
+      address: '',
+
+      list: [],
     };
   },
-  methods: {},
-  mounted() {},
+  methods: {
+    statusFormate(string) {
+      let result = '';
+      // eslint-disable-next-line default-case
+      switch (string) {
+        case 'PENDING':
+          result = '未兑奖';
+          return result;
+        case 'AWARD':
+          result = '已兑奖';
+          return result;
+      }
+    },
+    getSelfInfo() {
+      axios({
+        method: 'get',
+        url: this.ports.business.getSelfInfo,
+        params: {
+          openid: window.localStorage.getItem('open_id'),
+        },
+      })
+        .then((res) => {
+          console.log(res.data);
+          this.name = res.data.name;
+          this.mobile = res.data.mobile;
+          this.address = res.data.address;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getMyAwards() {
+      axios({
+        method: 'get',
+        url: this.ports.business.getMyAwards,
+        params: {
+          openid: window.localStorage.getItem('open_id'),
+        },
+      })
+        .then((res) => {
+          console.log(res.data);
+          this.list = res.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+  mounted() {
+    this.getSelfInfo();
+    this.getMyAwards();
+  },
 };
 </script>

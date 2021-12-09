@@ -248,32 +248,50 @@
       title="完善抽奖信息"
       v-model="infoModal"
       @confirm="submitInfo"
+      :before-close="onBeforeClose"
     >
-      <van-cell-group inset>
+      <van-form ref="form" validate-first>
         <!-- 输入任意文本 -->
-        <van-field v-model="infoData.name" label="姓名" />
+        <van-field
+          v-model="infoData.name"
+          label="姓名"
+          required
+          :rules="[{ required: true, message: '请填写姓名' }]"
+        />
         <!-- 输入手机号，调起手机号键盘 -->
         <van-field
           v-model="infoData.mobile"
           type="tel"
           label="手机号"
           maxlength="11"
+          required
+          :rules="[{ pattern, message: '手机号格式不对' }]"
         />
         <van-field
           v-model="infoData.address"
           label="收货地址"
           type="textarea"
           rows="2"
+          required
+          :rules="[{ required: true, message: '请填写收货地址' }]"
         />
-        <div style="font-size: 12px; color: #c5c8ce; float: right; margin: 4px">
+        <div
+          style="
+            font-size: 12px;
+            color: #c5c8ce;
+            text-align: right;
+            margin: 4px 18px;
+          "
+        >
           *个人信息一经确认不得修改
         </div>
-      </van-cell-group>
+      </van-form>
     </van-dialog>
   </div>
 </template>
 <script>
-import { ImagePreview } from 'vant';
+import axios from 'axios';
+import { Toast, ImagePreview } from 'vant';
 import luckDraw from './luckdraw.vue';
 
 export default {
@@ -285,6 +303,7 @@ export default {
     return {
       name: '',
       single: {},
+      pattern: /^[1][3,4,5,6,7,8,9][0-9]{9}$/,
 
       luckDrawModal: false,
       infoModal: false,
@@ -295,7 +314,10 @@ export default {
         address: '',
       },
 
-      result: '<div style="text-align: center;line-height: 30px;font-weight: bold;color: red">抽奖中...</div>',
+      result:
+        '<div style="text-align: center;line-height: 30px;font-weight: bold;color: red">抽奖中...</div>',
+      result_name: null,
+      result_description: null,
     };
   },
   methods: {
@@ -310,23 +332,90 @@ export default {
       });
     },
     luckDraw() {
-      this.infoModal = true;
+      if (window.localStorage.getItem('mobile')) {
+        this.luckDrawAction();
+      } else {
+        this.infoModal = true;
+      }
+    },
+    luckDrawAction() {
+      axios({
+        method: 'get',
+        url: this.ports.business.getLuck,
+        params: {
+          shop_id: this.single.draw_id,
+          openid: window.localStorage.getItem('open_id'),
+        },
+      })
+        .then((res) => {
+          console.log(res.data);
+          this.result_name = res.data.name;
+          if (res.data.description) {
+            this.result_description = res.data.description;
+          } else {
+            this.result_description = '下次一定';
+          }
+
+          this.luckDrawModal = true;
+        })
+        .catch((error) => {
+          console.log(error);
+          Toast.fail(error.response.data.msg);
+        });
     },
     start() {
-      const prizeName = 'prizeName';
-      const prizeDescription = 'prizeDescription';
-      this.result = `<div style="text-align: center;line-height: 30px;font-weight: bold;color: red">${
-        prizeName
-      }</div><div style="text-align: center;line-height: 30px;font-size: 12px;">(${
-        prizeDescription
-      })</div>`;
+      this.result = `<div style="text-align: center;line-height: 30px;font-weight: bold;color: red">${this.result_name}</div><div style="text-align: center;line-height: 30px;font-size: 12px;">(${this.result_description})</div>`;
     },
     end() {
-      console.log('中奖啦！');
+      console.log('抽奖完成啦！');
+    },
+    onBeforeClose(action, done) {
+      if (action === 'confirm') {
+        return done(false);
+      }
+      // 重置表单校验
+      this.$refs.form.resetFields();
+      this.infoData = {
+        name: '',
+        mobile: '',
+        address: '',
+      };
+      return done();
     },
     submitInfo() {
-      this.luckDrawModal = true;
-      // this.$refs.luck.initCanvas()
+      this.$refs.form
+        .validate()
+        .then(() => {
+          // 验证通过
+          console.log('验证通过');
+          axios({
+            method: 'post',
+            url: this.ports.business.addInfo,
+            data: {
+              ...this.infoData,
+              openid: window.localStorage.getItem('open_id'),
+            },
+          })
+            .then((res) => {
+              console.log(res.data);
+              if (res.data.success) {
+                console.log('成功添加');
+                window.localStorage.setItem('mobile', this.infoData.mobile);
+                this.infoModal = false;
+              } else {
+                Toast.fail(res.data.msg);
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+              Toast.fail('操作失败');
+            });
+        })
+        .catch(() => {
+          // 验证失败
+          console.log('验证失败');
+          this.infoModal = true;
+        });
     },
     getImg(image) {
       ImagePreview({

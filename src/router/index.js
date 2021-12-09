@@ -9,7 +9,7 @@ const routes = [
     name: 'home',
     meta: {
       title: '首页',
-      requiresAuth: true,
+      requiresAuth: false,
     },
     component: () => import('../views/Homepage.vue'),
   },
@@ -77,7 +77,7 @@ router.beforeEach((to, from, next) => {
       next();
     } else { // 没登录则跳转到登录界面
       console.log('没登录');
-      next();
+      window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_HOST_URL}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`;
     }
   } else {
     next();

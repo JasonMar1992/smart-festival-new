@@ -23,8 +23,9 @@ module.exports = {
 
   devServer: {
     // open: process.platform === 'darwin',
-    // host: 'localhost',
+    host: 'localhost',
     port: 7082,
+    disableHostCheck: true,
     // open: true, //配置自动启动浏览器
     // https: true,
     proxy: {
@@ -34,14 +35,6 @@ module.exports = {
         // ws: true,
         pathRewrite: {
           '^/api': '',
-        },
-      },
-      '/img': {
-        target: process.env.VUE_APP_IMG_URL, // 对应自己的接口
-        changeOrigin: true,
-        // ws: true,
-        pathRewrite: {
-          '^/img': '',
         },
       },
     },

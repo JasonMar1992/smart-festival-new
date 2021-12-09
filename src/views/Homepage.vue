@@ -32,7 +32,7 @@
             @click="showRule = true"
           />
           <van-image width="60%" height="60" :src="image6" @click="goTo" />
-          <van-image width="60%" height="60" :src="image7" />
+          <van-image width="60%" height="60" :src="image7" @click="luckDraw" />
         </div>
         <div style="height: 200px" v-else-if="layout3">
           <van-row>
@@ -125,6 +125,8 @@
 }
 </style>
 <script>
+import axios from 'axios';
+import { Toast } from 'vant';
 import picUrl from '../assets/images/bg.jpg';
 import image1 from '../assets/images/1-0.png';
 import image2 from '../assets/images/2-0.png';
@@ -161,9 +163,23 @@ export default {
       layout2: false,
       layout3: false,
       showRule: false,
+
+      share_count: 0,
+      need_count: 2,
     };
   },
   methods: {
+    luckDraw() {
+      const c = this.need_count - this.share_count;
+      if (c > 0) {
+        Toast({
+          message: `请再分享给${c}个好友`,
+          icon: 'share-o',
+        });
+      } else {
+        window.location.href = 'https://www.baidu.com';
+      }
+    },
     go() {
       this.layout1 = false;
       this.layout2 = true;
@@ -182,7 +198,118 @@ export default {
         },
       });
     },
+    getCount() {
+      axios({
+        method: 'get',
+        url: this.ports.business.getShareCount,
+        params: {
+          openid: window.localStorage.getItem('open_id'),
+        },
+      })
+        .then((res) => {
+          console.log(res.data);
+          this.share_count = res.data.count;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getSelfInfo() {
+      console.log('拿用户信息');
+      if (!window.localStorage.getItem('mobile')) {
+        axios({
+          method: 'get',
+          url: this.ports.business.getSelfInfo,
+          params: {
+            openid: window.localStorage.getItem('open_id'),
+          },
+        })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.mobile) {
+              window.localStorage.setItem('mobile', res.data.mobile);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    },
+    getOpenId(string, share) {
+      axios({
+        method: 'get',
+        url: this.ports.business.getOpenId,
+        params: {
+          code: string,
+        },
+      })
+        .then((res) => {
+          console.log('open_id拿到了，记录一下');
+          window.localStorage.setItem('open_id', res.data.openid);
+
+          this.getCount();
+          this.getSelfInfo();
+          if (share) {
+            this.addShare(share);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          Toast.fail('授权失败');
+        });
+    },
+    addShare(id) {
+      axios({
+        method: 'post',
+        url: this.ports.business.addShare,
+        data: {
+          own_openid: id,
+          openid: window.localStorage.getItem('open_id'),
+        },
+      })
+        .then((res) => {
+          console.log('成功被别人邀请');
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
-  mounted() {},
+  mounted() {
+    if (window.localStorage.getItem('open_id')) {
+      // 判断是否登录
+      console.log('登录了');
+      this.getCount();
+      this.getSelfInfo();
+
+      // 如果只允许拉新，不允许拉老，就注释掉
+      // if (this.$route.query.share_id) {
+      //   this.addShare(this.$route.query.share_id);
+      // }
+    } else {
+      // 没登录则跳转到登录界面
+      console.log('没登录');
+      console.log(this.$route.query);
+
+      let state = 'STATE';
+      if (this.$route.query.share_id) {
+        console.log('带了分享id');
+        state = this.$route.query.share_id;
+      }
+      if (this.$route.query.code) {
+        console.log('是回掉来的，现在用code去换openid');
+        let share_id = null;
+        if (this.$route.query.state) {
+          console.log('带了分享state');
+          share_id = this.$route.query.state;
+        }
+        this.getOpenId(this.$route.query.code, share_id);
+      } else {
+        console.log('不是回掉来的，现在去拿code');
+        window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_HOST_URL}&response_type=code&scope=snsapi_userinfo&state=${state}#wechat_redirect`;
+      }
+    }
+  },
 };
 </script>

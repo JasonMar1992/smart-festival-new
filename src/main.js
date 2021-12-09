@@ -6,7 +6,11 @@ import store from './store';
 
 import 'vant/lib/index.css';
 
+import ports from './api/ports.js';
+
 Vue.use(Vant).use(Lazyload);
+
+Vue.prototype.ports = ports;
 
 Vue.config.productionTip = false;
 
