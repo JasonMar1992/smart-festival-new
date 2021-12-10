@@ -240,7 +240,13 @@
     </van-sticky>
 
     <van-popup round v-model="luckDrawModal">
-      <luck-draw ref="luck" @start="start" @end="end" v-bind:result="result" />
+      <luck-draw
+        v-if="luckDrawComponent"
+        ref="luck"
+        @start="start"
+        @end="end"
+        v-bind:result="result"
+      />
     </van-popup>
 
     <van-dialog
@@ -314,10 +320,11 @@ export default {
         address: '',
       },
 
-      result:
-        '<div style="text-align: center;line-height: 30px;font-weight: bold;color: red">抽奖中...</div>',
+      result: null,
       result_name: null,
       result_description: null,
+
+      luckDrawComponent: false,
     };
   },
   methods: {
@@ -356,7 +363,13 @@ export default {
             this.result_description = '下次一定';
           }
 
-          this.luckDrawModal = true;
+          this.luckDrawComponent = false;
+          this.$nextTick(() => {
+            // 在 DOM 中添加 my-component 组件
+            this.result = '<div style="text-align: center;line-height: 30px;font-weight: bold;color: red">抽奖中...</div>';
+            this.luckDrawComponent = true;
+            this.luckDrawModal = true;
+          });
         })
         .catch((error) => {
           console.log(error);

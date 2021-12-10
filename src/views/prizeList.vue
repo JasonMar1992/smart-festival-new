@@ -36,89 +36,103 @@
       >
         奖品列表
       </div>
-      <div
-        v-for="(item, i) in list"
-        :key="i"
-        style="
-          margin: 2px 28px;
-          padding: 0px 4px;
-          color: #515a6e;
-          font-size: 12px;
-          text-align: left;
-          background: #f8f8f9;
-          border-radius: 10px;
-        "
-      >
-        <van-row style="height: 60px">
-          <van-col span="10">
-            <div
-              style="
-                color: red;
-                text-align: center;
-                line-height: 60px;
-                font-size: 14px;
-                font-weight: bold;
-              "
-            >
-              {{ item.prize_name }}
-            </div>
-          </van-col>
-          <van-col span="14"
-            ><div
-              style="
-                text-align: center;
-                line-height: 30px;
-                font-size: 12px;
-                font-weight: bold;
-              "
-            >
-              <div>{{ item.shop_name }}</div>
-              <van-tag type="primary">{{ item.description }}</van-tag
-              ><van-tag style="margin-left: 10px" type="success">{{
-                statusFormate(item.status)
-              }}</van-tag>
-            </div></van-col
+      <div style="background: #ECFFFF">
+        <div
+          v-for="(item, i) in list"
+          :key="i"
+          :style="{
+            'background-image': 'url(' + awardbg + ')',
+            'background-repeat': 'no-repeat',
+            'background-size': '100% 100%',
+            '-moz-background-size': '100% 100%',
+            height: '100px',
+            width: '100%',
+          }"
+        >
+          <van-row
+            style="
+              margin: 2px 28px;
+              padding: 0px 4px;
+              color: #515a6e;
+              font-size: 12px;
+              text-align: left;
+              height: 100px;
+            "
           >
-        </van-row>
+            <van-col span="10">
+              <div
+                style="
+                  color: red;
+                  text-align: center;
+                  line-height: 100px;
+                  font-size: 14px;
+                  font-weight: bold;
+                "
+              >
+                {{ item.prize_name }}
+              </div>
+            </van-col>
+            <van-col span="14"
+              ><div
+                style="
+                  text-align: center;
+                  line-height: 40px;
+                  font-size: 12px;
+                  font-weight: bold;
+                  margin-top: 10px;
+                "
+              >
+                <div>{{ item.shop_name }}</div>
+                <van-tag type="primary">{{ item.description }}</van-tag
+                ><van-tag style="margin-left: 10px" type="success">{{
+                  statusFormate(item.status)
+                }}</van-tag>
+              </div></van-col
+            >
+          </van-row>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import axios from 'axios';
-import picUrl from '../assets/images/bg.jpg';
+import axios from "axios";
+import picUrl from "../assets/images/bg.jpg";
+import awardbg from "../assets/images/awardbg.png";
 
 export default {
-  name: '',
+  name: "",
   data() {
     return {
       picUrl,
-      name: '',
-      mobile: '',
-      address: '',
+      awardbg,
+
+      name: "",
+      mobile: "",
+      address: "",
 
       list: [],
     };
   },
   methods: {
     statusFormate(string) {
-      let result = '';
+      let result = "";
       // eslint-disable-next-line default-case
       switch (string) {
-        case 'PENDING':
-          result = '未兑奖';
+        case "PENDING":
+          result = "未兑奖";
           return result;
-        case 'AWARD':
-          result = '已兑奖';
+        case "AWARD":
+          result = "已兑奖";
           return result;
       }
     },
     getSelfInfo() {
       axios({
-        method: 'get',
+        method: "get",
         url: this.ports.business.getSelfInfo,
         params: {
-          openid: window.localStorage.getItem('open_id'),
+          openid: window.localStorage.getItem("open_id"),
         },
       })
         .then((res) => {
@@ -133,10 +147,10 @@ export default {
     },
     getMyAwards() {
       axios({
-        method: 'get',
+        method: "get",
         url: this.ports.business.getMyAwards,
         params: {
-          openid: window.localStorage.getItem('open_id'),
+          openid: window.localStorage.getItem("open_id"),
         },
       })
         .then((res) => {

@@ -53,7 +53,7 @@ const routes = [
     path: '/check',
     name: 'check',
     meta: {
-      title: '奖品记录',
+      title: '核销奖品',
       requiresAuth: false,
     },
     component: () => import('../views/check.vue'),

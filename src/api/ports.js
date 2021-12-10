@@ -11,4 +11,8 @@ export default {
     getAwardsWithMobileShop: '/api/getAwardsWithMobileShop',
     verifyAward: '/api/verifyAward/',
   },
+  wx: {
+    getToken: '/wx/cgi-bin/token',
+    getTicket: '/wx/cgi-bin/ticket/getticket',
+  },
 };

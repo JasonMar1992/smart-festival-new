@@ -177,7 +177,7 @@ export default {
           icon: 'share-o',
         });
       } else {
-        window.location.href = 'https://www.baidu.com';
+        window.location.href = 'https://12387381-402.hdpyqb.com/12387381/YAeMv5jaTAD6_jje_r_tWg/load.html?style=24&_source=1';
       }
     },
     go() {
@@ -300,14 +300,14 @@ export default {
       if (this.$route.query.code) {
         console.log('是回掉来的，现在用code去换openid');
         let share_id = null;
-        if (this.$route.query.state) {
+        if (this.$route.query.state && state != 'STATE') {
           console.log('带了分享state');
           share_id = this.$route.query.state;
         }
         this.getOpenId(this.$route.query.code, share_id);
       } else {
         console.log('不是回掉来的，现在去拿code');
-        window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_HOST_URL}&response_type=code&scope=snsapi_userinfo&state=${state}#wechat_redirect`;
+        window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_HOST_URL}&response_type=code&scope=snsapi_base&state=${state}#wechat_redirect`;
       }
     }
   },
