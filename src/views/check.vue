@@ -32,10 +32,19 @@
       >
       <div
         style="
+          font-size: 12px;
+          text-align: center;
+          margin: 8px 0px;
+        "
+      >
+        *请交由工作人员核销奖品
+      </div>
+      <div
+        style="
           color: #fff;
           font-weight: bold;
           font-size: 16px;
-          margin-top: 20px;
+          margin-top: 10px;
         "
       >
         中奖人信息
@@ -74,12 +83,12 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
-import { Toast, Dialog } from 'vant';
-import picUrl from '../assets/images/bg.jpg';
+import axios from "axios";
+import { Toast, Dialog } from "vant";
+import picUrl from "../assets/images/bg.jpg";
 
 export default {
-  name: '',
+  name: "check",
   data() {
     return {
       picUrl,
@@ -91,18 +100,18 @@ export default {
   methods: {
     audit(id) {
       Dialog.confirm({
-        title: '操作提示',
-        message: '确认核销吗？',
+        title: "操作提示",
+        message: "确认核销吗？",
       })
         .then(() => {
           // on confirm
           axios({
-            method: 'put',
+            method: "put",
             url: this.ports.business.verifyAward + id,
           })
             .then((res) => {
               console.log(res.data);
-              Toast.success('核销成功');
+              Toast.success("核销成功");
               this.search();
             })
             .catch((error) => {
@@ -114,20 +123,20 @@ export default {
         });
     },
     statusFormate(string) {
-      let result = '';
+      let result = "";
       // eslint-disable-next-line default-case
       switch (string) {
-        case 'PENDING':
-          result = '未兑奖';
+        case "PENDING":
+          result = "未兑奖";
           return result;
-        case 'AWARD':
-          result = '已兑奖';
+        case "AWARD":
+          result = "已兑奖";
           return result;
       }
     },
     search() {
       axios({
-        method: 'get',
+        method: "get",
         url: this.ports.business.getAwardsWithMobileShop,
         params: {
           shop_id: this.$route.query.shopCode,
@@ -143,6 +152,11 @@ export default {
         });
     },
   },
-  mounted() {},
+  mounted() {
+    if (this.$route.query.shopCode && this.$route.query.mobile) {
+      this.tel = this.$route.query.mobile;
+      this.search();
+    }
+  },
 };
 </script>

@@ -55,7 +55,7 @@
 import data from '../assets/json/list.json';
 
 export default {
-  name: '',
+  name: 'list',
   data() {
     return {
       list: [],

@@ -52,8 +52,8 @@ export default {
           }
           wx.ready(() => {
             wx.updateAppMessageShareData({
-              title: '和我一起“智造”', // 分享标题
-              desc: '2021海宁“智造”生活节', // 分享描述
+              title: '快参与｜和海宁一起“智造”', // 分享标题
+              desc: '“科技+·智造未来”2021海宁“智造”生活节', // 分享描述
               link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
               imgUrl: 'https://www.sjzch.vip/img/sharepic.png', // 分享图标
               success() {
@@ -62,7 +62,7 @@ export default {
             });
             // 需在用户可能点击分享按钮前就先调用
             wx.updateTimelineShareData({
-              title: '和我一起“智造”', // 分享标题
+              title: '快参与｜和海宁一起“智造”', // 分享标题
               link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
               imgUrl: 'https://www.sjzch.vip/img/sharepic.png', // 分享图标
               success() {
@@ -102,19 +102,17 @@ export default {
 
     //         const time = parseInt(new Date().getTime() / 1000);
     //         const signature = sha1(
-    //           `jsapi_ticket=${result.data.ticket}&noncestr=332211&timestamp=${time}&url=${window.location.href}`,
+    //           `jsapi_ticket=${result.data.ticket}&noncestr=113322&timestamp=${time}&url=${window.location.href}`,
     //         );
     //         wx.config({
-    //           debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    //           debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
     //           appId: 'wx18c63ccad9649329', // 必填，公众号的唯一标识
     //           timestamp: time, // 必填，生成签名的时间戳
-    //           nonceStr: '332211', // 必填，生成签名的随机串
+    //           nonceStr: '113322', // 必填，生成签名的随机串
     //           signature, // 必填，签名
     //           jsApiList: [
     //             'updateAppMessageShareData',
     //             'updateTimelineShareData',
-    //             'onMenuShareAppMessage',
-    //             'onMenuShareTimeline',
     //           ], // 必填，需要使用的JS接口列表
     //         });
     //         wx.ready(() => {
@@ -145,25 +143,6 @@ export default {
     //               // 用户点击了分享后执行的回调函数
     //             },
     //           });
-
-    //           // wx.updateAppMessageShareData({
-    //           //   title: "和我一起“智造”", // 分享标题
-    //           //   desc: "2021海宁“智造”生活节", // 分享描述
-    //           //   link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-    //           //   imgUrl: "https://www.sjzch.vip/img/sharepic.png", // 分享图标
-    //           //   success() {
-    //           //     // 设置成功
-    //           //   },
-    //           // });
-    //           // // 需在用户可能点击分享按钮前就先调用
-    //           // wx.updateTimelineShareData({
-    //           //   title: "和我一起“智造”", // 分享标题
-    //           //   link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-    //           //   imgUrl: "https://www.sjzch.vip/img/sharepic.png", // 分享图标
-    //           //   success() {
-    //           //     // 设置成功
-    //           //   },
-    //           // });
     //         });
     //         wx.error((result) => {
     //           // config 信息验证失败会执行error函数,如签名过期导致验证失败,具体错误信息可以打开config的debug模式查看,也可以在返回的res参数中查看,对于SPA可以在这里更新签名

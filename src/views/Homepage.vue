@@ -25,75 +25,50 @@
           />
         </div>
         <div style="height: 200px" v-else-if="layout2">
-          <van-image
-            width="60%"
-            height="60"
-            :src="image5"
-            @click="showRule = true"
-          />
+          <van-image width="60%" height="60" :src="image5" @click="goRule" />
           <van-image width="60%" height="60" :src="image6" @click="goTo" />
           <van-image width="60%" height="60" :src="image7" @click="luckDraw" />
         </div>
-        <div style="height: 200px" v-else-if="layout3">
+        <div
+          style="height: 200px; padding-left: 10%; padding-right: 10%"
+          v-else-if="layout3"
+        >
           <van-row>
-            <van-col span="2" />
-            <van-col span="10">
+            <van-col span="12">
               <van-image
                 width="100%"
                 height="100"
                 :src="tab1"
                 @click="goList(0)"
             /></van-col>
-            <van-col span="10">
+            <van-col span="12">
               <van-image
                 width="100%"
                 height="100"
                 :src="tab2"
                 @click="goList(1)"
             /></van-col>
-            <van-col span="2" />
           </van-row>
           <van-row>
-            <van-col span="2" />
-            <van-col span="10">
+            <van-col span="12">
               <van-image
                 width="100%"
                 height="100"
                 :src="tab3"
                 @click="goList(2)"
             /></van-col>
-            <van-col span="10">
+            <van-col span="12">
               <van-image
                 width="100%"
                 height="100"
                 :src="tab4"
                 @click="goList(3)"
             /></van-col>
-            <van-col span="2" />
           </van-row>
         </div>
         <van-image width="50%" height="70" :src="image4" />
       </div>
     </div>
-    <van-popup
-      v-model="showRule"
-      closeable
-      round
-      close-icon="close"
-      :style="{ height: '70%', width: '70%' }"
-    >
-      <div style="padding: 40px 20px; font-size: 12px">
-        Vant 是有赞前端团队开源的移动端组件库，于 2017 年开源，已持续维护 4
-        年时间。Vant
-        对内承载了有赞所有核心业务，对外服务十多万开发者，是业界主流的移动端组件库之一。Vant
-        是有赞前端团队开源的移动端组件库，于 2017 年开源，已持续维护 4
-        年时间。Vant
-        对内承载了有赞所有核心业务，对外服务十多万开发者，是业界主流的移动端组件库之一。Vant
-        是有赞前端团队开源的移动端组件库，于 2017 年开源，已持续维护 4
-        年时间。Vant
-        对内承载了有赞所有核心业务，对外服务十多万开发者，是业界主流的移动端组件库之一。
-      </div>
-    </van-popup>
   </div>
 </template>
 <style>
@@ -126,13 +101,13 @@
 </style>
 <script>
 import axios from 'axios';
-import { Toast } from 'vant';
+import { Toast, Notify } from 'vant';
 import picUrl from '../assets/images/bg.jpg';
 import image1 from '../assets/images/1-0.png';
 import image2 from '../assets/images/2-0.png';
 import image3 from '../assets/images/3-0.png';
 import button from '../assets/images/4-0.png';
-import image4 from '../assets/images/5-0.jpg';
+import image4 from '../assets/images/5-0.png';
 import image5 from '../assets/images/2-1.png';
 import image6 from '../assets/images/2-2.png';
 import image7 from '../assets/images/2-3.png';
@@ -142,7 +117,7 @@ import tab3 from '../assets/images/3-3.png';
 import tab4 from '../assets/images/3-4.png';
 
 export default {
-  name: '',
+  name: 'homepage',
   data() {
     return {
       picUrl,
@@ -162,7 +137,6 @@ export default {
       layout1: true,
       layout2: false,
       layout3: false,
-      showRule: false,
 
       share_count: 0,
       need_count: 2,
@@ -172,10 +146,17 @@ export default {
     luckDraw() {
       const c = this.need_count - this.share_count;
       if (c > 0) {
-        Toast({
-          message: `请再分享给${c}个好友`,
-          icon: 'share-o',
-        });
+        if (c === 2) {
+          Toast({
+            message: '邀请2位朋友助力并打开链接，即可参与抽奖',
+            icon: 'share-o',
+          });
+        } else {
+          Toast({
+            message: `请再分享给${c}个好友`,
+            icon: 'share-o',
+          });
+        }
       } else {
         window.location.href = 'https://12387381-402.hdpyqb.com/12387381/YAeMv5jaTAD6_jje_r_tWg/load.html?style=24&_source=1';
       }
@@ -189,6 +170,11 @@ export default {
       this.layout1 = false;
       this.layout2 = false;
       this.layout3 = true;
+    },
+    goRule() {
+      this.$router.push({
+        name: 'Rule',
+      });
     },
     goList(index) {
       this.$router.push({
@@ -245,12 +231,16 @@ export default {
       })
         .then((res) => {
           console.log('open_id拿到了，记录一下');
-          window.localStorage.setItem('open_id', res.data.openid);
+          if (res.data.openid) {
+            window.localStorage.setItem('open_id', res.data.openid);
 
-          this.getCount();
-          this.getSelfInfo();
-          if (share) {
-            this.addShare(share);
+            this.getCount();
+            this.getSelfInfo();
+            if (share) {
+              this.addShare(share);
+            }
+          } else {
+            Notify({ type: 'warning', message: '授权失败' });
           }
         })
         .catch((error) => {
@@ -284,9 +274,9 @@ export default {
       this.getSelfInfo();
 
       // 如果只允许拉新，不允许拉老，就注释掉
-      // if (this.$route.query.share_id) {
-      //   this.addShare(this.$route.query.share_id);
-      // }
+      if (this.$route.query.share_id) {
+        this.addShare(this.$route.query.share_id);
+      }
     } else {
       // 没登录则跳转到登录界面
       console.log('没登录');
@@ -307,7 +297,7 @@ export default {
         this.getOpenId(this.$route.query.code, share_id);
       } else {
         console.log('不是回掉来的，现在去拿code');
-        window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_HOST_URL}&response_type=code&scope=snsapi_base&state=${state}#wechat_redirect`;
+        window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_HOST_URL}&response_type=code&scope=snsapi_userinfo&state=${state}#wechat_redirect`;
       }
     }
   },

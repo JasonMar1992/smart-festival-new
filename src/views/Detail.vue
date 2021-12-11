@@ -301,7 +301,7 @@ import { Toast, ImagePreview } from 'vant';
 import luckDraw from './luckdraw.vue';
 
 export default {
-  name: '',
+  name: 'detail',
   components: {
     luckDraw,
   },
@@ -360,7 +360,7 @@ export default {
           if (res.data.description) {
             this.result_description = res.data.description;
           } else {
-            this.result_description = '下次一定';
+            this.result_description = '继续加油';
           }
 
           this.luckDrawComponent = false;

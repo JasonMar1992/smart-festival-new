@@ -23,6 +23,15 @@ const routes = [
     component: () => import('../views/List.vue'),
   },
   {
+    path: '/rule',
+    name: 'Rule',
+    meta: {
+      title: '活动介绍',
+      requiresAuth: true,
+    },
+    component: () => import('../views/Rule.vue'),
+  },
+  {
     path: '/detail',
     name: 'Detail',
     meta: {

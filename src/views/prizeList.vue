@@ -36,7 +36,10 @@
       >
         奖品列表
       </div>
-      <div style="background: #ECFFFF">
+      <div style="font-size: 12px; text-align: center; margin: 8px 0px">
+        *兑奖时间：中奖之日起至2021年12月31 12:00
+      </div>
+      <div style="background: #ecffff">
         <div
           v-for="(item, i) in list"
           :key="i"
@@ -84,24 +87,43 @@
               >
                 <div>{{ item.shop_name }}</div>
                 <van-tag type="primary">{{ item.description }}</van-tag
-                ><van-tag style="margin-left: 10px" type="success">{{
-                  statusFormate(item.status)
-                }}</van-tag>
+                ><van-tag
+                  style="margin-left: 10px"
+                  @click="
+                    if (item.status == 'PENDING') {
+                      qrcode(item);
+                    }
+                  "
+                  type="success"
+                  >{{ statusFormate(item.status) }}</van-tag
+                >
               </div></van-col
             >
           </van-row>
         </div>
       </div>
     </div>
+    <van-popup v-model="showQrcode" style="width: 70%"
+      ><div class="qrcode" style="padding: 10px">
+        <div
+          style="margin: 0 auto; width: 200px; height: 200px; display: none"
+          ref="qrCodeUrl"
+          id="qrCodeDiv"
+        ></div>
+        <div style="margin: 0 auto; width: 200px; height: 200px">
+          <img :src="QRUrl" style="width: 100%; height: 100%" />
+        </div></div
+    ></van-popup>
   </div>
 </template>
 <script>
 import axios from "axios";
+import QRCode from "qrcodejs2";
 import picUrl from "../assets/images/bg.jpg";
 import awardbg from "../assets/images/awardbg.png";
 
 export default {
-  name: "",
+  name: "prizeList",
   data() {
     return {
       picUrl,
@@ -112,15 +134,37 @@ export default {
       address: "",
 
       list: [],
+
+      showQrcode: false,
+      QRUrl: null,
     };
   },
   methods: {
+    qrcode(prize) {
+      this.showQrcode = true;
+      const url = `https://www.sjzch.vip/check?shopCode=${
+        prize.shop_id
+      }&mobile=${window.localStorage.getItem("mobile")}`;
+      const self = this;
+      setTimeout(() => {
+        self.$refs.qrCodeUrl.innerHTML = "";
+        const qrcode = new QRCode(self.$refs.qrCodeUrl, {
+          text: url, // 需要转换为二维码的内容
+          width: 200,
+          height: 200,
+        });
+
+        const canvas = document.getElementsByTagName("canvas")[0];
+        const imgSrc = canvas.toDataURL("image/png");
+        self.QRUrl = imgSrc;
+      }, 100);
+    },
     statusFormate(string) {
       let result = "";
       // eslint-disable-next-line default-case
       switch (string) {
         case "PENDING":
-          result = "未兑奖";
+          result = "兑奖码";
           return result;
         case "AWARD":
           result = "已兑奖";
