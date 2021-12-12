@@ -159,7 +159,7 @@
             />
           </div>
           <div style="width: 100%; height: 4px" />
-          <div style="width: 100%; min-height: 20px">
+          <div v-if="item.mobile" style="width: 100%; min-height: 20px">
             <div style="font-size: 12px; float: left; line-height: 20px">
               热线：{{ item.mobile }}
             </div>

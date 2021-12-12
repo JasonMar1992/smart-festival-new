@@ -1,0 +1,45 @@
+{
+    "banners": [
+        "aita_pic.jpg",
+        "banner2.jpg",
+        "banner3.jpg"
+    ],
+    "luckDraw": false,
+    "mobile": "0573-87977776",
+    "logo": "aita_logo.jpg",
+    "name": "海宁艾她服饰有限公司",
+    "description": "海宁艾她服饰有限公司坐落于浙江省海宁市许村镇景许路6号，占地18000平方米的自有工业园区。专注女装羽绒服，集开发、生产、销售为一体。拥有国内最先进的智能制造自动化生产线，自动裁剪中心，自动模板中心。公司以“干好一件事、成就一群人”把一件事做精、做强、做大的匠心理念，全年专注开发生产羽绒服产品。",
+    "addressList": [
+        {
+            "name": "海宁艾她服饰有限公司",
+            "type": "offline",
+            "address": "浙江省海宁市许村镇景许路6号",
+            "location": "B0FFGBOI6O",
+            "mobile": "0573-87977776"
+        },
+        {
+            "name": "CUU STUDIO",
+            "type": "online",
+            "website": "https://shop61083950.taobao.com/"
+        }
+    ],
+    "products": [
+        {
+            "title": "2021冬季新款连帽宽松白鸭绒加厚短外套",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "359元，有白色，黑色，粉色，天使蓝，采用90%含绒量，高密度里布，双层内胆。"
+                },
+                {
+                    "type": "img",
+                    "value": "detail1.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "detail2.jpg"
+                }
+            ]
+        }
+    ]
+}

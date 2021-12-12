@@ -92,6 +92,13 @@
             "pic": "aosen_pic.jpg",
             "picType": "cover",
             "value": "aosen"
+        },
+        {
+            "name": "浙江川洋家私有限公司",
+            "logo": "chuanyang_logo.jpg",
+            "pic": "chuanyang_pic.png",
+            "picType": "cover",
+            "value": "chuanyang"
         }
     ],
     [
@@ -157,6 +164,20 @@
             "pic": "zhenyong_pic.jpg",
             "picType": "cover",
             "value": "zhenyong"
+        },
+        {
+            "name": "海宁艾她服饰有限公司",
+            "logo": "aita_logo.jpg",
+            "pic": "aita_pic.jpg",
+            "picType": "cover",
+            "value": "aita"
+        },
+        {
+            "name": "浙江斯曼尔针织股份有限公司",
+            "logo": "simaner_logo.png",
+            "pic": "simaner_pic.jpg",
+            "picType": "cover",
+            "value": "simaner"
         }
     ],
     [
@@ -187,6 +208,41 @@
             "pic": "xingchi_pic.png",
             "picType": "cover",
             "value": "xingchi"
+        },
+        {
+            "name": "浙江佰恩氏食品股份有限公司",
+            "logo": "baienshi_logo.png",
+            "pic": "baienshi_pic.png",
+            "picType": "cover",
+            "value": "baienshi"
+        },
+        {
+            "name": "海宁纪亨保健食品有限公司",
+            "logo": "jiheng_logo.png",
+            "pic": "jiheng_pic.png",
+            "picType": "cover",
+            "value": "jiheng"
+        },
+        {
+            "name": "浙江龙潇医疗科技有限公司",
+            "logo": "longxiao_logo.png",
+            "pic": "longxiao_pic.jpg",
+            "picType": "cover",
+            "value": "longxiao"
+        },
+        {
+            "name": "浙江群大畜牧养殖有限公司",
+            "logo": "qunda_logo.jpg",
+            "pic": "qunda_pic.jpg",
+            "picType": "cover",
+            "value": "qunda"
+        },
+        {
+            "name": "浙江南化生物科技股份有限公司",
+            "logo": "nanhua_logo.png",
+            "pic": "nanhua_pic.png",
+            "picType": "cover",
+            "value": "nanhua"
         }
     ]
 ]

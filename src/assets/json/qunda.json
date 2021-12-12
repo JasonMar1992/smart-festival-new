@@ -1,0 +1,54 @@
+{
+    "banners": [
+        "banner1.jpg",
+        "banner2.jpg",
+        "banner3.jpg"
+    ],
+    "luckDraw": true,
+    "draw_id": "11",
+    "prize": "丁乡富DHA可生食鸡蛋1盒（活动结束后进行奖品邮寄）",
+    "mobile": "",
+    "logo": "qunda_logo.jpg",
+    "name": "浙江群大畜牧养殖有限公司",
+    "description": "浙江群大畜牧养殖有限公司成立于2008年，位于海宁市丁桥镇，是省内规模最大的黄羽肉鸡养殖企业之一，年出栏肉鸡600万羽，年产鲜鸡蛋6000吨，曾荣获“国家畜禽标准化养殖示范场”、“浙江省美丽牧场”、“浙江省禽类十大名品”、“浙江省名牌农产品”等荣誉。",
+    "addressList": [
+        {
+            "name": "丁乡天猫旗舰店",
+            "type": "online",
+            "website": "https://dingxiangsx.tmall.com/"
+        },
+        {
+            "name": "丁乡京东官方旗舰店",
+            "type": "online",
+            "website": "https://mall.jd.com/index-11367123.html"
+        }
+    ],
+    "products": [
+        {
+            "title": "丁乡富DHA可生食鸡蛋",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "丁乡富DHA可生食鸡蛋是群大畜牧与浙江大学联合研发的一款富含DHA的功能性鸡蛋，每100g鸡蛋中DHA含量高达200mg以上。DHA俗称脑黄金，是婴幼儿脑与视网膜发育的重要营养成分。“高营养+可生食”，幼儿辅食的首选。"
+                },
+                {
+                    "type": "img",
+                    "value": "detail1.jpg"
+                }
+            ]
+        },
+        {
+            "title": "丁乡可生食鸡蛋",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "“丁乡可生食鸡蛋”优选美国海兰鸡种，饲喂由玉米、豆粕、小麦、苜蓿粉以及多维、多矿、益生菌等天然谷物组成的日粮，鸡妈妈生活在四季如春的恒温鸡舍内，饮用水均经过过滤，24h通风换气，产下的鸡蛋进过荷兰进口设备清洗、烘干、灭菌以及光检、裂纹检测，确保鸡蛋内外的安全品质，不含沙门氏菌，才能达到可生食的标准。"
+                },
+                {
+                    "type": "img",
+                    "value": "detail2.jpg"
+                }
+            ]
+        }
+    ]
+}
