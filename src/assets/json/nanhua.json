@@ -4,7 +4,9 @@
         "banner2.png",
         "banner3.png"
     ],
-    "luckDraw": false,
+    "luckDraw": true,
+    "draw_id": "12",
+    "prize": "汽车净化宝1个（奖品将统一邮寄）",
     "mobile": "0573-87792466",
     "logo": "nanhua_logo.png",
     "name": "浙江南化生物科技股份有限公司",
@@ -127,6 +129,23 @@
                 {
                     "type": "img",
                     "value": "xj2.jpg"
+                }
+            ]
+        },
+        {
+            "title": "汽车净化宝",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "纳米矿晶除味包9.9元，采用优质纳米矿晶，除臭除味，可吸收甲醛，苯，TVOC, 氨等有害气体。可反复使用， 挂袋设计，可随意悬挂，不占空间"
+                },
+                {
+                    "type": "img",
+                    "value": "cz1.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "cz.jpg"
                 }
             ]
         }

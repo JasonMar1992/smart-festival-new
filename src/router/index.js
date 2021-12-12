@@ -8,7 +8,7 @@ const routes = [
     path: '/',
     name: 'home',
     meta: {
-      title: '首页',
+      title: '2021海宁“智造”生活节',
       requiresAuth: false,
     },
     component: () => import('../views/Homepage.vue'),

@@ -30,37 +30,35 @@
           <van-image width="60%" height="60" :src="image7" @click="luckDraw" />
         </div>
         <div
-          style="height: 200px; padding-left: 10%; padding-right: 10%"
+          style="padding-left: 23%; padding-right: 23%"
           v-else-if="layout3"
         >
           <van-row>
-            <van-col span="12">
+            <van-col span="24">
               <van-image
                 width="100%"
-                height="100"
+                height="120"
                 :src="tab1"
                 @click="goList(0)"
             /></van-col>
-            <van-col span="12">
+            <van-col span="24">
               <van-image
                 width="100%"
-                height="100"
+                height="120"
                 :src="tab2"
                 @click="goList(1)"
             /></van-col>
-          </van-row>
-          <van-row>
-            <van-col span="12">
+            <van-col span="24">
               <van-image
                 width="100%"
-                height="100"
+                height="120"
                 :src="tab3"
                 @click="goList(2)"
             /></van-col>
-            <van-col span="12">
+            <van-col span="24">
               <van-image
                 width="100%"
-                height="100"
+                height="120"
                 :src="tab4"
                 @click="goList(3)"
             /></van-col>
