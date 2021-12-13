@@ -1,0 +1,76 @@
+{
+    "banners": [
+        "banner.jpg"
+    ],
+    "luckDraw": false,
+    "mobile": "18367330999",
+    "logo": "yulong_logo.jpg",
+    "name": "海宁市玉龙布艺有限公司",
+    "description": "公司成立于1998年6月19日，位于中国布艺名镇许村镇，旗下品牌“玉龙布艺”、“凌梵”窗帘布、“欧缔艺”服装布料，拥有产品设计、开发、织造、窗帘成品制造一条龙流水线，公司有先进的生产与检测设备，重视科学生产管理，注重产品品质，以求新、务实为原则，凭着熟练的专业织造经验和严格的科学生产管理，企业正稳步迅速地发展。",
+    "addressList": [
+        {
+            "name": "海宁市玉龙布艺有限公司",
+            "type": "offline",
+            "address": "浙江省海宁市许村镇新益工业园区创业路6号",
+            "location": "B0FFJFCNKS",
+            "mobile": "18367330999"
+        }
+    ],
+    "products": [
+        {
+            "title": "床品仿羊绒系列",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "仿羊绒系列脏粉色产品四件套，颜色亮丽，布面柔滑，价格258元。"
+                },
+                {
+                    "type": "img",
+                    "value": "detail1.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "detail2.jpg"
+                }
+            ]
+        },
+        {
+            "title": "床品涤棉系列大提花",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "来自欧洲的花型，奥特曼系列3件套件，价格380元。"
+                },
+                {
+                    "type": "img",
+                    "value": "detail3.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "detail4.jpg"
+                }
+            ]
+        },
+        {
+            "title": "成品窗帘",
+            "detail": [
+                {
+                    "type": "txt",
+                    "value": "不同系列成品窗帘。"
+                },
+                {
+                    "type": "img",
+                    "value": "detail5.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "detail6.jpg"
+                },
+                {
+                    "type": "img",
+                    "value": "detail8.jpg"
+                }
+            ]
+        }
+    ]
+}

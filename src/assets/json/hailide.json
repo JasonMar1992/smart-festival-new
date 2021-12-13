@@ -9,7 +9,14 @@
     "logo": "hailide_logo.png",
     "name": "浙江海利得地板有限公司",
     "description": "海利得地板于2014年由浙江海利得新材料股份有限公司（股票代码 002206)投资设立，工厂位于尖山新区，占地118亩，具备年产1200万平方米环保弹性地板的生产能力，是国内领先的集环保弹性地板研发、生产和销售于一体的现代化制造企业。",
-    "addressList": null,
+    "addressList": [
+        {
+            "type": "offline",
+            "address": null,
+            "location": null,
+            "mobile": "15067378982"
+        }
+    ],
     "products": [
         {
             "title": "海利得地板整体优势",

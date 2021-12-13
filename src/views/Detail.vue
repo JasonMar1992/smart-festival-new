@@ -147,7 +147,7 @@
           >
             {{ item.name }}
           </div>
-          <div style="width: 100%; min-height: 20px">
+          <div v-if="item.address" style="width: 100%; min-height: 20px">
             <div style="font-size: 12px; float: left; line-height: 20px">
               地址：{{ item.address }}
             </div>

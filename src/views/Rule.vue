@@ -8,7 +8,7 @@
         'background-repeat': 'no-repeat',
         'background-size': '100% 100%',
         '-moz-background-size': '100% 100%',
-        'min-height': '700px',
+        'min-height': '600px',
       }"
     >
       <div class="txt-normal">
@@ -34,7 +34,7 @@
           margin-left: 5%;
           margin-right: 5%;
           margin-top: 20px;
-          height: 180px;
+          height: 80px;
           padding: 10px;
           border-radius: 5px;
         "
@@ -84,16 +84,16 @@
       </div>
       <div class="txt-small">
         【承办单位】<br />
-        海宁市许村镇人民政府<br />
-        海宁市长安镇人民政府<br />
-        海宁市周王庙镇人民政府<br />
-        海宁市盐官镇人民政府<br />
-        海宁市丁桥镇人民政府<br />
-        海宁市斜桥镇人民政府<br />
-        海宁市袁花镇人民政府<br />
-        海宁市黄湾镇人民政府<br />
-        海宁市海昌街道办事处<br />
-        海宁市马桥街道办事处<br />
+        许村镇人民政府<br />
+        长安镇人民政府<br />
+        周王庙镇人民政府<br />
+        盐官镇人民政府<br />
+        丁桥镇人民政府<br />
+        斜桥镇人民政府<br />
+        袁花镇人民政府<br />
+        黄湾镇人民政府<br />
+        海昌街道办事处<br />
+        马桥街道办事处<br />
       </div>
       <div class="txt-small">
         【执行单位】<br />
