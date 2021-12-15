@@ -30,13 +30,7 @@
       <van-button type="primary" :disabled="!tel" @click="search"
         >搜索</van-button
       >
-      <div
-        style="
-          font-size: 12px;
-          text-align: center;
-          margin: 8px 0px;
-        "
-      >
+      <div style="font-size: 12px; text-align: center; margin: 8px 0px">
         *请交由工作人员核销奖品
       </div>
       <div
@@ -83,12 +77,12 @@
   </div>
 </template>
 <script>
-import axios from "axios";
-import { Toast, Dialog } from "vant";
-import picUrl from "../assets/images/bg.jpg";
+import axios from 'axios';
+import { Toast, Dialog } from 'vant';
+import picUrl from '../assets/images/bg.jpg';
 
 export default {
-  name: "check",
+  name: 'check',
   data() {
     return {
       picUrl,
@@ -100,21 +94,22 @@ export default {
   methods: {
     audit(id) {
       Dialog.confirm({
-        title: "操作提示",
-        message: "确认核销吗？",
+        title: '操作提示',
+        message: '确认核销吗？',
       })
         .then(() => {
           // on confirm
           axios({
-            method: "put",
+            method: 'put',
             url: this.ports.business.verifyAward + id,
           })
             .then((res) => {
               console.log(res.data);
-              Toast.success("核销成功");
+              Toast.success('核销成功');
               this.search();
             })
             .catch((error) => {
+              Toast.fail('核销失败');
               console.log(error);
             });
         })
@@ -123,20 +118,20 @@ export default {
         });
     },
     statusFormate(string) {
-      let result = "";
+      let result = '';
       // eslint-disable-next-line default-case
       switch (string) {
-        case "PENDING":
-          result = "未兑奖";
+        case 'PENDING':
+          result = '未兑奖';
           return result;
-        case "AWARD":
-          result = "已兑奖";
+        case 'AWARD':
+          result = '已兑奖';
           return result;
       }
     },
     search() {
       axios({
-        method: "get",
+        method: 'get',
         url: this.ports.business.getAwardsWithMobileShop,
         params: {
           shop_id: this.$route.query.shopCode,
@@ -146,6 +141,9 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.list = res.data;
+          if (res.data.length === 0) {
+            Toast.fail('没有中奖信息');
+          }
         })
         .catch((error) => {
           console.log(error);

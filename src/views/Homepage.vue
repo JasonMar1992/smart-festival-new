@@ -288,7 +288,7 @@ export default {
       if (this.$route.query.code) {
         console.log('是回掉来的，现在用code去换openid');
         let share_id = null;
-        if (this.$route.query.state && state != 'STATE') {
+        if (this.$route.query.state && state !== 'STATE') {
           console.log('带了分享state');
           share_id = this.$route.query.state;
         }

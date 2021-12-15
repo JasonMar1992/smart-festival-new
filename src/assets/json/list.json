@@ -113,6 +113,13 @@
             "pic": "deli_pic.jpg",
             "picType": "cover",
             "value": "deli"
+        },
+        {
+            "name": "海宁海霖智慧家居股份有限公司",
+            "logo": "hailin_logo.png",
+            "pic": "hailin_pic.jpg",
+            "picType": "cover",
+            "value": "hailin"
         }
     ],
     [
