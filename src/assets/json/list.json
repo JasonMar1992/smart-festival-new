@@ -101,6 +101,13 @@
             "value": "buyancheng"
         },
         {
+            "name": "海宁市摩卡纺织有限公司",
+            "logo": "moka_logo.png",
+            "pic": "moka_pic.jpg",
+            "picType": "cover",
+            "value": "moka"
+        },
+        {
             "name": "海宁市玉龙布艺有限公司",
             "logo": "yulong_logo.jpg",
             "pic": "yulong_pic.jpg",
