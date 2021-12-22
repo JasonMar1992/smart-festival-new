@@ -34,7 +34,7 @@
           margin-left: 5%;
           margin-right: 5%;
           margin-top: 20px;
-          height: 80px;
+          height: 100px;
           padding: 10px;
           border-radius: 5px;
         "
@@ -54,8 +54,15 @@
             style="font-size: 12px; color: #eedfc4"
             @click="goLink('https://mp.weixin.qq.com/s/xh9YCq7_1keQR8aRLJicCw')"
           >
-            <van-icon name="label" color="#EEDFC4" style="margin-right: 6px" />
+            <van-icon name="label" color="#EEDFC4" style="margin-right: 4px" />
             全球首个！这个实力研发中心“落户”海宁！
+          </div>
+          <div
+            style="font-size: 12px; color: #eedfc4"
+            @click="goLink('https://mp.weixin.qq.com/s/R__It6Jl5lAOqQ22knWfSA')"
+          >
+            <van-icon name="label" color="#EEDFC4" style="margin-right: 4px" />
+            海宁这杯“茶”，好多人爱喝！有何奥秘→
           </div>
         </div>
       </div>
