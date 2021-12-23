@@ -34,7 +34,7 @@
           margin-left: 5%;
           margin-right: 5%;
           margin-top: 20px;
-          height: 100px;
+          height: 120px;
           padding: 10px;
           border-radius: 5px;
         "
@@ -63,6 +63,13 @@
           >
             <van-icon name="label" color="#EEDFC4" style="margin-right: 4px" />
             海宁这杯“茶”，好多人爱喝！有何奥秘→
+          </div>
+          <div
+            style="font-size: 12px; color: #eedfc4"
+            @click="goLink('https://mp.weixin.qq.com/s/b3n1uvdDSyPNWICle5SaPA')"
+          >
+            <van-icon name="label" color="#EEDFC4" style="margin-right: 4px" />
+            海宁这家企业生产的房车功能太强大！长啥样→
           </div>
         </div>
       </div>
@@ -184,7 +191,7 @@
         助力抽奖<br />
         邀请2位朋友助力并打开链接，即可参与抽奖，每人每天可抽奖2次；<br />
         企业登记抽奖<br />
-        部分企业展馆中有抽奖互动，登记相关信息即可参与抽奖。兑奖时间：中奖之日起——2021年12月31日12:00，根据中奖信息领取奖品。<br />
+        部分企业展馆中有抽奖互动，登记相关信息即可参与抽奖。兑奖时间：中奖之日起——2022年1月15日12:00，根据中奖信息领取奖品。<br />
         产品价格为指导价，最终以厂家为准。<br />
         最终解释权归主办方所有。<br />
       </div>

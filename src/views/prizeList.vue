@@ -37,7 +37,7 @@
         奖品列表
       </div>
       <div style="font-size: 12px; text-align: center; margin: 8px 0px">
-        *兑奖时间：中奖之日起至2021年12月31 12:00
+        *兑奖时间：中奖之日起至2022年1月15日12:00
       </div>
       <div style="background: #ecffff">
         <div
@@ -67,7 +67,8 @@
                 style="
                   color: red;
                   text-align: center;
-                  line-height: 100px;
+                  line-height: 20px;
+                  padding-top: 30px
                   font-size: 14px;
                   font-weight: bold;
                 "
@@ -117,21 +118,21 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
-import QRCode from 'qrcodejs2';
-import picUrl from '../assets/images/bg.jpg';
-import awardbg from '../assets/images/awardbg.png';
+import axios from "axios";
+import QRCode from "qrcodejs2";
+import picUrl from "../assets/images/bg.jpg";
+import awardbg from "../assets/images/awardbg.png";
 
 export default {
-  name: 'prizeList',
+  name: "prizeList",
   data() {
     return {
       picUrl,
       awardbg,
 
-      name: '',
-      mobile: '',
-      address: '',
+      name: "",
+      mobile: "",
+      address: "",
 
       list: [],
 
@@ -144,39 +145,39 @@ export default {
       this.showQrcode = true;
       const url = `https://www.sjzch.vip/check?shopCode=${
         prize.shop_id
-      }&mobile=${window.localStorage.getItem('mobile')}`;
+      }&mobile=${window.localStorage.getItem("mobile")}`;
       const self = this;
       setTimeout(() => {
-        self.$refs.qrCodeUrl.innerHTML = '';
+        self.$refs.qrCodeUrl.innerHTML = "";
         const qrcode = new QRCode(self.$refs.qrCodeUrl, {
           text: url, // 需要转换为二维码的内容
           width: 200,
           height: 200,
         });
 
-        const canvas = document.getElementsByTagName('canvas')[0];
-        const imgSrc = canvas.toDataURL('image/png');
+        const canvas = document.getElementsByTagName("canvas")[0];
+        const imgSrc = canvas.toDataURL("image/png");
         self.QRUrl = imgSrc;
       }, 100);
     },
     statusFormate(string) {
-      let result = '';
+      let result = "";
       // eslint-disable-next-line default-case
       switch (string) {
-        case 'PENDING':
-          result = '兑奖码';
+        case "PENDING":
+          result = "兑奖码";
           return result;
-        case 'AWARD':
-          result = '已兑奖';
+        case "AWARD":
+          result = "已兑奖";
           return result;
       }
     },
     getSelfInfo() {
       axios({
-        method: 'get',
+        method: "get",
         url: this.ports.business.getSelfInfo,
         params: {
-          openid: window.localStorage.getItem('open_id'),
+          openid: window.localStorage.getItem("open_id"),
         },
       })
         .then((res) => {
@@ -191,10 +192,10 @@ export default {
     },
     getMyAwards() {
       axios({
-        method: 'get',
+        method: "get",
         url: this.ports.business.getMyAwards,
         params: {
-          openid: window.localStorage.getItem('open_id'),
+          openid: window.localStorage.getItem("open_id"),
         },
       })
         .then((res) => {
