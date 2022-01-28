@@ -23,7 +23,7 @@ module.exports = {
 
   devServer: {
     // open: process.platform === 'darwin',
-    host: 'localhost',
+    // host: 'localhost',
     port: 7082,
     disableHostCheck: true,
     // open: true, //配置自动启动浏览器

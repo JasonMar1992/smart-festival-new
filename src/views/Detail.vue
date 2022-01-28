@@ -228,6 +228,7 @@
           v-if="single.luckDraw"
           type="warning"
           text="登记抽奖"
+          disabled
           @click="luckDraw"
         />
         <van-goods-action-button

@@ -15,4 +15,12 @@ export default {
     getToken: '/wx/cgi-bin/token',
     getTicket: '/wx/cgi-bin/ticket/getticket',
   },
+  newyear: {
+    getWechatSign: '/api/getWechatSign',
+    getOpenId: '/api/newYear/getInfo',
+    getShareCount: '/api/newYear/getShareCount',
+    addShare: '/api/newYear/addShare',
+    addCard: '/api/newYear/addCard',
+    getCard: '/api/newYear/getCard',
+  },
 };

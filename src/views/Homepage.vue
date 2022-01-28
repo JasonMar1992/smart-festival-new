@@ -142,22 +142,24 @@ export default {
   },
   methods: {
     luckDraw() {
-      const c = this.need_count - this.share_count;
-      if (c > 0) {
-        if (c === 2) {
-          Toast({
-            message: '邀请2位朋友助力并打开链接，即可参与抽奖',
-            icon: 'share-o',
-          });
-        } else {
-          Toast({
-            message: `请再分享给${c}个好友`,
-            icon: 'share-o',
-          });
-        }
-      } else {
-        window.location.href = 'https://12387381-402.hdpyqb.com/12387381/YAeMv5jaTAD6_jje_r_tWg/load.html?style=24&_source=1';
-      }
+      // const c = this.need_count - this.share_count;
+      // if (c > 0) {
+      //   if (c === 2) {
+      //     Toast({
+      //       message: '邀请2位朋友助力并打开链接，即可参与抽奖',
+      //       icon: 'share-o',
+      //     });
+      //   } else {
+      //     Toast({
+      //       message: `请再分享给${c}个好友`,
+      //       icon: 'share-o',
+      //     });
+      //   }
+      // } else {
+      //   window.location.href = 'https://12387381-402.hdpyqb.com/12387381/YAeMv5jaTAD6_jje_r_tWg/load.html?style=24&_source=1';
+      // }
+
+      Toast('活动已结束');
     },
     go() {
       this.layout1 = false;
@@ -295,7 +297,7 @@ export default {
         this.getOpenId(this.$route.query.code, share_id);
       } else {
         console.log('不是回掉来的，现在去拿code');
-        window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_HOST_URL}&response_type=code&scope=snsapi_userinfo&state=${state}#wechat_redirect`;
+        window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_HOST_URL}&response_type=code&scope=snsapi_base&state=${state}#wechat_redirect`;
       }
     }
   },

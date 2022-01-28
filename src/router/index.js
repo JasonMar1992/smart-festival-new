@@ -67,6 +67,26 @@ const routes = [
     },
     component: () => import('../views/check.vue'),
   },
+
+  // 新年活动
+  {
+    path: '/newyear',
+    name: 'newyear',
+    meta: {
+      title: '马桥街道“寻找新年味”集卡活动',
+      requiresAuth: false,
+    },
+    component: () => import('../views/newyear/index.vue'),
+  },
+  {
+    path: '/newyearcard',
+    name: 'newyearcard',
+    meta: {
+      title: '马桥街道“寻找新年味”集卡活动',
+      requiresAuth: false,
+    },
+    component: () => import('../views/newyear/card.vue'),
+  },
 ];
 
 const router = new VueRouter({
@@ -86,7 +106,7 @@ router.beforeEach((to, from, next) => {
       next();
     } else { // 没登录则跳转到登录界面
       console.log('没登录');
-      window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_HOST_URL}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`;
+      window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_HOST_URL}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect`;
     }
   } else {
     next();
