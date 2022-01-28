@@ -95,13 +95,14 @@ export default {
             console.log(`配置验证失败: ${result.errMsg}`);
           });
 
-          let url = 'https://www.sjzch.vip/newyear';
-          if (window.localStorage.getItem('newyear_openid')) {
-            url = `${url}?share_id=${window.localStorage.getItem(
-              'newyear_openid',
-            )}`;
-          }
           wx.ready(() => {
+            let url = 'https://www.sjzch.vip/newyear';
+            if (window.localStorage.getItem('newyear_openid')) {
+              url = `${url}?share_id=${window.localStorage.getItem(
+                'newyear_openid',
+              )}`;
+            }
+
             wx.updateAppMessageShareData({
               title: '快参与｜和我一起集年俗卡', // 分享标题
               desc: '马桥街道“寻找新年味”集卡活动', // 分享描述
@@ -109,6 +110,7 @@ export default {
               imgUrl: 'https://www.sjzch.vip/img/sharepic_newyear.png', // 分享图标
               success() {
                 // 设置成功
+                console.log('配置验证成功');
               },
             });
             // 需在用户可能点击分享按钮前就先调用
@@ -118,6 +120,7 @@ export default {
               imgUrl: 'https://www.sjzch.vip/img/sharepic_newyear.png', // 分享图标
               success() {
                 // 设置成功
+                console.log('配置验证成功');
               },
             });
           });

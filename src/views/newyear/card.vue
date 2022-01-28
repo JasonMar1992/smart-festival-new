@@ -142,11 +142,10 @@
 <script>
 import { Toast, Notify } from 'vant';
 import axios from 'axios';
-import wx from 'weixin-js-sdk';
+// import wx from 'weixin-js-sdk';
 import picUrl from '../../assets/newyear/card_bg.png';
 import button from '../../assets/newyear/get.jpg';
 import draw from '../../assets/newyear/draw.jpg';
-// import draw from '../../assets/newyear/button.png';
 
 export default {
   name: 'newyearcard',
@@ -192,7 +191,7 @@ export default {
     },
     go(index) {
       if (this.share_count < 1) {
-        Toast.fail('集卡次数不够');
+        Toast('当前集卡次数已用完\n分享给好友获得更多次数');
         return;
       }
 
