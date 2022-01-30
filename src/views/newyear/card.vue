@@ -247,8 +247,8 @@ export default {
               });
               // 总共邀请的人数 - 共已经集卡的数量 = 剩余可以集卡的次数
               const chance = count - list.length;
-              if (chance > 4) {
-                this.share_count = 4;
+              if (chance > 4 - list.length) {
+                this.share_count = 4 - list.length;
               } else if (chance < 0) {
                 this.share_count = 0;
               } else {
