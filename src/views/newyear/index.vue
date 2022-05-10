@@ -74,9 +74,10 @@ export default {
   },
   methods: {
     go() {
-      this.$router.push({
-        name: 'newyearcard',
-      });
+      Toast('活动已结束');
+      // this.$router.push({
+      //   name: 'newyearcard',
+      // });
     },
     addShare(id) {
       axios({

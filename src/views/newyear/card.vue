@@ -187,7 +187,8 @@ export default {
   },
   methods: {
     drawLink() {
-      window.location.href = 'https://26268163-29.hdpyqd.com/26268163/G-0Li6THmVz6x_HspgyZRA/load-26268163-29.html?style=24&_source=1';
+      Toast('活动已结束');
+      // window.location.href = 'https://26268163-29.hdpyqd.com/26268163/G-0Li6THmVz6x_HspgyZRA/load-26268163-29.html?style=24&_source=1';
     },
     go(index) {
       if (this.share_count < 1) {
