@@ -87,6 +87,26 @@ const routes = [
     },
     component: () => import('../views/newyear/card.vue'),
   },
+
+  // 招商活动
+  {
+    path: '/building',
+    name: 'building',
+    meta: {
+      title: '“星级楼宇” 集卡活动',
+      requiresAuth: false,
+    },
+    component: () => import('../views/building/index.vue'),
+  },
+  {
+    path: '/buildingCard',
+    name: 'buildingCard',
+    meta: {
+      title: '“星级楼宇” 集卡活动',
+      requiresAuth: false,
+    },
+    component: () => import('../views/building/card.vue'),
+  },
 ];
 
 const router = new VueRouter({
