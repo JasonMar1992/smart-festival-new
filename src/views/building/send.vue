@@ -1,10 +1,5 @@
 <template>
   <div style="text-align: center; height: 100vh; width: 100vw">
-    <van-overlay :show="loading" @click.stop>
-      <div style="display: flex; align-items: center; justify-content: center; height: 100%">
-        <van-loading size="60" type="spinner" />
-      </div>
-    </van-overlay>
     <div
       class="flex-v"
       :style="{
@@ -43,97 +38,26 @@
                   <van-image
                     height="160"
                     width="80%"
-                    :src="
-                      has[choose].ids.length
-                        ? buildingList[choose].pic
-                        : buildingList[choose].picShadow
-                    "
+                    :src="buildingList[choose].pic"
                     style="border: 2px solid white; border-radius: 4px"
-                    @click="has[choose].ids.length ? (showDetail = true) : null"
                   />
                   <div style="color: white; line-height: 30px; font-weight: 600">
                     {{ buildingList[choose].title }}
                   </div>
-                  <van-image
-                    width="30%"
-                    :src="share"
-                    style="margin-top: 2px"
-                    @click="has[choose].ids.length > 1 ? go() : noticeShare()"
-                  />
+                  <!-- <van-image width="30%" :src="share" style="margin-top: 2px" /> -->
                 </div>
               </div>
             </van-col>
 
             <van-col span="1"> </van-col>
           </van-row>
+          <div style="line-height: 40px; color: white; font-size: 13px; font-weight: 500">
+            点击右上角，送卡给好友
+          </div>
+          <van-button round type="info" @click="back">返回</van-button>
         </div>
-        <van-swipe :loop="false" :width="70" :show-indicators="false">
-          <van-swipe-item v-for="(item, i) in buildingList" :key="i">
-            <div style="padding-right: 14px; padding-top: 10px">
-              <van-badge
-                v-if="has[i].ids.length"
-                :content="has[i].ids.length"
-                color="#1989fa"
-                style="width: 100%"
-              >
-                <van-image
-                  height="50"
-                  :src="item.picMini"
-                  :style="{
-                    border: i == choose ? '2px solid white' : '2px solid #2D84D3',
-                    'border-radius': '4px',
-                  }"
-                  @click="choose = i"
-                />
-                <div style="font-size: 12px; color: white">{{ item.label1 }}</div>
-                <div style="font-size: 12px; color: white">{{ item.label2 }}</div>
-              </van-badge>
-              <div v-else style="width: 100%">
-                <van-image
-                  height="50"
-                  :src="item.picMiniShadow"
-                  :style="{
-                    border: i == choose ? '2px solid white' : '2px solid #2D84D3',
-                    'border-radius': '4px',
-                  }"
-                  @click="choose = i"
-                />
-                <div style="font-size: 12px; color: white">{{ item.label1 }}</div>
-                <div style="font-size: 12px; color: white">{{ item.label2 }}</div>
-              </div>
-            </div>
-          </van-swipe-item>
-        </van-swipe>
-
-        <div style="line-height: 40px; color: white; font-size: 13px; font-weight: 500">
-          今日剩余机会：{{ chance }}次
-        </div>
-        <van-row>
-          <van-col span="12">
-            <van-image width="120" :src="draw" @click="drawFunction" />
-          </van-col>
-          <van-col span="12">
-            <van-image width="120" :src="link" />
-          </van-col>
-        </van-row>
       </div>
     </div>
-
-    <van-dialog
-      v-model="showDetail"
-      :title="buildingList[choose].title"
-      confirmButtonText="收下卡片"
-      theme="round-button"
-    >
-      <div style="padding: 4px 10px; height: 360px; overflow: auto">
-        <van-image
-          width="100%"
-          :src="buildingList[choose].pic"
-          @click="showPic([buildingList[choose].pic])"
-        />
-        <div style="text-align: start; font-size: 12px" v-html="buildingList[choose].text"></div>
-      </div>
-    </van-dialog>
   </div>
 </template>
 <style>
@@ -165,7 +89,7 @@
 }
 </style>
 <script>
-import { Toast, Notify, ImagePreview } from 'vant';
+import { Toast, Notify } from 'vant';
 import axios from 'axios';
 // import Vconsole from 'vconsole';
 import wx from 'weixin-js-sdk';
@@ -328,70 +252,12 @@ export default {
         },
       ],
 
-      showDetail: false,
-
       choose: 0,
-
-      has: [
-        {
-          card: 1,
-          ids: [],
-        },
-        {
-          card: 2,
-          ids: [],
-        },
-        {
-          card: 3,
-          ids: [],
-        },
-        {
-          card: 4,
-          ids: [],
-        },
-        {
-          card: 5,
-          ids: [],
-        },
-        {
-          card: 6,
-          ids: [],
-        },
-        {
-          card: 7,
-          ids: [],
-        },
-        {
-          card: 8,
-          ids: [],
-        },
-        {
-          card: 9,
-          ids: [],
-        },
-      ],
-
-      chance: 0,
-
-      loading: false,
     };
   },
   methods: {
-    showPic(list) {
-      ImagePreview(list);
-    },
-    noticeShare() {
-      Toast.fail('没有多余的卡片可以分享');
-    },
-    go() {
-      //   Toast('活动已结束');
-      this.$router.push({
-        name: 'buildingSend',
-        query: {
-          card_id: this.has[this.choose].ids[0],
-          card: this.has[this.choose].card,
-        },
-      });
+    back() {
+      history.back();
     },
     getOpenId(string) {
       axios({
@@ -415,156 +281,6 @@ export default {
           console.log(error);
           Toast.fail('授权失败');
         });
-    },
-
-    getSend(card) {
-      this.loading = true;
-      axios({
-        method: 'post',
-        url: this.ports.building.send,
-        data: {
-          id: card,
-          openid: window.localStorage.getItem('building_openid'),
-        },
-      })
-        .then((res) => {
-          this.loading = false;
-          if (res.data.success) {
-            this.getCards();
-            this.choose = res.data.card - 1;
-            this.showDetail = true;
-            Notify({ type: 'success', message: '领取成功' });
-          } else {
-            Toast.fail(res.data.msg);
-          }
-        })
-        .catch((error) => {
-          this.loading = false;
-          console.log(error);
-          Toast.fail('收卡失败');
-        });
-    },
-
-    getCards() {
-      axios({
-        method: 'get',
-        url: this.ports.building.getCards,
-        params: {
-          openid: window.localStorage.getItem('building_openid'),
-        },
-      })
-        .then((result) => {
-          console.log(result);
-          const res = result.data;
-          this.has = [
-            {
-              card: 1,
-              ids: [],
-            },
-            {
-              card: 2,
-              ids: [],
-            },
-            {
-              card: 3,
-              ids: [],
-            },
-            {
-              card: 4,
-              ids: [],
-            },
-            {
-              card: 5,
-              ids: [],
-            },
-            {
-              card: 6,
-              ids: [],
-            },
-            {
-              card: 7,
-              ids: [],
-            },
-            {
-              card: 8,
-              ids: [],
-            },
-            {
-              card: 9,
-              ids: [],
-            },
-          ];
-          for (let i = 0; i < res.length; i++) {
-            for (let j = 0; j < this.has.length; j++) {
-              if (res[i].card === this.has[j].card) {
-                this.has[j].ids.push(res[i].id);
-              }
-            }
-          }
-          console.log(this.has);
-        })
-        .catch((error) => {
-          console.log(error);
-          Toast.fail('查询失败');
-        });
-    },
-    getChance() {
-      axios({
-        method: 'get',
-        url: this.ports.building.getCount,
-        params: {
-          openid: window.localStorage.getItem('building_openid'),
-        },
-      })
-        .then((res) => {
-          let amount = 5;
-          if (res.data.todaySendRecords > 0) {
-            amount++;
-          }
-          if (res.data.todayDrawRecords > 6) {
-            this.chance = 0;
-          } else {
-            this.chance = amount - res.data.todayDrawRecords;
-          }
-
-          if (this.chance < 0) {
-            this.chance = 0;
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          Toast.fail('查询失败');
-        });
-    },
-    drawFunction() {
-      //   if (this.chance > 0) {
-      this.loading = true;
-      axios({
-        method: 'post',
-        url: this.ports.building.draw,
-        data: {
-          openid: window.localStorage.getItem('building_openid'),
-        },
-      })
-        .then((res) => {
-          this.loading = false;
-          if (res.data.success) {
-            this.choose = res.data.card - 1;
-            this.showDetail = true;
-            this.getCards();
-            this.getChance();
-          } else {
-            Toast.fail(res.data.msg);
-          }
-        })
-        .catch((error) => {
-          this.loading = false;
-          console.log(error);
-          Toast.fail('抽卡失败');
-        });
-      //   } else {
-      //     Toast.fail('今日没有抽卡次数啦');
-      //   }
     },
 
     wxConfig() {
@@ -594,7 +310,7 @@ export default {
           });
 
           wx.ready(() => {
-            const url = 'https://www.sjzch.vip/building';
+            const url = `https://www.sjzch.vip/buildingCard?card_id=${this.card_id}`;
 
             wx.updateAppMessageShareData({
               title: '海洲街道第三届楼宇社区邻里节“星级楼宇”集卡活动', // 分享标题
@@ -627,13 +343,10 @@ export default {
     if (window.localStorage.getItem('building_openid')) {
       // 判断是否登录
       console.log('登录了');
-      this.wxConfig();
-      this.getChance();
-      this.getCards();
 
-      if (this.$route.query.card_id) {
-        this.getSend(this.$route.query.card_id);
-      }
+      this.card_id = this.$route.query.card_id;
+      this.choose = this.$route.query.card - 1;
+      this.wxConfig();
     } else {
       // 没登录则跳转到登录界面
       console.log('没登录');

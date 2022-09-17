@@ -107,6 +107,15 @@ const routes = [
     },
     component: () => import('../views/building/card.vue'),
   },
+  {
+    path: '/buildingSend',
+    name: 'buildingSend',
+    meta: {
+      title: '“星级楼宇” 集卡活动',
+      requiresAuth: false,
+    },
+    component: () => import('../views/building/send.vue'),
+  },
 ];
 
 const router = new VueRouter({

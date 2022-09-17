@@ -102,7 +102,7 @@ export default {
         name: 'buildingCard',
       });
     },
-    getOpenId(string) {
+    getOpenId(string, card) {
       axios({
         method: 'get',
         url: this.ports.newyear.getOpenId,
@@ -114,6 +114,9 @@ export default {
           console.log('open_id拿到了，记录一下');
           if (res.data.openid) {
             window.localStorage.setItem('building_openid', res.data.openid);
+            if (card) {
+              this.getSend(card);
+            }
           } else {
             Notify({ type: 'warning', message: '授权失败' });
           }
@@ -121,6 +124,28 @@ export default {
         .catch((error) => {
           console.log(error);
           Toast.fail('授权失败');
+        });
+    },
+
+    getSend(card) {
+      axios({
+        method: 'post',
+        url: this.ports.building.send,
+        data: {
+          id: card,
+          openid: window.localStorage.getItem('building_openid'),
+        },
+      })
+        .then((res) => {
+          if (res.data.success) {
+            Notify({ type: 'success', message: '领取成功' });
+          } else {
+            Toast.fail(res.data.msg);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          Toast.fail('收卡失败');
         });
     },
 
@@ -151,16 +176,13 @@ export default {
           });
 
           wx.ready(() => {
-            let url = 'https://www.sjzch.vip/building';
-            if (window.localStorage.getItem('building_openid')) {
-              url = `${url}?share_id=${window.localStorage.getItem('building_openid')}`;
-            }
+            const url = 'https://www.sjzch.vip/building';
 
             wx.updateAppMessageShareData({
-              title: '“星级楼宇” 集卡活动', // 分享标题
-              desc: '“星级楼宇” 集卡活动', // 分享描述
+              title: '海洲街道第三届楼宇社区邻里节“星级楼宇”集卡活动', // 分享标题
+              desc: '快来跟我一起收集“星级楼宇”吧~', // 分享描述
               link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: 'https://www.sjzch.vip/img/sharepic_newyear.png', // 分享图标
+              imgUrl: 'https://www.sjzch.vip/img/sharepic_building.png', // 分享图标
               success() {
                 // 设置成功
                 console.log('配置验证成功');
@@ -168,9 +190,9 @@ export default {
             });
             // 需在用户可能点击分享按钮前就先调用
             wx.updateTimelineShareData({
-              title: '“星级楼宇” 集卡活动', // 分享标题
+              title: '海洲街道第三届楼宇社区邻里节“星级楼宇”集卡活动', // 分享标题
               link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: 'https://www.sjzch.vip/img/sharepic_newyear.png', // 分享图标
+              imgUrl: 'https://www.sjzch.vip/img/sharepic_building.png', // 分享图标
               success() {
                 // 设置成功
                 console.log('配置验证成功');
@@ -194,7 +216,12 @@ export default {
       console.log(this.$route.query);
       if (this.$route.query.code) {
         console.log('是回掉来的，现在用code去换openid');
-        this.getOpenId(this.$route.query.code);
+        let card_id = null;
+        if (this.$route.query.state && this.$route.query.state !== 'STATE') {
+          console.log('带了分享state');
+          card_id = this.$route.query.state;
+        }
+        this.getOpenId(this.$route.query.code, card_id);
         this.wxConfig();
       } else {
         const state = 'STATE';

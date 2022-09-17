@@ -23,4 +23,12 @@ export default {
     addCard: '/api/newYear/addCard',
     getCard: '/api/newYear/getCard',
   },
+  building: {
+    getOpenId: '/api/building/getInfo',
+    getCards: '/api/building/getCards',
+    getCount: '/api/building/getCount',
+    getSelfInfo: '/api/building/getSelfInfo',
+    draw: '/api/building/draw',
+    send: '/api/building/send',
+  },
 };
