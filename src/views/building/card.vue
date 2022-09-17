@@ -637,7 +637,10 @@ export default {
     } else {
       // 没登录则跳转到登录界面
       console.log('没登录');
-      const state = 'STATE';
+      let state = 'STATE';
+      if (this.$route.query.card_id) {
+        state = this.$route.query.card_id;
+      }
       window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_BUILDING_URL}&response_type=code&scope=snsapi_base&state=${state}#wechat_redirect`;
     }
   },
