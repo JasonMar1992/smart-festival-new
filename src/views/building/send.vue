@@ -257,7 +257,9 @@ export default {
   },
   methods: {
     back() {
-      history.back();
+      this.$router.replace({
+        name: 'buildingCard',
+      });
     },
     getOpenId(string) {
       axios({
