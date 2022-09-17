@@ -132,9 +132,9 @@ export default {
   },
   mounted() {
     // this.test()
-    if (window.localStorage.getItem('newyear_openid')) {
-      this.wxConfig();
-    }
+    // if (window.localStorage.getItem('newyear_openid')) {
+    //   this.wxConfig();
+    // }
   },
 };
 </script>

@@ -105,7 +105,7 @@ export default {
     getOpenId(string, card) {
       axios({
         method: 'get',
-        url: this.ports.newyear.getOpenId,
+        url: this.ports.building.getOpenId,
         params: {
           code: string,
         },

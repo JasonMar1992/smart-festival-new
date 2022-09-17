@@ -313,8 +313,8 @@ export default {
             const url = `https://www.sjzch.vip/buildingCard?card_id=${this.card_id}`;
 
             wx.updateAppMessageShareData({
-              title: '海洲街道第三届楼宇社区邻里节“星级楼宇”集卡活动', // 分享标题
-              desc: '快来跟我一起收集“星级楼宇”吧~', // 分享描述
+              title: `送你一座“星级楼宇”-${this.buildingList[this.choose].name}`, // 分享标题
+              desc: '集齐享好礼~', // 分享描述
               link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
               imgUrl: 'https://www.sjzch.vip/img/sharepic_building.png', // 分享图标
               success() {
@@ -324,7 +324,7 @@ export default {
             });
             // 需在用户可能点击分享按钮前就先调用
             wx.updateTimelineShareData({
-              title: '海洲街道第三届楼宇社区邻里节“星级楼宇”集卡活动', // 分享标题
+              title: `送你一座“星级楼宇”-${this.buildingList[this.choose].name}`, // 分享标题
               link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
               imgUrl: 'https://www.sjzch.vip/img/sharepic_building.png', // 分享图标
               success() {
