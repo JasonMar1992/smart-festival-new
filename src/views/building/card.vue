@@ -537,34 +537,34 @@ export default {
         });
     },
     drawFunction() {
-      //   if (this.chance > 0) {
-      this.loading = true;
-      axios({
-        method: 'post',
-        url: this.ports.building.draw,
-        data: {
-          openid: window.localStorage.getItem('building_openid'),
-        },
-      })
-        .then((res) => {
-          this.loading = false;
-          if (res.data.success) {
-            this.choose = res.data.card - 1;
-            this.showDetail = true;
-            this.getCards();
-            this.getChance();
-          } else {
-            Toast.fail(res.data.msg);
-          }
+      if (this.chance > 0) {
+        this.loading = true;
+        axios({
+          method: 'post',
+          url: this.ports.building.draw,
+          data: {
+            openid: window.localStorage.getItem('building_openid'),
+          },
         })
-        .catch((error) => {
-          this.loading = false;
-          console.log(error);
-          Toast.fail('抽卡失败');
-        });
-      //   } else {
-      //     Toast.fail('今日没有抽卡次数啦');
-      //   }
+          .then((res) => {
+            this.loading = false;
+            if (res.data.success) {
+              this.choose = res.data.card - 1;
+              this.showDetail = true;
+              this.getCards();
+              this.getChance();
+            } else {
+              Toast.fail(res.data.msg);
+            }
+          })
+          .catch((error) => {
+            this.loading = false;
+            console.log(error);
+            Toast.fail('抽卡失败');
+          });
+      } else {
+        Toast.fail('今日没有抽卡次数啦');
+      }
     },
 
     wxConfig() {
