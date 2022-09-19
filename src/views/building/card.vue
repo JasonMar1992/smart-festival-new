@@ -113,7 +113,7 @@
             <van-image width="120" :src="draw" @click="drawFunction" />
           </van-col>
           <van-col span="12">
-            <van-image width="120" :src="link" />
+            <van-image width="120" :src="link" @click="goLink"/>
           </van-col>
         </van-row>
       </div>
@@ -392,6 +392,19 @@ export default {
           card: this.has[this.choose].card,
         },
       });
+    },
+    goLink() {
+      let card = 0;
+      for (let i = 0; i < this.has.length; i++) {
+        if (this.has[i].ids.length > 0) {
+          card++;
+        }
+      }
+      if (card >= 9) {
+        Toast.success('集齐了');
+      } else {
+        Toast.fail('尚未集齐');
+      }
     },
     getOpenId(string) {
       axios({
