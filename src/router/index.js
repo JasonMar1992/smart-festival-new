@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import xieqiaoLayout from "../views/xieqiao/layout.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -116,6 +118,106 @@ const routes = [
     },
     component: () => import('../views/building/send.vue'),
   },
+
+  // 斜桥美镇
+  {
+    path: '/xieqiao',
+    component: xieqiaoLayout,
+    redirect: { name: "xieqiaoIndex" },
+    children: [
+      {
+        path: 'xieqiaoIndex',
+        name: 'xieqiaoIndex',
+        meta: {
+          title: '斜桥美镇会务系统',
+          requiresAuth: false,
+        },
+        component: () => import('../views/xieqiao/index.vue'),
+      },
+      {
+        path: 'kaohe',
+        name: 'kaohe',
+        meta: {
+          title: '考核线路',
+          requiresAuth: false,
+        },
+        component: () => import('../views/xieqiao/kaohe.vue'),
+      },
+      {
+        path: 'kaoheA',
+        name: 'kaoheA',
+        meta: {
+          title: '考核线路A',
+          requiresAuth: false,
+        },
+        component: () => import('../views/xieqiao/kaoheA.vue'),
+      },
+      {
+        path: 'kaoheB',
+        name: 'kaoheB',
+        meta: {
+          title: '考核线路B',
+          requiresAuth: false,
+        },
+        component: () => import('../views/xieqiao/kaoheB.vue'),
+      },
+      {
+        path: 'jieshao',
+        name: 'jieshao',
+        meta: {
+          title: '10+X介绍',
+          requiresAuth: false,
+        },
+        component: () => import('../views/xieqiao/jieshao.vue'),
+      },
+      {
+        path: 'jieshaoA',
+        name: 'jieshaoA',
+        meta: {
+          title: '介绍线路A',
+          requiresAuth: false,
+        },
+        component: () => import('../views/xieqiao/jieshaoA.vue'),
+      },
+      {
+        path: 'jieshaoB',
+        name: 'jieshaoB',
+        meta: {
+          title: '介绍线路B',
+          requiresAuth: false,
+        },
+        component: () => import('../views/xieqiao/jieshaoB.vue'),
+      },
+      {
+        path: 'huiwu',
+        name: 'huiwu',
+        meta: {
+          title: '会务安排',
+          requiresAuth: false,
+        },
+        component: () => import('../views/xieqiao/huiwu.vue'),
+      },
+      {
+        path: 'gexing',
+        name: 'gexing',
+        meta: {
+          title: '个性台账',
+          requiresAuth: false,
+        },
+        component: () => import('../views/xieqiao/gexing.vue'),
+      },
+      {
+        path: 'gongxing',
+        name: 'gongxing',
+        meta: {
+          title: '共性台账',
+          requiresAuth: false,
+        },
+        component: () => import('../views/xieqiao/gongxing.vue'),
+      },
+    ],
+  },
+
 ];
 
 const router = new VueRouter({
