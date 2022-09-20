@@ -1,16 +1,16 @@
 <template>
   <div>
     <van-image
-      v-for="i in 311"
+      v-for="i in 25"
       :key="i"
       width="100%"
       lazy-load
       :src="
-        'https://www.sjzch.vip/xieqiaoPdfImg/gexing/gexing_' + (i < 11 ? '0' + (i - 1) : i - 1) + '.jpg'
+        'https://www.sjzch.vip/xieqiaoPdfImg/ding/ding_' + (i < 10 ? '0' + i : i) + '.jpg'
       "
       @click="
         showPic([
-          'https://www.sjzch.vip/xieqiaoPdfImg/gexing/gexing_' + (i < 11 ? '0' + (i - 1) : i - 1) + '.jpg',
+          'https://www.sjzch.vip/xieqiaoPdfImg/ding/ding_' + (i < 10 ? '0' + i : i) + '.jpg',
         ])
       "
     />

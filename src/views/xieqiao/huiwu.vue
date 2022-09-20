@@ -484,7 +484,7 @@
         <van-image width="100%" :src="excel1"></van-image>
       </div>
 
-      <div style="padding-top: 20px; padding-left: 5%; padding-right: 5%">
+      <div style="padding-top: 20px; padding-left: 15%; padding-right: 15%">
         <van-row>
           <van-col span="3">
             <div style="height: 40px">
@@ -499,7 +499,7 @@
           </van-col>
           <van-col span="18">
             <div style="font-size: 24px; font-weight: 600; color: #396ca3; line-height: 40px">
-              检查分组建议安排表
+              检查分组安排表
             </div>
           </van-col>
           <van-col span="3">

@@ -23,10 +23,16 @@
       <div style="padding: 20vh 15vw 0 15vw">
         <van-row>
           <van-col span="12">
-            <van-button round color="#396CA3" size="small" style="width: 90%">
+            <van-button
+              round
+              color="#396CA3"
+              size="small"
+              style="width: 90%"
+              @click="go('fengcai')"
+            >
               <template #default
-                ><div style="font-size: 16px; font-weight: 600">斜桥风采</div></template
-              >
+                ><div style="font-size: 16px; font-weight: 600">斜桥风采</div>
+              </template>
             </van-button>
           </van-col>
           <van-col span="12">

@@ -198,6 +198,15 @@ const routes = [
         component: () => import('../views/xieqiao/huiwu.vue'),
       },
       {
+        path: 'fengcai',
+        name: 'fengcai',
+        meta: {
+          title: '斜桥风采',
+          requiresAuth: false,
+        },
+        component: () => import('../views/xieqiao/fengcai.vue'),
+      },
+      {
         path: 'gexing',
         name: 'gexing',
         meta: {
