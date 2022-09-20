@@ -64,7 +64,7 @@
 
       <div style="padding-top: 20px; padding-left: 15%; padding-right: 15%">
         <van-row>
-          <van-col span="3">
+          <van-col span="4">
             <div style="height: 40px">
               <div style="width: 100%; height: 15px"></div>
               <div style="width: 100%; height: 2px; background-color: #396ca3"></div>
@@ -80,7 +80,7 @@
               参会人员名单
             </div>
           </van-col>
-          <van-col span="3">
+          <van-col span="4">
             <div style="height: 40px">
               <div style="width: 100%; height: 15px"></div>
               <div style="width: 100%; height: 2px; background-color: #396ca3"></div>
@@ -94,7 +94,7 @@
         </van-row>
       </div>
 
-      <div style="padding: 10px; font-size: 12px; color: #353738">
+      <!-- <div style="padding: 10px; font-size: 12px; color: #353738">
         <div style="background-color: #396ca3">
           <van-row>
             <van-col span="3">
@@ -478,7 +478,46 @@
             </van-col>
           </van-row>
         </div>
+      </div> -->
 
+      <div style="padding: 20px 10px">
+        <van-image width="100%" :src="excel1"></van-image>
+      </div>
+
+      <div style="padding-top: 20px; padding-left: 5%; padding-right: 5%">
+        <van-row>
+          <van-col span="3">
+            <div style="height: 40px">
+              <div style="width: 100%; height: 15px"></div>
+              <div style="width: 100%; height: 2px; background-color: #396ca3"></div>
+              <div style="width: 100%; height: 2px"></div>
+              <div style="width: 100%; height: 2px; background-color: #396ca3"></div>
+              <div style="width: 100%; height: 2px"></div>
+              <div style="width: 100%; height: 2px; background-color: #396ca3"></div>
+              <div style="width: 100%; height: 15px"></div>
+            </div>
+          </van-col>
+          <van-col span="18">
+            <div style="font-size: 24px; font-weight: 600; color: #396ca3; line-height: 40px">
+              检查分组建议安排表
+            </div>
+          </van-col>
+          <van-col span="3">
+            <div style="height: 40px">
+              <div style="width: 100%; height: 15px"></div>
+              <div style="width: 100%; height: 2px; background-color: #396ca3"></div>
+              <div style="width: 100%; height: 2px"></div>
+              <div style="width: 100%; height: 2px; background-color: #396ca3"></div>
+              <div style="width: 100%; height: 2px"></div>
+              <div style="width: 100%; height: 2px; background-color: #396ca3"></div>
+              <div style="width: 100%; height: 15px"></div>
+            </div>
+          </van-col>
+        </van-row>
+      </div>
+
+      <div style="padding: 20px 10px">
+        <van-image width="100%" :src="excel2"></van-image>
       </div>
     </div>
   </div>
@@ -488,6 +527,8 @@
 import picUrl from '../../assets/xieqiao/bg.jpg';
 import kaohe from '../../assets/xieqiao/kaohe.png';
 import huiwu from '../../assets/xieqiao/huiwu.png';
+import excel1 from '../../assets/xieqiao/table1.jpg';
+import excel2 from '../../assets/xieqiao/table2.jpg';
 
 // new Vconsole();
 
@@ -497,6 +538,8 @@ export default {
       picUrl,
       kaohe,
       huiwu,
+      excel1,
+      excel2,
     };
   },
   methods: {

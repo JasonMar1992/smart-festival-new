@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import xieqiaoLayout from "../views/xieqiao/layout.vue";
+import xieqiaoLayout from '../views/xieqiao/layout.vue';
 
 Vue.use(VueRouter);
 
@@ -123,7 +123,7 @@ const routes = [
   {
     path: '/xieqiao',
     component: xieqiaoLayout,
-    redirect: { name: "xieqiaoIndex" },
+    redirect: { name: 'xieqiaoIndex' },
     children: [
       {
         path: 'xieqiaoIndex',
