@@ -227,6 +227,17 @@ const routes = [
     ],
   },
 
+  //答题活动
+  {
+    path: '/answer',
+    name: 'answer',
+    meta: {
+      title: '海洲街道 答题活动',
+      requiresAuth: false,
+    },
+    component: () => import('../views/answer/index.vue'),
+  },
+
 ];
 
 const router = new VueRouter({
