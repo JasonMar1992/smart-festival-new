@@ -2,29 +2,24 @@
 <template>
   <div style="text-align: center; height: 100vh; width: 100vw">
     <van-overlay :show="loading" @click.stop>
-      <div
-        style="
+      <div style="
           display: flex;
           align-items: center;
           justify-content: center;
           height: 100%;
-        "
-      >
+        ">
         <van-loading size="60" />
       </div>
     </van-overlay>
 
-    <div
-      class="flex-v"
-      :style="{
-        width: '100%',
-        height: '100%',
-        'background-image': 'url(' + picUrl + ')',
-        'background-repeat': 'no-repeat',
-        'background-size': '100% 100%',
-        '-moz-background-size': '100% 100%',
-      }"
-    >
+    <div class="flex-v" :style="{
+      width: '100%',
+      height: '100%',
+      'background-image': 'url(' + picUrl + ')',
+      'background-repeat': 'no-repeat',
+      'background-size': '100% 100%',
+      '-moz-background-size': '100% 100%',
+    }">
       <div style="padding-top: 55vh; padding-bottom: 5vh">
         <van-image class="buttonStyle" width="50%" :src="button" @click="go" />
       </div>
@@ -35,55 +30,37 @@
       <div style="color: #fef8dd; font-size: 14px">2022.12</div>
     </div>
 
-    <van-dialog
-      theme="round-button"
-      :title="`答题${5 - chance + indexQ + 1}/${5}`"
-      v-model="questionModal"
-      @confirm="submitQ"
-      :before-close="onBeforeClose"
-    >
+    <van-dialog theme="round-button" :title="`答题${5 - chance + indexQ + 1}/${5}`" v-model="questionModal"
+      @confirm="submitQ" :before-close="onBeforeClose">
       <div style="padding: 10px 20px">
-        <!-- <div v-if="question.type == 'multi'">多选题：</div>
-				<div v-if="question.type == 'only'">单选题：</div> -->
-        <div style="text-align: left">
+        <div style="text-align: left;" v-if="question.type == 'multi'">【多选题】</div>
+        <div style="text-align: left;" v-if="question.type == 'only'">【单选题】</div>
+        <div style="text-align: left;font-size: 14px;">
           {{ question.title }}
-          {{ question.type == "only" ? "(单选题)" : "(多选题)" }}
         </div>
         <div v-if="question.type == 'multi'">
           <van-checkbox-group v-model="choose">
-            <van-checkbox
-              checked-color="#ee0a24"
-              style="margin-top: 8px"
-              v-for="(item, i) in question.options"
-              :key="i"
-              :name="i"
-            >
+            <van-checkbox checked-color="#ee0a24" style="margin-top: 8px;font-size: 14px;"
+              v-for="(item, i) in question.options" :key="i" :name="i">
               {{ item }}
             </van-checkbox>
           </van-checkbox-group>
         </div>
         <div v-if="question.type == 'only'">
           <van-radio-group v-model="answer">
-            <van-radio
-              checked-color="#ee0a24"
-              style="margin-top: 8px; text-align: left"
-              v-for="(item, i) in question.options"
-              :key="i"
-              :name="i"
-            >
+            <van-radio checked-color="#ee0a24" style="margin-top: 8px; text-align: left;font-size: 14px;"
+              v-for="(item, i) in question.options" :key="i" :name="i">
               {{ item }}
             </van-radio>
           </van-radio-group>
         </div>
 
-        <div
-          style="
+        <div style="
             font-size: 12px;
             color: #909399;
             text-align: left;
             margin: 12px 4px;
-          "
-        >
+          ">
           *每日可答5题，每题10分，得分到达30可参与抽奖
         </div>
       </div>
@@ -102,6 +79,7 @@
 }
 
 @keyframes scaleDraw {
+
   /*定义关键帧、scaleDrew是需要绑定到选择器的关键帧名称*/
   0% {
     transform: scale(1);
@@ -214,7 +192,7 @@ export default {
               .then(() => {
                 this.go();
               })
-              .catch(() => {});
+              .catch(() => { });
           }
         })
         .catch((error) => {
@@ -261,13 +239,13 @@ export default {
                   // this.go();
                   console.log("23333");
                 })
-                .catch(() => {});
+                .catch(() => { });
             } else {
               Dialog.alert({
                 title: "很遗憾",
                 message: `今日答题总得分：${score}，请明天继续加油`,
                 confirmButtonText: "好的",
-              }).then(() => {});
+              }).then(() => { });
             }
           })
           .catch((error) => {
@@ -394,7 +372,10 @@ export default {
   mounted() {
     console.log(this.questions.length);
 
-    if (window.localStorage.getItem("answer_openid")) {
+    var ua = navigator.userAgent.toLowerCase();
+　　var isWeixin = ua.indexOf('micromessenger') != -1;
+　　if (isWeixin) {
+  if (window.localStorage.getItem("answer_openid")) {
       // 判断是否登录
       console.log("登录了");
       this.wxConfig();
@@ -416,6 +397,13 @@ export default {
         window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_ANSWER_URL}&response_type=code&scope=snsapi_base&state=${state}#wechat_redirect`;
       }
     }
+　　}else{ 
+      console.log("当前不在微信浏览器中");
+  window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_ANSWER_URL}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect`;
+     
+　　};
+
+    
   },
 };
 </script>
