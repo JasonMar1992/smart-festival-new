@@ -34,7 +34,9 @@ export default {
   answer: {
     getOpenId: '/api/answer/getInfo',
     getSelfInfo: '/api/answer/getSelfInfo',
-    getScoreToday: '/api/answer/getScoreToday',
-    score: "/api/answer/finishQuestion",
+    updateUserInfo: "/api/answer/updateUserInfo",
+    getScore: '/api/answer/getScore',
+    addQuestion: "/api/answer/addQuestion",
+    finishQuestion: "/api/answer/finishQuestion",
   },
 };
