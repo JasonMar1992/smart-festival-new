@@ -237,6 +237,15 @@ const routes = [
     },
     component: () => import('../views/answer/index.vue'),
   },
+  // {
+  //   path: '/test',
+  //   name: 'test',
+  //   meta: {
+  //     title: '海洲街道 答题活动',
+  //     requiresAuth: false,
+  //   },
+  //   component: () => import('../views/answer/test.vue'),
+  // },
 
 ];
 
