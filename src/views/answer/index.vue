@@ -2,7 +2,7 @@
 <template>
   <div style="text-align: center; height: 100vh; width: 100vw">
     <van-overlay :show="loading" @click.stop>
-      <div style="splay: flex;align-items: center;justify-content: center;height: 100%;">
+      <div style="display: flex;align-items: center;justify-content: center;height: 100%;">
         <van-loading size="60" />
       </div>
     </van-overlay>
@@ -177,7 +177,7 @@ export default {
 
       pattern: /^[1][3,4,5,6,7,8,9][0-9]{9}$/,
 
-      loading: false,
+      loading: true,
 
       info: false,
 
