@@ -81,7 +81,8 @@
       :before-close="onBeforeInfoClose">
       <van-form ref="form" validate-first>
         <!-- 输入任意文本 -->
-        <van-field v-model="infoData.realname" label="姓名" required :rules="[{ required: true, message: '请填写姓名' }]" />
+        <van-field v-model="infoData.realname" label="姓名" maxlength="10" required
+          :rules="[{ required: true, message: '请填写姓名' }]" />
         <!-- 输入手机号，调起手机号键盘 -->
         <van-field v-model="infoData.mobile" type="tel" label="手机号" maxlength="11" required
           :rules="[{ pattern, message: '手机号格式不对' }]" />
@@ -92,7 +93,10 @@
     </van-dialog>
 
     <van-popup v-model="myscore" round style="height: 380px; width: 80%;background-color: #DE3035;padding:12px">
-      <div style="line-height: 30px;color: #F3F2B0;font-size: 20px;font-weight: 600;">我的成绩：{{ scoreAmount }}分</div>
+      <div style="line-height: 30px;color: #F3F2B0;font-size: 20px;font-weight: 600;">
+        我的成绩：{{ scoreAmount }}分</div>
+      <div style="line-height: 30px;color: #fff;font-size: 12px;opacity: 0.7;">
+        姓名：{{ (infoDetail.realname ? infoDetail.realname : '未填写') }}</div>
       <van-row v-for="(item, i) in scoreList" :key="i" style="color: #fef8dd;padding-top: 10px">
         <van-col span="8" style="font-size: 12px">
           {{ moment(item.create_time).format('YYYY-MM-DD') }}
@@ -206,6 +210,11 @@ export default {
 
       rankModal: false,
       rankList: [],
+
+      infoDetail: {
+        realname: null,
+        mobile: null,
+      }
     };
   },
   methods: {
@@ -294,6 +303,7 @@ export default {
             .then((res) => {
               console.log(res.data);
               if (res.data.success) {
+                Toast.success(res.data.msg);
                 this.info = true;
                 this.infoModal = false;
               } else {
@@ -479,6 +489,7 @@ export default {
       })
         .then((res) => {
           console.log(res);
+          this.infoDetail = res.data;
           if (res.data.realname && res.data.mobile) {
             this.info = true;
           }
