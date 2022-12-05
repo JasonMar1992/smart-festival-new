@@ -35,6 +35,7 @@ export default {
     getOpenId: '/api/answer/getInfo',
     getSelfInfo: '/api/answer/getSelfInfo',
     updateUserInfo: "/api/answer/updateUserInfo",
+    getRank: '/api/answer/getRank',
     getScore: '/api/answer/getScore',
     addQuestion: "/api/answer/addQuestion",
     finishQuestion: "/api/answer/finishQuestion",

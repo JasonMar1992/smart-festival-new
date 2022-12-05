@@ -2,12 +2,7 @@
 <template>
   <div style="text-align: center; height: 100vh; width: 100vw">
     <van-overlay :show="loading" @click.stop>
-      <div style="
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 100%;
-        ">
+      <div style="splay: flex;align-items: center;justify-content: center;height: 100%;">
         <van-loading size="60" />
       </div>
     </van-overlay>
@@ -27,12 +22,17 @@
 
       <div style="padding: 0 15% 5vh 15%;">
         <van-row>
-          <van-col span="12">
+          <van-col span="8">
             <div @click="myScore" style="color: #fef8dd;text-decoration:underline;">
               我的成绩
             </div>
           </van-col>
-          <van-col span="12">
+          <van-col span="8">
+            <div @click="rank" style="color: #fef8dd;text-decoration:underline;">
+              排行榜
+            </div>
+          </van-col>
+          <van-col span="8">
             <div @click="rule" style="color: #fef8dd;text-decoration:underline;">
               活动规则
             </div>
@@ -99,6 +99,20 @@
         </van-col>
         <van-col span="16" style="font-size: 12px">
           {{ item.status == 'FINISHED' ? `成绩：${item.score}分；用时：${timeFormat(item.time)}` : '未完成' }}
+        </van-col>
+      </van-row>
+    </van-popup>
+
+    <van-popup v-model="rankModal" round style="height: 380px; width: 80%;background-color: #DE3035;padding:12px">
+      <van-row v-for="(item, i) in rankList" :key="i" style="color: #fef8dd;padding-top: 10px">
+        <van-col span="3" style="font-size: 12px">
+          第{{ i + 1 }}名
+        </van-col>
+        <van-col span="3" style="font-size: 12px">
+          {{ item.realname }}
+        </van-col>
+        <van-col span="18" style="font-size: 12px">
+          {{ `成绩：${item.score}分；用时：${timeFormat(item.duration)}` }}
         </van-col>
       </van-row>
     </van-popup>
@@ -183,12 +197,15 @@ export default {
       },
       infoModal: false,
 
-      ruleText: "1.用户首次进入游戏需填写自身的真实信息。\n2.用户每日可以参与答题3次，每次随机抽取5道题目，每题计10分。\n3.连续参与8天后，按照累计积分排名，如有分数相同，则以总答题时长排名。\n4.每次答题需完成所有题目（5题），否则成绩将不计入总分。\n\n答题时间：\n2022年12月6日-2022年12月13日\n领奖时间：\n2022年12月15日-2022年12月22日（工作日时间）\n领取地点：\n海宁市传媒中心（海昌南路509号）13楼1303办公室\n奖项设置：\n特等奖：小米12手机（1名）\n一等奖：小米微波烤箱（3名）\n二等奖：小米水离子护发吹风机（5名）\n三等奖：小米小爱音响（5名）\n优胜奖：小米充电宝（20名）",
+      ruleText: "1.用户首次进入游戏需填写自身的真实信息。\n2.用户每日可以参与答题3次，每次随机抽取5道题目，每题计10分。\n3.连续参与8天后，按照累计积分排名，如有分数相同，则以总答题时长排名。\n4.每次答题需完成所有题目（5题），否则成绩将不计入总分。\n\n答题时间：\n2022年12月7日-2022年12月13日\n领奖时间：\n2022年12月15日-2022年12月22日（工作日时间）\n领取地点：\n海宁市传媒中心（海昌南路509号）13楼1303办公室\n奖项设置：\n特等奖：小米12手机（1名）\n一等奖：小米微波烤箱（3名）\n二等奖：小米水离子护发吹风机（5名）\n三等奖：小米小爱音响（5名）\n优胜奖：小米充电宝（20名）",
 
       myscore: false,
       scoreList: [],
 
       scoreAmount: 0,
+
+      rankModal: false,
+      rankList: [],
     };
   },
   methods: {
@@ -202,10 +219,26 @@ export default {
       if (value >= 3600) {
         return moment.duration(value, "seconds").format("HH:mm:ss");
       }
-
-
-
     },
+
+    rank() {
+      axios({
+        method: 'get',
+        url: this.ports.answer.getRank,
+        params: {
+          openid: window.localStorage.getItem('answer_openid'),
+        },
+      })
+        .then((res) => {
+          this.rankList = res.data;
+          this.rankModal = true;
+        })
+        .catch((error) => {
+          console.log(error);
+          Toast.fail('查询失败');
+        });
+    },
+
     myScore() {
       // if (!this.info) {
       //   console.log('请完善信息');
@@ -214,7 +247,7 @@ export default {
       // }
       axios({
         method: 'get',
-        url: '/api/answer/getScore',
+        url: this.ports.answer.getScore,
         params: {
           openid: window.localStorage.getItem('answer_openid'),
         },
