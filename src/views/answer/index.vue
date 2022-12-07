@@ -109,13 +109,13 @@
 
     <van-popup v-model="rankModal" round style="height: 380px; width: 80%;background-color: #DE3035;padding:12px">
       <van-row v-for="(item, i) in rankList" :key="i" style="color: #fef8dd;padding-top: 10px">
-        <van-col span="3" style="font-size: 12px">
+        <van-col span="4" style="font-size: 12px">
           第{{ i + 1 }}名
         </van-col>
         <van-col span="3" style="font-size: 12px">
           {{ item.realname }}
         </van-col>
-        <van-col span="18" style="font-size: 12px">
+        <van-col span="17" style="font-size: 12px">
           {{ `成绩：${item.score}分；用时：${timeFormat(item.duration)}` }}
         </van-col>
       </van-row>
