@@ -231,6 +231,7 @@ export default {
     },
 
     rank() {
+        this.loading = true;
       axios({
         method: 'get',
         url: this.ports.answer.getRank,
@@ -239,10 +240,12 @@ export default {
         },
       })
         .then((res) => {
+        this.loading = false;
           this.rankList = res.data;
           this.rankModal = true;
         })
         .catch((error) => {
+        this.loading = false;
           console.log(error);
           Toast.fail('查询失败');
         });
@@ -254,6 +257,7 @@ export default {
       //   this.infoModal = true;
       //   return;
       // }
+        this.loading = true;
       axios({
         method: 'get',
         url: this.ports.answer.getScore,
@@ -262,6 +266,7 @@ export default {
         },
       })
         .then((res) => {
+        this.loading = false;
           this.scoreList = res.data;
           this.myscore = true;
           this.scoreAmount = 0;
@@ -270,6 +275,7 @@ export default {
           }
         })
         .catch((error) => {
+        this.loading = false;
           console.log(error);
           Toast.fail('查询失败');
         });
