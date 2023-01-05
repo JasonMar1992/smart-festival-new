@@ -40,4 +40,13 @@ export default {
     addQuestion: "/api/answer/addQuestion",
     finishQuestion: "/api/answer/finishQuestion",
   },
+  drum: {
+    getOpenId: '/api/drum/getInfo',
+    getSelfInfo: '/api/drum/getSelfInfo',
+    updateUserInfo: "/api/drum/updateUserInfo",
+    getCards: '/api/drum/getCards',
+    offline: '/api/drum/offline',
+    getUserInfo: '/api/drum/getUserInfo',
+    offlineCheck: '/api/drum/offlineCheck',
+  },
 };

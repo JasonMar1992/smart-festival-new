@@ -237,15 +237,35 @@ const routes = [
     },
     component: () => import('../views/answer/index.vue'),
   },
-  // {
-  //   path: '/test',
-  //   name: 'test',
-  //   meta: {
-  //     title: '海洲街道 答题活动',
-  //     requiresAuth: false,
-  //   },
-  //   component: () => import('../views/answer/test.vue'),
-  // },
+  {
+    path: '/test',
+    name: 'test',
+    meta: {
+      title: '海洲街道 答题活动',
+      requiresAuth: false,
+    },
+    component: () => import('../views/answer/test.vue'),
+  },
+
+  // 轨交工联
+  {
+    path: '/zjhy',
+    name: 'zjhy',
+    meta: {
+      title: '梓静华映 好运新年活动',
+      requiresAuth: false,
+    },
+    component: () => import('../views/drum/index.vue'),
+  },
+  {
+    path: '/zjhyCheck/:id/:mobile',
+    name: 'zjhyCheck',
+    meta: {
+      title: '轨交工联线下预约核销',
+      requiresAuth: false,
+    },
+    component: () => import('../views/drum/check.vue'),
+  },
 
 ];
 

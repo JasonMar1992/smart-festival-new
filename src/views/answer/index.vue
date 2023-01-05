@@ -29,7 +29,7 @@
           </van-col>
           <van-col span="8">
             <div @click="rank" style="color: #fef8dd;text-decoration:underline;">
-              排行榜
+              获奖名单
             </div>
           </van-col>
           <van-col span="8">
@@ -201,7 +201,7 @@ export default {
       },
       infoModal: false,
 
-      ruleText: "1.用户首次进入游戏需填写自身的真实信息。\n2.用户每日可以参与答题3次，每次随机抽取5道题目，每题计10分。\n3.连续参与8天后，按照累计积分排名，如有分数相同，则以总答题时长排名。\n4.每次答题需完成所有题目（5题），否则成绩将不计入总分。\n\n答题时间：\n2022年12月7日-2022年12月14日\n领奖时间：\n2022年12月16日-2022年12月23日（工作日时间）\n领取地点：\n海宁市传媒中心（海昌南路509号）13楼1303办公室\n奖项设置：\n特等奖：小米12手机（1名）\n一等奖：小米微波烤箱（3名）\n二等奖：小米水离子护发吹风机（5名）\n三等奖：小米小爱音响（5名）\n优胜奖：小米充电宝（20名）",
+      ruleText: "1.用户首次进入游戏需填写自身的真实信息。\n2.用户每日可以参与答题3次，每次随机抽取5道题目，每题计10分。\n3.连续参与8天后，按照累计积分排名，如有分数相同，则以总答题时长排名。\n4.每次答题需完成所有题目（5题），否则成绩将不计入总分。\n\n答题时间：\n2022年12月7日-2022年12月14日\n领奖时间：\n2022年12月20日-2022年12月27日（工作日时间）\n领取地点：\n海宁市传媒中心（海昌南路509号）13楼1303办公室\n奖项设置：\n特等奖：小米12手机（1名）\n一等奖：小米微波烤箱（3名）\n二等奖：小米水离子护发吹风机（5名）\n三等奖：小米小爱音响（5名）\n优胜奖：小米充电宝（20名）",
 
       myscore: false,
       scoreList: [],
@@ -231,7 +231,10 @@ export default {
     },
 
     rank() {
-        this.loading = true;
+      Toast('活动已结束');
+      return;
+
+      this.loading = true;
       axios({
         method: 'get',
         url: this.ports.answer.getRank,
@@ -240,24 +243,26 @@ export default {
         },
       })
         .then((res) => {
-        this.loading = false;
+          this.loading = false;
           this.rankList = res.data;
           this.rankModal = true;
         })
         .catch((error) => {
-        this.loading = false;
+          this.loading = false;
           console.log(error);
           Toast.fail('查询失败');
         });
     },
 
     myScore() {
+      Toast('活动已结束');
+      return;
       // if (!this.info) {
       //   console.log('请完善信息');
       //   this.infoModal = true;
       //   return;
       // }
-        this.loading = true;
+      this.loading = true;
       axios({
         method: 'get',
         url: this.ports.answer.getScore,
@@ -266,7 +271,7 @@ export default {
         },
       })
         .then((res) => {
-        this.loading = false;
+          this.loading = false;
           this.scoreList = res.data;
           this.myscore = true;
           this.scoreAmount = 0;
@@ -275,7 +280,7 @@ export default {
           }
         })
         .catch((error) => {
-        this.loading = false;
+          this.loading = false;
           console.log(error);
           Toast.fail('查询失败');
         });
@@ -420,6 +425,9 @@ export default {
     },
 
     go() {
+      Toast('活动已结束');
+      return;
+
       if (!this.info) {
         Dialog.alert({
           title: '活动规则',
@@ -599,4 +607,3 @@ export default {
   },
 };
 </script>
-  
