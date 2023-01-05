@@ -9,7 +9,7 @@
         <van-image width="100%" :src="picUrl" style="position: absolute;left: 0" />
 
         <div @click="rule"
-            style="z-index: 1;;right: 8vw;top: 28vw;position: fixed;color: #F7E6C3;font-size: 13px;border: #F7E6C3 1px solid;line-height: 24px;border-radius: 12px;padding: 0 8px;">
+            style="z-index: 1;right: 8vw;top: 28vw;position: absolute;color: #F7E6C3;font-size: 13px;border: #F7E6C3 1px solid;line-height: 24px;border-radius: 12px;padding: 0 8px;">
             规则
         </div>
 
