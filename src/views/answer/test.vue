@@ -1,16 +1,29 @@
 
 <template>
     <div style="text-align: center; height: 100vh; width: 100vw">
-        <van-button @click="show = true;">显示
-        </van-button>
-
-        <div v-if="show">
-            <wx-open-subscribe id="launch-btn" template="y3yGAjjq3dWPEKVxthW9JJTEES9y9dzQSdJQtOgBRo0">
-                <component is="script" type="text/wxtag-template">
-                    <button>微信H5唤起App</button>
-                </component>
-            </wx-open-subscribe>
-        </div>
+        <wx-open-subscribe id="subscribe-btn" template="Yf6vs0zVvXQtlPPHRdBLW-2BC69aP9deMgv8-OgXa-I">
+            <script type="text/wxtag-template" slot="style">
+                <style>
+      .subscribe-btn {
+        border: none;
+        background: transparent;
+        background-image: url('https://www.sjzch.vip/img/zjhy_btn.png');
+        width: 50%;
+        height: 56px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        -moz-background-size: 100% 100%;
+        color: #A52216;
+        padding-top: 0px;
+        font-weight: 300;
+        font-size: 18px;
+      }
+    </style>
+  </script>
+            <component is="script" type="text/wxtag-template">
+                <button class="subscribe-btn">开始合成</button>
+            </component>
+        </wx-open-subscribe>
     </div>
 </template> 
 <script>
@@ -18,6 +31,7 @@ import { Toast, Notify, Dialog } from "vant";
 // import Vconsole from 'vconsole';
 import wx from "weixin-js-sdk";
 
+import button from '../../assets/drum/btn1.png';
 import axios from "axios";
 // new Vconsole();
 
@@ -25,8 +39,7 @@ export default {
     name: "answer",
     data() {
         return {
-            show: false,
-
+            button,
         };
     },
     methods: {
@@ -58,6 +71,14 @@ export default {
                     });
 
                     wx.ready(() => {
+
+                        var btn = document.getElementById('subscribe-btn');
+                        btn.addEventListener('success', function (e) {
+                            console.log('success', e.detail);
+                        });
+                        btn.addEventListener('error', function (e) {
+                            console.log('fail', e.detail);
+                        });
                     });
                 })
                 .catch((error) => {
@@ -70,4 +91,3 @@ export default {
     },
 };
 </script>
-    

@@ -46,7 +46,9 @@ export default {
     updateUserInfo: "/api/drum/updateUserInfo",
     getCards: '/api/drum/getCards',
     offline: '/api/drum/offline',
+    getOffline: '/api/drum/getOffline',
     getUserInfo: '/api/drum/getUserInfo',
     offlineCheck: '/api/drum/offlineCheck',
+    subscribe: '/api/drum/subscribe',
   },
 };

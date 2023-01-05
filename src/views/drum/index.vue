@@ -29,43 +29,70 @@
 
             <div v-if="info">
 
-                <div style="padding-top: 24vw;padding-left: 5vw;padding-right: 5vw;display: flex;flex-direction: row;">
-                    <div v-for="(item, i) in cardList" :key="i">
-                        <div style="padding:0 1vw">
-                            <div style="position: absolute;width: 14vw;padding-top: 1vw;z-index: 100;">
-                                <div
-                                    style="border-radius:42%;color:#A52216;background:#F8DEBA;float: right;padding: 0 3px;font-size: 13px;min-width:10px">
-                                    {{ has[i].ids.length > 10 ? "···" : has[i].ids.length }}
+                <div v-if="!userInfo.subscribe">
+                    <div
+                        style="padding-top: 24vw;padding-left: 5vw;padding-right: 5vw;display: flex;flex-direction: row;">
+                        <div v-for="(item, i) in cardList" :key="i">
+                            <div style="padding:0 1vw">
+                                <div style="position: absolute;width: 14vw;padding-top: 1vw;z-index: 100;">
+                                    <div
+                                        style="border-radius:42%;color:#A52216;background:#F8DEBA;float: right;padding: 0 3px;font-size: 13px;min-width:10px">
+                                        {{ has[i].ids.length > 10 ? "···" : has[i].ids.length }}
+                                    </div>
                                 </div>
-                            </div>
-                            <div style="width: 100%;">
-                                <van-image width="16vw" :src="item.picMini" />
-                                <div
-                                    style="font-size: 12px;color: #F8DEBA;position: absolute;width: 16vw;text-align: center;">
-                                    {{ item.name }}
+                                <div style="width: 100%;">
+                                    <van-image width="16vw" :src="item.picMini" />
+                                    <div
+                                        style="font-size: 12px;color: #F8DEBA;position: absolute;width: 16vw;text-align: center;">
+                                        {{ item.name }}
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- <div v-else style="width: 100%">
+                                <!-- <div v-else style="width: 100%">
                       <van-image width="16vw" :src="item.picMiniShadow" />
                       <div style="font-size: 12px;">{{ item.name }}</div>
                   </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div style="padding-top: 10vw;" v-if="getAll">
+                <div style="padding-top: 10vw;" v-if="getAll && !userInfo.subscribe">
                     <div class="buttonStyle">
-                        <van-image width="50%" height="50px" :src="button" style="position: absolute;left: 25%" />
+
+                        <wx-open-subscribe id="subscribe-btn" template="Yf6vs0zVvXQtlPPHRdBLW-2BC69aP9deMgv8-OgXa-I">
+                            <script type="text/wxtag-template" slot="style">
+                                <style>
+                                   .subscribe-btn {
+                                     border: none;
+                                     background: transparent;
+                                     background-image: url('https://www.sjzch.vip/img/zjhy_btn.png');
+                                     width: 180px;
+                                     height: 56px;
+                                     background-repeat: no-repeat;
+                                     background-size: 100% 100%;
+                                     -moz-background-size: 100% 100%;
+                                     color: #A52216;
+                                     padding-top: 0px;
+                                     font-weight: 300;
+                                     font-size: 18px;
+                                    }
+                                </style>
+                            </script>
+                            <component is="script" type="text/wxtag-template">
+                                <button class="subscribe-btn">开始合成</button>
+                            </component>
+                        </wx-open-subscribe>
+                        <!-- <van-image width="50%" height="50px" :src="button" style="position: absolute;left: 25%" />
                         <div
                             style="position: absolute;left: 20%;width: 60%;text-align: center;color: #A52216;font-size: 20px;font-weight: 300;line-height: 46px;">
                             开始合成
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
             </div>
 
-            <div v-if="false">
+            <div v-if="getAll && userInfo.subscribe">
                 <div style="padding-top: 16vw">
                     <van-image width="56%" :src="redbag" style="position: absolute;left: 22%" />
                     <div
@@ -89,13 +116,27 @@
                     </div>
                 </van-col>
                 <van-col span="5">
-                    <div @click="order(1)"
-                        style="background-color: #F6E070; border-radius: 6px;padding: 12px 0;color: #9E0000;font-size: 18px;line-height: 24px;">
-                        <div>
-                            点击
-                        </div>
+                    <div v-if="limit[0] == 0"
+                        style="background-color: #ECEDEC; border-radius: 6px;padding: 12px 0;color: #A1A2A2;font-size: 18px;line-height: 24px;">
                         <div>
                             预约
+                        </div>
+                        <div>
+                            已满
+                        </div>
+                    </div>
+
+                    <div v-else @click="order(1)" style="background-color: #F6E070; border-radius: 6px;padding: 6px 0;">
+                        <div style="color: #9E0000;font-size: 18px;line-height: 22px;">
+                            <div>
+                                点击
+                            </div>
+                            <div>
+                                预约
+                            </div>
+                        </div>
+                        <div style="font-size: 10px;color: #9E0000;font-weight: 300;line-height: 16px;">
+                            剩余：{{ limit[0]}}
                         </div>
                     </div>
                 </van-col>
@@ -112,13 +153,27 @@
                     </div>
                 </van-col>
                 <van-col span="5">
-                    <div @click="order(2)"
-                        style="background-color: #F6E070; border-radius: 6px;padding: 12px 0;color: #9E0000;font-size: 18px;line-height: 24px;">
-                        <div>
-                            点击
-                        </div>
+                    <div v-if="limit[1] == 0"
+                        style="background-color: #ECEDEC; border-radius: 6px;padding: 12px 0;color: #A1A2A2;font-size: 18px;line-height: 24px;">
                         <div>
                             预约
+                        </div>
+                        <div>
+                            已满
+                        </div>
+                    </div>
+
+                    <div v-else @click="order(2)" style="background-color: #F6E070; border-radius: 6px;padding: 6px 0;">
+                        <div style="color: #9E0000;font-size: 18px;line-height: 22px;">
+                            <div>
+                                点击
+                            </div>
+                            <div>
+                                预约
+                            </div>
+                        </div>
+                        <div style="font-size: 10px;color: #9E0000;font-weight: 300;line-height: 16px;">
+                            剩余：{{ limit[1]}}
                         </div>
                     </div>
                 </van-col>
@@ -138,13 +193,27 @@
                     </div>
                 </van-col>
                 <van-col span="5">
-                    <div @click="order(3)"
-                        style="background-color: #F6E070; border-radius: 6px;padding: 12px 0;color: #9E0000;font-size: 18px;line-height: 24px;">
-                        <div>
-                            点击
-                        </div>
+                    <div v-if="limit[2] == 0"
+                        style="background-color: #ECEDEC; border-radius: 6px;padding: 12px 0;color: #A1A2A2;font-size: 18px;line-height: 24px;">
                         <div>
                             预约
+                        </div>
+                        <div>
+                            已满
+                        </div>
+                    </div>
+
+                    <div v-else @click="order(3)" style="background-color: #F6E070; border-radius: 6px;padding: 6px 0;">
+                        <div style="color: #9E0000;font-size: 18px;line-height: 22px;">
+                            <div>
+                                点击
+                            </div>
+                            <div>
+                                预约
+                            </div>
+                        </div>
+                        <div style="font-size: 10px;color: #9E0000;font-weight: 300;line-height: 16px;">
+                            剩余：{{ limit[2]}}
                         </div>
                     </div>
                 </van-col>
@@ -156,23 +225,29 @@
             <van-form ref="form" validate-first style="padding:0 10px">
                 <!-- 输入任意文本 -->
                 <van-field v-model="infoData.realname" label="姓名" maxlength="10" required
-                    :rules="[{ required: true, message: '请填写姓名' }]" />
+                    :rules="[{ required: true, message: '请填写姓名' }]" placeholder="点击输入姓名" />
                 <!-- 输入手机号，调起手机号键盘 -->
                 <van-field v-model="infoData.mobile" type="tel" label="手机号" maxlength="11" required
-                    :rules="[{ pattern, message: '手机号格式不对' }]" />
+                    :rules="[{ pattern, message: '手机号格式不对' }]" placeholder="点击输入手机号" />
                 <div style="font-size: 12px;color: #c5c8ce;text-align: right;margin: 4px 18px;">
                     *个人信息一经确认不得修改
                 </div>
             </van-form>
         </van-dialog>
 
-        <van-popup v-model="showQrcode" style="width: 70%">
+        <van-popup v-model="showQrcode" style="width: 70%;background-color: #DE3035;padding:12px" round>
             <div class="qrcode" style="padding: 10px">
                 <div style="margin: 0 auto; width: 200px; height: 200px; display: none" ref="qrCodeUrl" id="qrCodeDiv">
                 </div>
                 <div style="margin: 0 auto; width: 200px; height: 200px">
                     <img :src="QRUrl" style="width: 100%; height: 100%" />
                 </div>
+            </div>
+            <div style="color: #FADFC0;line-height: 30px;">
+                {{ addressFormat(userInfo.offline) }}
+            </div>
+            <div style="color: #FADFC0;font-size: 11px;">
+                {{ addresDetailFormat(userInfo.offline) }}
             </div>
         </van-popup>
 
@@ -318,6 +393,8 @@ export default {
 
             showQrcode: false,
             QRUrl: null,
+
+            limit: [0, 0, 0],
         };
     },
     methods: {
@@ -370,7 +447,7 @@ export default {
                 });
         },
 
-        order(number) {
+        addressFormat(number) {
             let name = "";
             if (number == 1) {
                 name = "华运仕府 映运蝶府 展示中心";
@@ -379,6 +456,22 @@ export default {
             } else if (number == 3) {
                 name = "梓运锦府 展示中心";
             }
+            return name;
+        },
+        addresDetailFormat(number) {
+            let name = "";
+            if (number == 1) {
+                name = "海昌南路332号（海昌路西侧、学林街北侧）";
+            } else if (number == 2) {
+                name = "海昌南路650号";
+            } else if (number == 3) {
+                name = "周王庙镇桑梓中路与周长路交汇处杭海城铁周王庙站";
+            }
+            return name;
+        },
+
+        order(number) {
+            let name = this.addressFormat(number);
 
             Dialog.confirm({
                 title: '预约提示',
@@ -433,6 +526,8 @@ export default {
                                 text: url, // 需要转换为二维码的内容
                                 width: 200,
                                 height: 200,
+                                colorLight: "#DE3035",
+                                colorDark: "#FADFC0"
                             });
 
                             const canvas = document.getElementsByTagName("canvas")[0];
@@ -440,7 +535,25 @@ export default {
                             self.QRUrl = imgSrc;
                         }, 100);
                     } else {
-                        this.appointment = true;
+                        this.loading = true;
+                        axios({
+                            method: 'get',
+                            url: this.ports.drum.getOffline,
+                        })
+                            .then((res) => {
+                                this.loading = false;
+                                this.appointment = true;
+                                console.log(res.data);
+
+                                this.limit = [280 - res.data[0] > 0 ? 280 - res.data[0] : 0, 200 - res.data[1] > 0 ? 200 - res.data[1] : 0, 120 - res.data[2] > 0 ? 120 - res.data[2] : 0,];
+
+                                console.log(this.limit);
+                            })
+                            .catch((error) => {
+                                this.loading = false;
+                                console.log(error);
+                                Toast.fail('网络错误');
+                            });
                     }
 
                 } else {
@@ -587,6 +700,8 @@ export default {
                 .then((res) => {
                     console.log(res.data);
 
+                    const self = this;
+
                     wx.config({
                         // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
                         debug: false,
@@ -607,8 +722,8 @@ export default {
                         const url = 'https://www.sjzch.vip/zjhy';
 
                         wx.updateAppMessageShareData({
-                            title: '轨交工联“梓静华映·好运新年”活动', // 分享标题
-                            desc: '快来跟我一起收集“福卡”吧~', // 分享描述
+                            title: '“梓静华映·好运新年”击鼓集好运', // 分享标题
+                            desc: '快来跟我一起收集“运”吧~', // 分享描述
                             link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: 'https://www.sjzch.vip/img/sharepic_zjhy.png', // 分享图标
                             success() {
@@ -618,13 +733,55 @@ export default {
                         });
                         // 需在用户可能点击分享按钮前就先调用
                         wx.updateTimelineShareData({
-                            title: '轨交工联“梓静华映·好运新年”活动', // 分享标题
+                            title: '“梓静华映·好运新年”击鼓集好运', // 分享标题
                             link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: 'https://www.sjzch.vip/img/sharepic_zjhy.png', // 分享图标
                             success() {
                                 // 设置成功
                                 console.log('配置验证成功');
                             },
+                        });
+
+
+                        var btn = document.getElementById('subscribe-btn');
+                        btn.addEventListener('success', function (e) {
+                            console.log('success', e.detail);
+                            let flag = false
+                            let data = JSON.parse(e.detail.subscribeDetails)
+                            for (let a in data) {
+                                let status = JSON.parse(data[a]).status
+                                if (status == 'accept') {
+                                    flag = true
+                                }
+                            }
+                            if (flag) {
+                                console.log('用户点击确定');
+
+                                self.loading = true;
+                                axios({
+                                    method: 'post',
+                                    url: self.ports.drum.subscribe,
+                                    data: {
+                                        openid: window.localStorage.getItem('drum_openid'),
+                                    },
+                                })
+                                    .then((res) => {
+                                        self.loading = false;
+                                        Toast.success(res.data.msg);
+                                        self.userInfo.subscribe = 1;
+                                    })
+                                    .catch((error) => {
+                                        self.loading = false;
+                                        console.log(error);
+                                        Toast.fail(error.response.data.msg);
+                                    });
+
+                            } else {
+                                Toast('请订阅后开启');
+                            }
+                        });
+                        btn.addEventListener('error', function (e) {
+                            console.log('fail', e.detail);
                         });
                     });
                 })
