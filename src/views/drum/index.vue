@@ -1,12 +1,17 @@
 <template>
     <div style="text-align: center;">
-        <van-overlay :show="loading" @click.stop>
+        <van-overlay :show="loading" @click.stop z-index="2">
             <div style="display: flex;align-items: center;justify-content: center;height: 100%;">
                 <van-loading size="60" />
             </div>
         </van-overlay>
 
         <van-image width="100%" :src="picUrl" style="position: absolute;left: 0" />
+
+        <div @click="rule"
+            style="z-index: 1;;right: 8vw;top: 28vw;position: fixed;color: #F7E6C3;font-size: 13px;border: #F7E6C3 1px solid;line-height: 24px;border-radius: 12px;padding: 0 8px;">
+            规则
+        </div>
 
         <van-image width="30%" :src="logo" style="left: 20px;top: 20px;position: absolute;" />
 
@@ -308,8 +313,8 @@ import prize4Shadow from '../../assets/drum/prize4_shadow.png';
 import prize5 from '../../assets/drum/prize5.png';
 import prize5Shadow from '../../assets/drum/prize5_shadow.png';
 
-import Vconsole from 'vconsole';
-new Vconsole();
+// import Vconsole from 'vconsole';
+// new Vconsole();
 
 export default {
     name: 'drum',
@@ -395,9 +400,22 @@ export default {
             QRUrl: null,
 
             limit: [0, 0, 0],
+
+            ruleText: "1、参与规则\n①扫码或点击微信链接打开小程序，进入活动首页，点击开启活动，进入游戏页面；\n②每人每天无限次参与机会，直至集齐，集齐即可预约展示中心的翻翻墙活动，还可参与元宵节抽大奖活动；\n\n2、游戏规则\n①参与者通过双手敲击屏幕“打鼓”，点击掉落下来的图标；\n②成功敲击20次即掉落下一个锦囊，点击锦囊可开出“好运卡”；\n\n3、兑奖规则\n①集齐“五运”后可合成“好运卡”一张，并弹出线下预约框，客户需在三大展示中心中选择一个，获得核销码；\n②完成线下活动预约，每个展示中心名额有限，约满即止，活动仅限预约客户，每个账号仅限参与一次；\n③来访还有机会参与抓娃娃活动，来访的每组客户可以领取5个游戏币，娃娃数量有限，抓完即止。\n\n4、元宵抽大奖规则\n①集齐“五运”并合成“好运卡”后，客户完成线下预约即跳转“等待开奖页面”；\n②奖品于元宵节准点开出，并小程序与推文同时公布获奖名单及领奖地址；\n\n注：集齐“好运卡”后仅预约翻翻墙活动，元宵大奖礼品领取地点视官方公布为准。",
         };
     },
     methods: {
+
+        rule() {
+            Dialog.alert({
+                title: '活动规则',
+                message: this.ruleText,
+                messageAlign: "left",
+                confirmButtonText: '我知道了',
+            }).then(() => {
+                // on close
+            });
+        },
 
         onBeforeInfoClose(action, done) {
             if (action === 'confirm') {
@@ -431,6 +449,7 @@ export default {
                                 Toast.success(res.data.msg);
                                 this.info = true;
                                 this.infoModal = false;
+                                this.rule();
                             } else {
                                 Toast.fail(res.data.msg);
                             }
