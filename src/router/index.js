@@ -267,6 +267,27 @@ const routes = [
     component: () => import('../views/drum/check.vue'),
   },
 
+
+  // 黄湾相册
+  {
+    path: '/huangwan',
+    name: 'huangwan',
+    meta: {
+      title: '黄湾2022年度相册',
+      requiresAuth: false,
+    },
+    component: () => import('../views/huangwan/index.vue'),
+  },
+  {
+    path: '/huangwanDetail/:id',
+    name: 'huangwanDetail',
+    meta: {
+      title: '黄湾2022年度相册',
+      requiresAuth: false,
+    },
+    component: () => import('../views/huangwan/detail.vue'),
+  },
+
 ];
 
 const router = new VueRouter({
@@ -292,5 +313,9 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
+router.afterEach(() => {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+})
 
 export default router;
