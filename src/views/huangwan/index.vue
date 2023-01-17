@@ -134,11 +134,59 @@ export default {
         }
     },
     methods: {
+        changeTitle(number) {
+            switch (number) {
+                case 0:
+                    document.title = "黄湾2022年度相册·领导视察";
+                    return;
+                case 1:
+                    document.title = "黄湾2022年度相册·荣誉奖章";
+                    return;
+                case 2:
+                    document.title = "黄湾2022年度相册·党建引领";
+                    return;
+                case 3:
+                    document.title = "黄湾2022年度相册·经济发展";
+                    return;
+                case 4:
+                    document.title = "黄湾2022年度相册·共同富裕";
+                    return;
+                case 5:
+                    document.title = "黄湾2022年度相册·生态环保";
+                    return;
+                case 6:
+                    document.title = "黄湾2022年度相册·民生事业";
+                    return;
+                case 7:
+                    document.title = "黄湾2022年度相册·城镇管理";
+                    return;
+                case 8:
+                    document.title = "黄湾2022年度相册·清廉黄湾";
+                    return;
+                case 9:
+                    document.title = "黄湾2022年度相册·平安法治";
+                    return;
+                case 10:
+                    document.title = "黄湾2022年度相册·五彩群团";
+                    return;
+                case 11:
+                    document.title = "黄湾2022年度相册·人大之声";
+                    return;
+                case 12:
+                    document.title = "黄湾2022年度相册·人武风采";
+                    return;
+                case 13:
+                    document.title = "黄湾2022年度相册·感人瞬间";
+                    return;
+            }
+
+        },
         tab(number) {
             console.log(number);
             this.$router.push({
                 path: "/huangwanDetail/" + number,
             });
+            this.changeTitle(number);
         },
         wxConfig() {
             axios({

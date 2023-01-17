@@ -3,10 +3,10 @@
         <van-image width="100%" :src="pic" style="position:fixed;left: 0;max-height: 100vh" />
 
         <div style="padding: 20px;position:absolute;">
-            <div v-for="(item, i) in images[index]" :key="i">
+            <div v-for="(item, i) in images[index]" :key="index + 'image' + i">
                 <van-image width="100%" lazy-load
                     :src="`https://www.sjzch.vip/img/huangwan/folder${Number(index) + 1}/pic${i + 1}.jpg`" />
-                <div style="padding: 8px 0;color:white">{{ item.desc }}</div>
+                <div style="padding: 8px 0;color:white;font-size:small;">{{ item.desc }}</div>
             </div>
         </div>
     </div>
