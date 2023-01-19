@@ -288,6 +288,17 @@ const routes = [
     component: () => import('../views/huangwan/detail.vue'),
   },
 
+  // 2023新年贺卡
+  {
+    path: '/2023card/:id',
+    name: '2023card',
+    meta: {
+      title: '驻沪工作部新年贺卡',
+      requiresAuth: false,
+    },
+    component: () => import('../views/2023newyearcard/index.vue'),
+  },
+
 ];
 
 const router = new VueRouter({
