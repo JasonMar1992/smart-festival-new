@@ -5,7 +5,7 @@
             <div style="height: 120px; width: 100%;"></div>
         </div>
         <div style="position: absolute;padding: 20vw 10vw;z-index: 9;">
-            <div style="font-size: 24px;line-height: 28px;color: #FDF399;letter-spacing: 1.5px;">
+            <div style="font-size: 24px;line-height: 28px;color: #FDF399;letter-spacing: 1.5px;font-weight: 500;">
                 尊敬的<span @click="infoModal = true;"
                     style="margin-left: 4px;padding-left:2px;border-bottom: 2px #FDF399 solid;">{{ name }}
                     <van-icon name="edit" size="22" @click="infoModal = true;" />
@@ -14,7 +14,7 @@
 
         </div>
         <div
-            style="position: absolute;font-size: 18px;line-height: 24px;opacity: 0.8;color: #FDF399;text-align: center;width: 100%;padding-top: 40vw;">
+            style="font-weight: 500;position: absolute;font-size: 18px;line-height: 24px;opacity: 0.8;color: #FDF399;text-align: center;width: 100%;padding-top: 40vw;">
             新岁启封，同跨新年，2023祝您</div>
 
 
