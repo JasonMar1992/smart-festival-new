@@ -290,10 +290,10 @@ const routes = [
 
   // 2023新年贺卡
   {
-    path: '/2023card/:id',
+    path: '/2023card/:name/:from',
     name: '2023card',
     meta: {
-      title: '驻沪工作部新年贺卡',
+      title: '新岁启封，同跨新年',
       requiresAuth: false,
     },
     component: () => import('../views/2023newyearcard/index.vue'),

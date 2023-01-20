@@ -17,20 +17,25 @@
             style="font-weight: 500;position: absolute;font-size: 18px;line-height: 24px;opacity: 0.8;color: #FDF399;text-align: center;width: 100%;padding-top: 40vw;">
             新岁启封，同跨新年，2023祝您</div>
 
+        <div
+            style="font-weight: 500;position: absolute;font-size: 18px;line-height: 24px;opacity: 0.8;color: #FDF399;text-align: center;width: 100%;padding-top: 160vw;">
+            —— {{ from }} ——</div>
+
 
         <van-dialog theme="round-button" title="我要送祝福" v-model="infoModal" @confirm="submitInfo"
             :before-close="onBeforeInfoClose" show-cancel-button>
             <van-form ref="form" validate-first style="padding:0 10px">
                 <!-- 输入任意文本 -->
-                <van-field v-model="infoData.realname" label="姓名" maxlength="6" required
+                <van-field v-model="infoData.realname" label="姓名" maxlength="6" required clearable
                     :rules="[{ required: true, message: '请填写姓名' }]" placeholder="点击输入姓名" />
+                <van-field v-model="infoData.from" label="署名" maxlength="16" required clearable
+                    :rules="[{ required: true, message: '请填写署名' }]" placeholder="点击输入署名" />
             </van-form>
         </van-dialog>
     </div>
 </template>
 <script>
 import axios from 'axios';
-import { urlencoded } from 'body-parser';
 import wx from 'weixin-js-sdk';
 import picUrl from '../../assets/2023newyearcard/card-bg.jpg';
 export default {
@@ -40,10 +45,12 @@ export default {
             picUrl,
 
             name: "请填写",
+            from: "",
 
             infoModal: false,
             infoData: {
                 realname: '',
+                from: "",
             },
         }
     },
@@ -60,6 +67,7 @@ export default {
             this.$refs.form.resetValidation();
             this.infoData = {
                 realname: '',
+                from: this.from,
             };
             return done();
         },
@@ -70,6 +78,7 @@ export default {
                     // 验证通过
                     console.log('验证通过');
                     this.name = this.infoData.realname;
+                    this.from = this.infoData.from;
                     this.infoModal = false;
                     this.wxConfig();
                 })
@@ -106,7 +115,7 @@ export default {
                     });
 
                     wx.ready(() => {
-                        const url = location.origin + '/2023card/' + this.urlencode(this.name);
+                        const url = location.origin + '/2023card/' + this.urlencode(this.name) + '/' + this.urlencode(this.from);
 
                         wx.updateAppMessageShareData({
                             title: '海宁驻沪工作部给您拜年啦！', // 分享标题
@@ -136,7 +145,9 @@ export default {
         },
     },
     mounted() {
-        this.name = decodeURI(this.$route.params.id)
+        this.name = decodeURI(this.$route.params.name);
+        this.from = decodeURI(this.$route.params.from);
+        this.infoData.from = this.from;
         this.wxConfig();
     },
 }
