@@ -293,7 +293,7 @@ const routes = [
     path: '/2023card/:name/:from',
     name: '2023card',
     meta: {
-      title: '新岁启封，同跨新年',
+      title: '海宁驻沪工作部·新年贺卡',
       requiresAuth: false,
     },
     component: () => import('../views/2023newyearcard/index.vue'),

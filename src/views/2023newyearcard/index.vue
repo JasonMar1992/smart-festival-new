@@ -1,6 +1,6 @@
 <template>
     <div style="text-align: center;line-height: 0;">
-        <div style="position: absolute;background-color: #911716;">
+        <div style="position: absolute;background-color: #911716;width: 100vw">
             <van-image width="100%" :src="picUrl" />
             <div style="height: 120px; width: 100%;"></div>
         </div>
@@ -19,7 +19,7 @@
 
         <div
             style="font-weight: 500;position: absolute;font-size: 18px;line-height: 24px;opacity: 0.8;color: #FDF399;text-align: center;width: 100%;padding-top: 160vw;">
-            —— {{ from }} ——</div>
+            —— 海宁驻沪工作部{{ from? `·${from}`: '' }} ——</div>
 
 
         <van-dialog theme="round-button" title="我要送祝福" v-model="infoModal" @confirm="submitInfo"
@@ -28,8 +28,7 @@
                 <!-- 输入任意文本 -->
                 <van-field v-model="infoData.realname" label="姓名" maxlength="6" required clearable
                     :rules="[{ required: true, message: '请填写姓名' }]" placeholder="点击输入姓名" />
-                <van-field v-model="infoData.from" label="署名" maxlength="16" required clearable
-                    :rules="[{ required: true, message: '请填写署名' }]" placeholder="点击输入署名" />
+                <van-field v-model="infoData.from" label="署名" maxlength="10" placeholder="点击输入署名" />
             </van-form>
         </van-dialog>
     </div>
