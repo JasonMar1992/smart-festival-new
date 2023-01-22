@@ -258,7 +258,7 @@ const routes = [
     component: () => import('../views/drum/index.vue'),
   },
   {
-    path: '/zjhyCheck/:id/:mobile',
+    path: '/zjhyCheck',
     name: 'zjhyCheck',
     meta: {
       title: '轨交工联线下预约核销',

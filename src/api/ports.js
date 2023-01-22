@@ -41,7 +41,7 @@ export default {
     finishQuestion: "/api/answer/finishQuestion",
   },
   drum: {
-    getOpenId: '/api/drum/getInfo',
+    getOpenId: '/api/drum/getInfoNew',
     getSelfInfo: '/api/drum/getSelfInfo',
     updateUserInfo: "/api/drum/updateUserInfo",
     getCards: '/api/drum/getCards',
