@@ -24,11 +24,11 @@
                 <van-image width="60%" height="80px" :src="button" style="position: absolute;left: 20%" />
                 <div
                     style="position: absolute;left: 20%;width: 60%;text-align: center;padding-top: 10px;color: #A52216;font-size: 24px;font-weight: 300;">
-                    {{ getAll?(userInfo.offline ? "预约成功" : "预约领奖"): "开始游戏" }}
+                    {{ checkLogin() ? (getAll ? (userInfo.offline ? "预约成功" : "预约领奖") : "开始游戏"): '我要参与' }}
                 </div>
                 <div
                     style="position: absolute;left: 20%;width: 60%;text-align: center;padding-top: 40px;color: #A52216;font-size: 14px;font-weight: 300;">
-                    {{ getAll?(userInfo.offline ? "查看我的预约码" : "仅限600个名额"): "新年集五运" }}
+                    {{ checkLogin() ? (getAll ? (userInfo.offline ? "查看我的预约码" : "仅限600个名额") : "新年集五运"): '点击授权信息' }}
                 </div>
             </div>
 
@@ -227,17 +227,15 @@
         <van-dialog theme="round-button" title="预约信息登记" v-model="infoModal" @confirm="submitInfo"
             :before-close="onBeforeInfoClose" show-cancel-button>
             <van-form ref="form" validate-first style="padding:0 10px">
-                <!-- 输入任意文本 -->
                 <van-field v-model="infoData.realname" label="姓名" maxlength="10" required
                     :rules="[{ required: true, message: '请填写姓名' }]" placeholder="点击输入姓名" />
-                <!-- 输入手机号，调起手机号键盘 -->
                 <van-field v-model="infoData.mobile" type="tel" label="手机号" maxlength="11" required
                     :rules="[{ pattern, message: '手机号格式不对' }]" placeholder="点击输入手机号" />
                 <div style="font-size: 12px;color: #c5c8ce;text-align: right;margin: 4px 18px;">
                     *个人信息一经确认不得修改
                 </div>
             </van-form>
-        </van-dialog>
+        </van-dialog> -->
 
         <van-popup v-model="showQrcode" style="width: 70%;background-color: #DE3035;padding:12px" round>
             <div class="qrcode" style="padding: 10px">
@@ -400,10 +398,13 @@ export default {
 
             limit: [0, 0, 0],
 
-            ruleText: "1、参与规则\n①扫码或点击微信链接打开小游戏，进入活动首页，点击开启活动，进入游戏页面；\n②每人每天无限次参与机会，直至集齐“五运”。\n\n2、游戏规则\n①参与者通过双手敲击屏幕“打鼓”，点击掉落下来的图标；\n②成功敲击20次即掉落下一个锦囊，点击锦囊可开出“好运卡”。\n\n3、兑奖规则\n①集齐“五运”后可合成“好运卡”一张，并弹出线下预约框，参与者需在三大展示中心中选择一个，获得核销码；\n②完成线下活动预约，每个展示中心名额有限，约满即止，活动仅限预约客户，每个账号仅限参与一次；\n③来访还有机会参与抓娃娃活动，来访的每组客户可以领取5个游戏币，娃娃数量有限，抓完即止；\n④如活动预约成功，但未能在规定时间前往指定地点参与活动视为放弃，但不影响开奖赢取周大福星月兔吊坠。\n\n4、元宵抽大奖规则\n①集齐“五运”并合成“好运卡”后，参与者完成线下预约即跳转“等待开奖页面”；\n②奖品于元宵节准点开出；\n③集齐“好运卡”后仅预约翻翻墙活动，元宵大奖获奖名单及领取地点视官方公布为准。\n\n5、活动时间\n①2023年1月10日-1月17日线上集“五运”；\n②2023年1月12日-1月18日“好运制造局”活动（活动仅限预约成功后并在相应展示中心参与）；\n③2023年2月5日线上开奖周大福星月兔吊坠。",
+            ruleText: "1、参与规则\n①扫码或点击微信链接打开小游戏，进入活动首页，点击开启活动，进入游戏页面；\n②每人每天无限次参与机会，直至集齐“五运”。\n\n2、游戏规则\n①参与者通过双手敲击屏幕“打鼓”，点击掉落下来的图标；\n②成功敲击20次即掉落下一个锦囊，点击锦囊可开出“好运卡”。\n\n3、兑奖规则\n①集齐“五运”后可合成“好运卡”一张，并弹出线下预约框，参与者需在三大展示中心中选择一个，获得核销码；\n②完成线下活动预约，每个展示中心名额有限，约满即止，活动仅限预约客户，每个账号仅限参与一次；\n③来访还有机会参与抓娃娃活动，来访的每组客户可以领取5个游戏币，娃娃数量有限，抓完即止；\n④如活动预约成功，但未能在规定时间前往指定地点参与活动视为放弃，但不影响开奖赢取周大福星月兔吊坠。\n\n4、元宵抽大奖规则\n①集齐“五运”并合成“好运卡”后，参与者完成线下预约即跳转“等待开奖页面”；\n②奖品于元宵节准点开出；\n③集齐“好运卡”后仅预约翻翻墙活动，元宵大奖获奖名单及领取地点视官方公布为准。\n\n5、活动时间\n①2023年1月28日-2月4日线上集“五运”；\n②2023年2月5日20:00线上开奖周大福星月兔吊坠；\n③2023年1月29日-2月5日（9:00——17:00）线下“好运制造局”活动（活动仅限预约成功后并在相应展示中心参与）。",
         };
     },
     methods: {
+        checkLogin() {
+            return window.localStorage.getItem("zjhy_openid") ? true : false;
+        },
 
         rule() {
             Dialog.alert({
@@ -569,9 +570,10 @@ export default {
                 },
             })
                 .then((res) => {
+                    console.log(res.data);
                     console.log('open_id拿到了，记录一下');
                     if (res.data.openid) {
-                        window.localStorage.setItem('drum_openid', res.data.openid);
+                        window.localStorage.setItem('zjhy_openid', res.data.openid);
                         this.getSelfInfo(res.data.openid);
                     } else {
                         Notify({ type: 'warning', message: '授权失败' });
@@ -595,15 +597,14 @@ export default {
                 .then((res) => {
                     console.log(res);
                     this.userInfo = res.data;
-                    if (res.data.realname && res.data.mobile) {
-                        this.info = true;
-                    }
+                    // if (res.data.realname && res.data.mobile) {
+                    //     this.info = true;
+                    // }
                     this.getCards();
                 })
                 .catch((error) => {
                     this.loading = false;
-                    console.log(error);
-                    Toast.fail("查询失败");
+                    Toast.fail(error.response.data.msg);
                 });
         },
         getCards() {
@@ -611,7 +612,7 @@ export default {
                 method: 'get',
                 url: this.ports.drum.getCards,
                 params: {
-                    openid: window.localStorage.getItem('drum_openid'),
+                    openid: window.localStorage.getItem('zjhy_openid'),
                 },
             })
                 .then((result) => {
@@ -743,7 +744,7 @@ export default {
                                     method: 'post',
                                     url: self.ports.drum.subscribe,
                                     data: {
-                                        openid: window.localStorage.getItem('drum_openid'),
+                                        openid: window.localStorage.getItem('zjhy_openid'),
                                     },
                                 })
                                     .then((res) => {
@@ -770,6 +771,12 @@ export default {
                     console.log(error);
                 });
         },
+
+        wxLink() {
+            let url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_DRUM_URL}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+            window.location.href = url;
+            // console.log(url);
+        }
     },
     mounted() {
         window.onpageshow = (event) => {
@@ -779,11 +786,11 @@ export default {
         var ua = navigator.userAgent.toLowerCase();
         var isWeixin = ua.indexOf('micromessenger') != -1;
         if (isWeixin) {
-            if (window.localStorage.getItem("drum_openid")) {
+            if (window.localStorage.getItem("zjhy_openid")) {
                 // 判断是否登录
                 console.log("登录了");
                 this.wxConfig();
-                this.getSelfInfo(window.localStorage.getItem("drum_openid"));
+                this.getSelfInfo(window.localStorage.getItem("zjhy_openid"));
             } else {
                 // 没登录则跳转到登录界面
                 console.log("没登录");
@@ -796,14 +803,13 @@ export default {
                     this.getOpenId(this.$route.query.code);
                     this.wxConfig();
                 } else {
-                    const state = "STATE";
                     console.log("不是回掉来的，现在去拿code");
-                    window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_DRUM_URL}&response_type=code&scope=snsapi_base&state=${state}#wechat_redirect`;
+                    // this.wxLink();
                 }
             }
         } else {
             console.log("当前不在微信浏览器中");
-            window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_DRUM_URL}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect`;
+            this.wxLink();
         };
     },
 };
