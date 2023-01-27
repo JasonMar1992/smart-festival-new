@@ -24,11 +24,11 @@
                 <van-image width="60%" height="80px" :src="button" style="position: absolute;left: 20%" />
                 <div
                     style="position: absolute;left: 20%;width: 60%;text-align: center;padding-top: 10px;color: #A52216;font-size: 24px;font-weight: 300;">
-                    {{ checkLogin() ? (getAll ? (userInfo.offline ? "预约成功" : "预约领奖") : "开始游戏"): '我要参与' }}
+                    {{ getAll?(userInfo.offline ? "预约成功" : "预约领奖"): "开始游戏" }}
                 </div>
                 <div
                     style="position: absolute;left: 20%;width: 60%;text-align: center;padding-top: 40px;color: #A52216;font-size: 14px;font-weight: 300;">
-                    {{ checkLogin() ? (getAll ? (userInfo.offline ? "查看我的预约码" : "仅限600个名额") : "新年集五运"): '点击授权信息' }}
+                    {{ getAll?(userInfo.offline ? "查看我的预约码" : "仅限600个名额"): "新年集五运" }}
                 </div>
             </div>
 
@@ -227,15 +227,17 @@
         <van-dialog theme="round-button" title="预约信息登记" v-model="infoModal" @confirm="submitInfo"
             :before-close="onBeforeInfoClose" show-cancel-button>
             <van-form ref="form" validate-first style="padding:0 10px">
+                <!-- 输入任意文本 -->
                 <van-field v-model="infoData.realname" label="姓名" maxlength="10" required
                     :rules="[{ required: true, message: '请填写姓名' }]" placeholder="点击输入姓名" />
+                <!-- 输入手机号，调起手机号键盘 -->
                 <van-field v-model="infoData.mobile" type="tel" label="手机号" maxlength="11" required
                     :rules="[{ pattern, message: '手机号格式不对' }]" placeholder="点击输入手机号" />
                 <div style="font-size: 12px;color: #c5c8ce;text-align: right;margin: 4px 18px;">
                     *个人信息一经确认不得修改
                 </div>
             </van-form>
-        </van-dialog> -->
+        </van-dialog>
 
         <van-popup v-model="showQrcode" style="width: 70%;background-color: #DE3035;padding:12px" round>
             <div class="qrcode" style="padding: 10px">
@@ -402,9 +404,6 @@ export default {
         };
     },
     methods: {
-        checkLogin() {
-            return window.localStorage.getItem("zjhy_openid") ? true : false;
-        },
 
         rule() {
             Dialog.alert({
@@ -570,10 +569,9 @@ export default {
                 },
             })
                 .then((res) => {
-                    console.log(res.data);
                     console.log('open_id拿到了，记录一下');
                     if (res.data.openid) {
-                        window.localStorage.setItem('zjhy_openid', res.data.openid);
+                        window.localStorage.setItem('drum_openid', res.data.openid);
                         this.getSelfInfo(res.data.openid);
                     } else {
                         Notify({ type: 'warning', message: '授权失败' });
@@ -597,14 +595,15 @@ export default {
                 .then((res) => {
                     console.log(res);
                     this.userInfo = res.data;
-                    // if (res.data.realname && res.data.mobile) {
-                    //     this.info = true;
-                    // }
+                    if (res.data.realname && res.data.mobile) {
+                        this.info = true;
+                    }
                     this.getCards();
                 })
                 .catch((error) => {
                     this.loading = false;
-                    Toast.fail(error.response.data.msg);
+                    console.log(error);
+                    Toast.fail("查询失败");
                 });
         },
         getCards() {
@@ -612,7 +611,7 @@ export default {
                 method: 'get',
                 url: this.ports.drum.getCards,
                 params: {
-                    openid: window.localStorage.getItem('zjhy_openid'),
+                    openid: window.localStorage.getItem('drum_openid'),
                 },
             })
                 .then((result) => {
@@ -744,7 +743,7 @@ export default {
                                     method: 'post',
                                     url: self.ports.drum.subscribe,
                                     data: {
-                                        openid: window.localStorage.getItem('zjhy_openid'),
+                                        openid: window.localStorage.getItem('drum_openid'),
                                     },
                                 })
                                     .then((res) => {
@@ -771,12 +770,6 @@ export default {
                     console.log(error);
                 });
         },
-
-        wxLink() {
-            let url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_DRUM_URL}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
-            window.location.href = url;
-            // console.log(url);
-        }
     },
     mounted() {
         window.onpageshow = (event) => {
@@ -786,11 +779,11 @@ export default {
         var ua = navigator.userAgent.toLowerCase();
         var isWeixin = ua.indexOf('micromessenger') != -1;
         if (isWeixin) {
-            if (window.localStorage.getItem("zjhy_openid")) {
+            if (window.localStorage.getItem("drum_openid")) {
                 // 判断是否登录
                 console.log("登录了");
                 this.wxConfig();
-                this.getSelfInfo(window.localStorage.getItem("zjhy_openid"));
+                this.getSelfInfo(window.localStorage.getItem("drum_openid"));
             } else {
                 // 没登录则跳转到登录界面
                 console.log("没登录");
@@ -803,13 +796,14 @@ export default {
                     this.getOpenId(this.$route.query.code);
                     this.wxConfig();
                 } else {
+                    const state = "STATE";
                     console.log("不是回掉来的，现在去拿code");
-                    // this.wxLink();
+                    window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_DRUM_URL}&response_type=code&scope=snsapi_base&state=${state}#wechat_redirect`;
                 }
             }
         } else {
             console.log("当前不在微信浏览器中");
-            this.wxLink();
+            window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_DRUM_URL}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect`;
         };
     },
 };
