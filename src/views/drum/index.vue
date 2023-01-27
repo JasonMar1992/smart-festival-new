@@ -32,41 +32,40 @@
                 </div>
             </div>
 
-            <div v-if="info">
+            <!-- <div v-if="info"> -->
 
-                <div v-if="!userInfo.subscribe">
-                    <div
-                        style="padding-top: 24vw;padding-left: 5vw;padding-right: 5vw;display: flex;flex-direction: row;">
-                        <div v-for="(item, i) in cardList" :key="i">
-                            <div style="padding:0 1vw">
-                                <div style="position: absolute;width: 14vw;padding-top: 1vw;z-index: 100;">
-                                    <div
-                                        style="border-radius:42%;color:#A52216;background:#F8DEBA;float: right;padding: 0 3px;font-size: 13px;min-width:10px">
-                                        {{ has[i].ids.length > 10 ? "···" : has[i].ids.length }}
-                                    </div>
+            <div v-if="!userInfo.subscribe">
+                <div style="padding-top: 24vw;padding-left: 5vw;padding-right: 5vw;display: flex;flex-direction: row;">
+                    <div v-for="(item, i) in cardList" :key="i">
+                        <div style="padding:0 1vw">
+                            <div style="position: absolute;width: 14vw;padding-top: 1vw;z-index: 100;">
+                                <div
+                                    style="border-radius:42%;color:#A52216;background:#F8DEBA;float: right;padding: 0 3px;font-size: 13px;min-width:10px">
+                                    {{ has[i].ids.length > 10 ? "···" : has[i].ids.length }}
                                 </div>
-                                <div style="width: 100%;">
-                                    <van-image width="16vw" :src="item.picMini" />
-                                    <div
-                                        style="font-size: 12px;color: #F8DEBA;position: absolute;width: 16vw;text-align: center;">
-                                        {{ item.name }}
-                                    </div>
+                            </div>
+                            <div style="width: 100%;">
+                                <van-image width="16vw" :src="item.picMini" />
+                                <div
+                                    style="font-size: 12px;color: #F8DEBA;position: absolute;width: 16vw;text-align: center;">
+                                    {{ item.name }}
                                 </div>
-                                <!-- <div v-else style="width: 100%">
+                            </div>
+                            <!-- <div v-else style="width: 100%">
                       <van-image width="16vw" :src="item.picMiniShadow" />
                       <div style="font-size: 12px;">{{ item.name }}</div>
                   </div> -->
-                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div style="padding-top: 10vw;" v-if="getAll && !userInfo.subscribe">
-                    <div class="buttonStyle">
+            <div style="padding-top: 10vw;" v-if="getAll && !userInfo.subscribe">
+                <div class="buttonStyle">
 
-                        <wx-open-subscribe id="subscribe-btn" template="Yf6vs0zVvXQtlPPHRdBLW-2BC69aP9deMgv8-OgXa-I">
-                            <script type="text/wxtag-template" slot="style">
-                                <style>
+                    <wx-open-subscribe id="subscribe-btn" template="Yf6vs0zVvXQtlPPHRdBLW-2BC69aP9deMgv8-OgXa-I">
+                        <script type="text/wxtag-template" slot="style">
+                            <style>
                                    .subscribe-btn {
                                      border: none;
                                      background: transparent;
@@ -83,19 +82,19 @@
                                     }
                                 </style>
                             </script>
-                            <component is="script" type="text/wxtag-template">
-                                <button class="subscribe-btn">开始合成</button>
-                            </component>
-                        </wx-open-subscribe>
-                        <!-- <van-image width="50%" height="50px" :src="button" style="position: absolute;left: 25%" />
+                        <component is="script" type="text/wxtag-template">
+                            <button class="subscribe-btn">开始合成</button>
+                        </component>
+                    </wx-open-subscribe>
+                    <!-- <van-image width="50%" height="50px" :src="button" style="position: absolute;left: 25%" />
                         <div
                             style="position: absolute;left: 20%;width: 60%;text-align: center;color: #A52216;font-size: 20px;font-weight: 300;line-height: 46px;">
                             开始合成
                         </div> -->
-                    </div>
                 </div>
-
             </div>
+
+            <!-- </div> -->
 
             <div v-if="getAll && userInfo.subscribe">
                 <div style="padding-top: 16vw">
@@ -225,8 +224,8 @@
             </van-row>
         </van-popup>
 
-        <van-dialog theme="round-button" title="完善个人信息" v-model="infoModal" @confirm="submitInfo"
-            :before-close="onBeforeInfoClose">
+        <van-dialog theme="round-button" title="预约信息登记" v-model="infoModal" @confirm="submitInfo"
+            :before-close="onBeforeInfoClose" show-cancel-button>
             <van-form ref="form" validate-first style="padding:0 10px">
                 <!-- 输入任意文本 -->
                 <van-field v-model="infoData.realname" label="姓名" maxlength="10" required
@@ -384,13 +383,13 @@ export default {
                 },
             ],
 
-
-            info: false,
             infoData: {
                 realname: '',
                 mobile: '',
             },
             infoModal: false,
+
+            offlineChoose: null,
 
             getAll: false,
 
@@ -422,7 +421,7 @@ export default {
                 return done(false);
             }
             // 重置表单校验
-            this.$refs.form.resetFields();
+            this.$refs.form.resetValidation();
             this.infoData = {
                 realname: '',
                 mobile: '',
@@ -437,9 +436,10 @@ export default {
                     console.log('验证通过');
                     axios({
                         method: 'post',
-                        url: this.ports.drum.updateUserInfo,
+                        url: this.ports.drum.offline,
                         data: {
                             ...this.infoData,
+                            offline: this.offlineChoose,
                             openid: window.localStorage.getItem('drum_openid'),
                         },
                     })
@@ -447,10 +447,12 @@ export default {
                             console.log(res.data);
                             if (res.data.success) {
                                 Toast.success(res.data.msg);
-                                this.info = true;
                                 this.infoModal = false;
-                                this.rule();
+                                this.appointment = false;
+                                this.userInfo.offline = this.offlineChoose;
+                                // this.rule();
                             } else {
+                                this.infoModal = false;
                                 Toast.fail(res.data.msg);
                             }
                         })
@@ -498,27 +500,8 @@ export default {
             })
                 .then(() => {
                     // on confirm
-                    console.log("confirm");
-                    this.loading = true;
-                    axios({
-                        method: 'post',
-                        url: this.ports.drum.offline,
-                        data: {
-                            offline: number,
-                            openid: window.localStorage.getItem('drum_openid'),
-                        },
-                    })
-                        .then((res) => {
-                            this.loading = false;
-                            Toast.success(res.data.msg);
-                            this.appointment = false;
-                            this.userInfo.offline = number;
-                        })
-                        .catch((error) => {
-                            this.loading = false;
-                            console.log(error);
-                            Toast.fail(error.response.data.msg);
-                        });
+                    this.offlineChoose = number;
+                    this.infoModal = true;
                 })
                 .catch(() => {
                     // on cancel
@@ -527,60 +510,55 @@ export default {
         },
         go() {
             //   Toast('活动已结束');
-            if (!this.info) {
-                console.log('请完善信息');
-                this.infoModal = true;
-                return;
-            } else {
 
-                if (this.getAll) {
-                    //集齐了
-                    if (this.userInfo.offline) {
-                        this.showQrcode = true;
-                        const url = `https://www.sjzch.vip/zjhyCheck/${this.userInfo.id}/${this.userInfo.mobile}`;
-                        const self = this;
-                        setTimeout(() => {
-                            self.$refs.qrCodeUrl.innerHTML = "";
-                            const qrcode = new QRCode(self.$refs.qrCodeUrl, {
-                                text: url, // 需要转换为二维码的内容
-                                width: 200,
-                                height: 200,
-                                colorLight: "#DE3035",
-                                colorDark: "#FADFC0"
-                            });
+            if (this.getAll) {
+                //集齐了
 
-                            const canvas = document.getElementsByTagName("canvas")[0];
-                            const imgSrc = canvas.toDataURL("image/png");
-                            self.QRUrl = imgSrc;
-                        }, 100);
-                    } else {
-                        this.loading = true;
-                        axios({
-                            method: 'get',
-                            url: this.ports.drum.getOffline,
-                        })
-                            .then((res) => {
-                                this.loading = false;
-                                this.appointment = true;
-                                console.log(res.data);
+                if (this.userInfo.offline) {
+                    this.showQrcode = true;
+                    const url = `https://www.sjzch.vip/zjhyCheck/${this.userInfo.id}/${this.userInfo.mobile}`;
+                    const self = this;
+                    setTimeout(() => {
+                        self.$refs.qrCodeUrl.innerHTML = "";
+                        const qrcode = new QRCode(self.$refs.qrCodeUrl, {
+                            text: url, // 需要转换为二维码的内容
+                            width: 200,
+                            height: 200,
+                            colorLight: "#DE3035",
+                            colorDark: "#FADFC0"
+                        });
 
-                                this.limit = [280 - res.data[0] > 0 ? 280 - res.data[0] : 0, 200 - res.data[1] > 0 ? 200 - res.data[1] : 0, 120 - res.data[2] > 0 ? 120 - res.data[2] : 0,];
-
-                                console.log(this.limit);
-                            })
-                            .catch((error) => {
-                                this.loading = false;
-                                console.log(error);
-                                Toast.fail('网络错误');
-                            });
-                    }
-
+                        const canvas = document.getElementsByTagName("canvas")[0];
+                        const imgSrc = canvas.toDataURL("image/png");
+                        self.QRUrl = imgSrc;
+                    }, 100);
                 } else {
-                    //没集齐
-                    location.replace(location.origin + "/drum/index.html");
+                    this.loading = true;
+                    axios({
+                        method: 'get',
+                        url: this.ports.drum.getOffline,
+                    })
+                        .then((res) => {
+                            this.loading = false;
+                            this.appointment = true;
+                            console.log(res.data);
+
+                            this.limit = [280 - res.data[0] > 0 ? 280 - res.data[0] : 0, 200 - res.data[1] > 0 ? 200 - res.data[1] : 0, 120 - res.data[2] > 0 ? 120 - res.data[2] : 0,];
+
+                            console.log(this.limit);
+                        })
+                        .catch((error) => {
+                            this.loading = false;
+                            console.log(error);
+                            Toast.fail('网络错误');
+                        });
                 }
 
+            } else {
+                //没集齐
+                location.replace(location.origin + "/drum/index.html");
             }
+
         },
         getOpenId(string) {
             axios({
@@ -658,22 +636,6 @@ export default {
                         },
                         {
                             card: 5,
-                            ids: [],
-                        },
-                        {
-                            card: 6,
-                            ids: [],
-                        },
-                        {
-                            card: 7,
-                            ids: [],
-                        },
-                        {
-                            card: 8,
-                            ids: [],
-                        },
-                        {
-                            card: 9,
                             ids: [],
                         },
                     ];
