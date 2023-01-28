@@ -275,7 +275,12 @@
             </div>
         </van-popup>
 
-        <van-dialog v-model="ruleDialog" title="活动介绍" width="90%">
+        <van-dialog v-model="ruleDialog" width="90%">
+            <template slot="title">
+                <div style="font-size: 22px;padding-bottom: 10px;">
+                    活动介绍
+                </div>
+            </template>
             <div style="height: 60vh;overflow:scroll;padding:2vw 4vw;text-align: start;">
                 <div class="rule-tag">1、“好运制造局”系列活动</div>
                 <div class="rule-title">活动一：“打鼓”集“五运”</div>
@@ -321,9 +326,9 @@
                 <div class="rule-detail">④如活动预约成功，但未能在规定时间前往指定地点参与活动视为放弃。</div>
                 <div class="rule-tag">
                     4、活动时间</div>
-                <div class="rule-detail">①2023年1月29日-2月4日线上集“五运”活动；</div>
+                <div class="rule-detail">①2023年1月30日-2月4日线上集“五运”活动；</div>
                 <div class="rule-detail">②2023年2月5日20:00线上开奖周大福星月兔吊坠；</div>
-                <div class="rule-detail">③2023年1月30日-2月5日（9:00--17:00）线下翻翻墙活动（活动仅限预约成功后并在相应展示中心参与）。</div>
+                <div class="rule-detail">③2023年1月31日-2月5日（9:00--17:00）线下翻翻墙活动（活动仅限预约成功后并在相应展示中心参与）。</div>
 
             </div>
         </van-dialog>
@@ -558,7 +563,6 @@ export default {
 
             limit: [0, 0, 0],
 
-            ruleText: "1、参与规则\n①扫码或点击微信链接打开小游戏，进入活动首页，点击开启活动，进入游戏页面；\n②每人每天无限次参与机会，直至集齐“五运”。\n\n2、游戏规则\n①参与者通过双手敲击屏幕“打鼓”，点击掉落下来的图标；\n②成功敲击20次即掉落下一个锦囊，点击锦囊可开出“好运卡”。\n\n3、兑奖规则\n①集齐“五运”后可合成“好运卡”一张，并弹出线下预约框，参与者需在三大展示中心中选择一个，获得核销码；\n②完成线下活动预约，每个展示中心名额有限，约满即止，活动仅限预约客户，每个账号仅限参与一次；\n③来访还有机会参与抓娃娃活动，来访的每组客户可以领取5个游戏币，娃娃数量有限，抓完即止；\n④如活动预约成功，但未能在规定时间前往指定地点参与活动视为放弃，但不影响开奖赢取周大福星月兔吊坠。\n\n4、元宵抽大奖规则\n①集齐“五运”并合成“好运卡”后，参与者完成线下预约即跳转“等待开奖页面”；\n②奖品于元宵节准点开出；\n③集齐“好运卡”后仅预约翻翻墙活动，元宵大奖获奖名单及领取地点视官方公布为准。\n\n5、活动时间\n①2023年1月28日-2月4日线上集“五运”；\n②2023年2月5日20:00线上开奖周大福星月兔吊坠；\n③2023年1月29日-2月5日（9:00——17:00）线下“好运制造局”活动（活动仅限预约成功后并在相应展示中心参与）。",
             ruleDialog: false,
         };
     },
@@ -575,15 +579,6 @@ export default {
         },
 
         rule() {
-            // Dialog.alert({
-            //     title: '活动规则',
-            //     message: this.ruleText,
-            //     messageAlign: "left",
-            //     confirmButtonText: '我知道了',
-            // }).then(() => {
-            //     // on close
-            // });
-
             this.ruleDialog = true;
         },
 
