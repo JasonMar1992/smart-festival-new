@@ -6,61 +6,81 @@
             </div>
         </van-overlay>
 
+        <audio id="bgmAudio" :src="bgm" loop></audio>
+
         <van-image width="100%" :src="picUrl" style="position: absolute;left: 0" />
 
-        <div @click="rule"
-            style="z-index: 1;right: 8vw;top: 28vw;position: absolute;color: #F7E6C3;font-size: 13px;border: #F7E6C3 1px solid;line-height: 24px;border-radius: 12px;padding: 0 8px;">
-            规则
+        <div @click="pauseMusic" style="z-index: 1;right: 8vw;top: 26vw;position: absolute;">
+            <van-image style="border: #F7E6C3 1px solid;border-radius: 20px;padding: 4px" width="5vw" height="5vw"
+                :src="musicPlay ? playImg : stopImg" />
         </div>
 
-        <van-image width="30%" :src="logo" style="left: 20px;top: 20px;position: absolute;" />
 
-        <div style="padding-top: 20vw">
-            <van-image width="90%" :src="title" />
+        <van-image width="16vw" class="updown1" :src="cloud" style="position: absolute;left: 4vw;top:70vw" />
+        <van-image width="22vw" class="updown2" :src="cloud" style="position: absolute;right: 1vw;top:62vw" />
+
+        <div style="padding-top: 68vw">
         </div>
 
-        <div v-if="!loading">
-            <div style="padding-top: 50vw;" @click="go">
-                <van-image width="60%" height="80px" :src="button" style="position: absolute;left: 20%" />
-                <div
-                    style="position: absolute;left: 20%;width: 60%;text-align: center;padding-top: 10px;color: #A52216;font-size: 24px;font-weight: 300;">
-                    {{ getAll?(userInfo.offline ? "预约成功" : "预约领奖"): "开始游戏" }}
-                </div>
-                <div
-                    style="position: absolute;left: 20%;width: 60%;text-align: center;padding-top: 40px;color: #A52216;font-size: 14px;font-weight: 300;">
-                    {{ getAll?(userInfo.offline ? "查看我的预约码" : "仅限600个名额"): "新年集五运" }}
-                </div>
-            </div>
+        <div style="position: absolute">
+            <van-row style="padding-top: 50vw;width: 100%;">
+                <van-col span="5" style="padding-top: 2vw">
+                    <div v-if="getAll" @click="goGame">
+                        <van-image width="60%" :src="gameImg" class="roll" />
+                        <div style="color:#F7E6C3;font-size: 10px;line-height: 20px;font-weight: 500;">继续游戏</div>
+                    </div>
+                </van-col>
+                <van-col span="14">
+                    <div :class="getAll && userInfo.offline ? '' : 'buttonStyle'" @click="go" :style="{
+                        'width': '100%',
+                        padding: '2vw 0',
+                        'background-image': 'url(' + button + ')',
+                        'background-repeat': 'no-repeat',
+                        'background-size': '100% 100%',
+                        '-moz-background-size': '100% 100%',
+                    }">
+                        <div
+                            style="width: 100%;text-align: center;color: #A52216;font-size: 24px;line-height: 30px;font-weight: 300;">
+                            {{ getAll?(userInfo.offline ? "预约成功" : "预约领奖"): "开始游戏" }}
+                        </div>
+                        <div
+                            style="width: 100%;text-align: center;color: #A52216;font-size: 14px;line-height: 20px;padding-bottom: 2vw;font-weight: 300;">
+                            {{ getAll?(userInfo.offline ? "查看我的预约码" : "仅限600个名额"): "新年集五运" }}
+                        </div>
+                    </div>
+                </van-col>
+                <van-col span="5" style="padding-top: 1.5vw" @click="rule">
+                    <van-image width="50%" :src="ruleImg" class="roll" />
+                    <div style="color:#F7E6C3;font-size: 10px;line-height: 20px;font-weight: 500;">规则锦囊</div>
+                </van-col>
+
+            </van-row>
 
             <!-- <div v-if="info"> -->
 
-            <div v-if="!userInfo.subscribe">
-                <div style="padding-top: 24vw;padding-left: 5vw;padding-right: 5vw;display: flex;flex-direction: row;">
-                    <div v-for="(item, i) in cardList" :key="i">
-                        <div style="padding:0 1vw">
-                            <div style="position: absolute;width: 14vw;padding-top: 1vw;z-index: 100;">
-                                <div
-                                    style="border-radius:42%;color:#A52216;background:#F8DEBA;float: right;padding: 0 3px;font-size: 13px;min-width:10px">
-                                    {{ has[i].ids.length > 10 ? "···" : has[i].ids.length }}
-                                </div>
+            <!-- <div v-if="!userInfo.subscribe"> -->
+            <div style="padding-top: 4vw;padding-left: 5vw;padding-right: 5vw;display: flex;flex-direction: row;">
+                <div v-for="(item, i) in cardList" :key="i">
+                    <div style="padding:0 1vw">
+                        <div style="position: absolute;width: 14vw;padding-top: 1vw;z-index: 100;">
+                            <div
+                                style="border-radius:42%;color:#A52216;background:#F8DEBA;float: right;padding: 0 3px;font-size: 13px;min-width:10px">
+                                {{ has[i].ids.length > 99 ? "99+" : has[i].ids.length }}
                             </div>
-                            <div style="width: 100%;">
-                                <van-image width="16vw" :src="item.picMini" />
-                                <div
-                                    style="font-size: 12px;color: #F8DEBA;position: absolute;width: 16vw;text-align: center;">
-                                    {{ item.name }}
-                                </div>
+                        </div>
+                        <div style="width: 100%;">
+                            <van-image width="16vw" :src="item.picMini" />
+                            <div
+                                style="font-size: 12px;color: #F8DEBA;position: absolute;width: 16vw;text-align: center;">
+                                {{ item.name }}
                             </div>
-                            <!-- <div v-else style="width: 100%">
-                      <van-image width="16vw" :src="item.picMiniShadow" />
-                      <div style="font-size: 12px;">{{ item.name }}</div>
-                  </div> -->
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- </div> -->
 
-            <div style="padding-top: 10vw;" v-if="getAll && !userInfo.subscribe">
+            <div style="padding-top: 6vw;" v-if="getAll && !userInfo.subscribe">
                 <div class="buttonStyle">
 
                     <wx-open-subscribe id="subscribe-btn" template="Yf6vs0zVvXQtlPPHRdBLW-2BC69aP9deMgv8-OgXa-I">
@@ -97,10 +117,10 @@
             <!-- </div> -->
 
             <div v-if="getAll && userInfo.subscribe">
-                <div style="padding-top: 16vw">
-                    <van-image width="56%" :src="redbag" style="position: absolute;left: 22%" />
+                <div style="padding-top: 1vw">
+                    <van-image width="44%" :src="redbag" style="position: absolute;left: 28%" />
                     <div
-                        style="position: absolute;left: 20%;width: 60%;text-align: center;padding-top: 49vw;color: white;font-size: 12px;font-weight: 300;">
+                        style="position: absolute;left: 20%;width: 60%;text-align: center;padding-top: 38vw;color: white;font-size: 10px;font-weight: 300;">
                         2023年2月5日12:00<br />准时开奖
                     </div>
                 </div>
@@ -255,9 +275,80 @@
             </div>
         </van-popup>
 
+        <van-dialog v-model="ruleDialog" title="活动介绍" width="90%">
+            <div style="height: 60vh;overflow:scroll;padding:2vw 4vw;text-align: start;">
+                <div class="rule-tag">1、“好运制造局”系列活动</div>
+                <div class="rule-title">活动一：“打鼓”集“五运”</div>
+                <div class="rule-detail">
+                    ①双手敲击屏幕“打鼓”，点击掉落下来的图标，成功点击20次即掉落下一个锦囊，点击即可开出“好运卡”；</div>
+                <div class="rule-detail">
+                    ②每人每天无限次参与机会，直至集齐“五运”，积攒“好运卡”越多，元宵大奖获奖几率越大；</div>
+                <div class="rule-detail">
+                    ③集齐“好运卡”后可预约展示中心的翻翻墙抽盲盒活动。</div>
+                <div class="rule-title">活动二：盲盒好礼</div>
+                <div class="rule-detail">
+                    ①展示中心翻翻墙抽盲盒活动；</div>
+                <div class="rule-detail">
+                    ②来访即可参与线下抓娃娃活动并可获得大白兔甜蜜小礼一份；</div>
+                <div class="rule-title">活动三：元宵抽大奖</div>
+                <div class="rule-detail">①集齐“五运”并合成“好运卡”后，完成线下预约即跳转“等待开奖页面”（是否参与“好运制造局”并不影响元宵开奖）；</div>
+                <div class="rule-detail">②奖品于元宵节晚上开出；</div>
+                <div class="rule-detail">③元宵大奖获奖名单及领取地点视官方公布为准。</div>
+
+                <div class="rule-tag">2、活动礼品</div>
+                <div style="text-align: center">
+                    <div class="rule-title">周大福星月兔吊坠*10份</div>
+                    <van-image width="40%" :src="gift1" />
+                    <div class="rule-title">兔年吉祥物公仔*若干</div>
+                    <van-image width="40%" :src="gift2" />
+                    <div class="rule-title">兔子暖手抱枕*若干</div>
+                    <van-image width="40%" :src="gift3" />
+                    <div class="rule-title">兔子小夜灯*若干</div>
+                    <van-image width="40%" :src="gift4" />
+                    <div class="rule-title">吉祥物兔子摆件*若干</div>
+                    <van-image width="40%" :src="gift5" />
+                    <div class="rule-title">来访礼（大白兔甜蜜小礼）*若干</div>
+                    <van-image width="40%" :src="gift6" />
+                </div>
+                <div class="rule-tag">
+                    3、兑奖规则</div>
+                <div class="rule-detail">①集齐“五运”后可合成“好运卡”一张，并弹出线下预约框，参与者需在三大展示中心中选择一个，获得核销码；
+                </div>
+                <div class="rule-detail">②完成线下“好运制造局”活动预约，每个展示中心名额有限，约满即止，活动仅限预约客户，每个账号仅限参与一次；
+                </div>
+                <div class="rule-detail">③来访的每组客户可以领取5个游戏币参与抓娃娃活动，娃娃数量有限，抓完即止；
+                </div>
+                <div class="rule-detail">④如活动预约成功，但未能在规定时间前往指定地点参与活动视为放弃。</div>
+                <div class="rule-tag">
+                    4、活动时间</div>
+                <div class="rule-detail">①2023年1月29日-2月4日线上集“五运”活动；</div>
+                <div class="rule-detail">②2023年2月5日20:00线上开奖周大福星月兔吊坠；</div>
+                <div class="rule-detail">③2023年1月30日-2月5日（9:00--17:00）线下翻翻墙活动（活动仅限预约成功后并在相应展示中心参与）。</div>
+
+            </div>
+        </van-dialog>
     </div>
 </template>
 <style>
+.rule-tag {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.rule-title {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+}
+
+.rule-detail {
+    font-size: 13px;
+    line-height: 20px;
+    color: gray;
+}
+
+
 .buttonStyle {
     -webkit-animation-name: scaleDraw;
     /*关键帧名称*/
@@ -289,6 +380,59 @@
         transform: scale(0.9);
     }
 }
+
+.roll {
+    animation: zy 2.5s .15s linear infinite;
+    animation: zy 2.5s .15s linear infinite;
+    animation: zy 2.5s .15s linear infinite;
+    animation: zy 2.5s .15s linear infinite;
+}
+
+@keyframes zy {
+    10% {
+        transform: rotate(15deg);
+    }
+
+    20% {
+        transform: rotate(-10deg);
+    }
+
+    30% {
+        transform: rotate(5deg);
+    }
+
+    40% {
+        transform: rotate(-5deg);
+    }
+
+    50%,
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.updown1 {
+    animation: bounce-down 4s linear infinite;
+}
+
+.updown2 {
+    animation: bounce-down 3s linear infinite;
+}
+
+@keyframes bounce-down {
+    25% {
+        -webkit-transform: translateY(-6px);
+    }
+
+    50%,
+    100% {
+        -webkit-transform: translateY(0);
+    }
+
+    75% {
+        -webkit-transform: translateY(6px);
+    }
+}
 </style>
 <script>
 import { Toast, Notify, Dialog } from 'vant';
@@ -297,20 +441,26 @@ import axios from 'axios';
 import wx from 'weixin-js-sdk';
 import picUrl from '../../assets/drum/bg.jpg';
 import button from '../../assets/drum/btn1.png';
-import logo from '../../assets/drum/pic0.png';
-import title from '../../assets/drum/pic1.png';
+import cloud from '../../assets/drum/cloud.png';
+import ruleImg from '../../assets/drum/rule.png';
+import gameImg from '../../assets/drum/game.png';
 import redbag from '../../assets/drum/redbag.png';
+import playImg from '../../assets/drum/play.png';
+import stopImg from '../../assets/drum/stop.png';
+import bgm from '../../assets/drum/eee.mp3';
+
+import gift1 from '../../assets/drum/gift1.jpg';
+import gift2 from '../../assets/drum/gift2.jpg';
+import gift3 from '../../assets/drum/gift3.jpg';
+import gift4 from '../../assets/drum/gift4.jpg';
+import gift5 from '../../assets/drum/gift5.jpg';
+import gift6 from '../../assets/drum/gift6.jpg';
 
 import prize1 from '../../assets/drum/prize1.png';
-import prize1Shadow from '../../assets/drum/prize1_shadow.png';
 import prize2 from '../../assets/drum/prize2.png';
-import prize2Shadow from '../../assets/drum/prize2_shadow.png';
 import prize3 from '../../assets/drum/prize3.png';
-import prize3Shadow from '../../assets/drum/prize3_shadow.png';
 import prize4 from '../../assets/drum/prize4.png';
-import prize4Shadow from '../../assets/drum/prize4_shadow.png';
 import prize5 from '../../assets/drum/prize5.png';
-import prize5Shadow from '../../assets/drum/prize5_shadow.png';
 
 // import Vconsole from 'vconsole';
 // new Vconsole();
@@ -321,9 +471,22 @@ export default {
         return {
             picUrl,
             button,
-            title,
-            logo,
+            ruleImg,
+            gameImg,
             redbag,
+            cloud,
+            bgm,
+            playImg,
+            stopImg,
+            gift1,
+            gift2,
+            gift3,
+            gift4,
+            gift5,
+            gift6,
+
+            audioMusic: null,
+            musicPlay: false,
 
             pattern: /^[1][3,4,5,6,7,8,9][0-9]{9}$/,
 
@@ -334,27 +497,22 @@ export default {
                 {
                     name: '鸿运',
                     picMini: prize1,
-                    picMiniShadow: prize1Shadow,
                 },
                 {
                     name: '福运',
                     picMini: prize2,
-                    picMiniShadow: prize2Shadow,
                 },
                 {
                     name: '财运',
                     picMini: prize3,
-                    picMiniShadow: prize3Shadow,
                 },
                 {
                     name: '禄运',
                     picMini: prize4,
-                    picMiniShadow: prize4Shadow,
                 },
                 {
                     name: '气运',
                     picMini: prize5,
-                    picMiniShadow: prize5Shadow,
                 },
             ],
 
@@ -401,19 +559,32 @@ export default {
             limit: [0, 0, 0],
 
             ruleText: "1、参与规则\n①扫码或点击微信链接打开小游戏，进入活动首页，点击开启活动，进入游戏页面；\n②每人每天无限次参与机会，直至集齐“五运”。\n\n2、游戏规则\n①参与者通过双手敲击屏幕“打鼓”，点击掉落下来的图标；\n②成功敲击20次即掉落下一个锦囊，点击锦囊可开出“好运卡”。\n\n3、兑奖规则\n①集齐“五运”后可合成“好运卡”一张，并弹出线下预约框，参与者需在三大展示中心中选择一个，获得核销码；\n②完成线下活动预约，每个展示中心名额有限，约满即止，活动仅限预约客户，每个账号仅限参与一次；\n③来访还有机会参与抓娃娃活动，来访的每组客户可以领取5个游戏币，娃娃数量有限，抓完即止；\n④如活动预约成功，但未能在规定时间前往指定地点参与活动视为放弃，但不影响开奖赢取周大福星月兔吊坠。\n\n4、元宵抽大奖规则\n①集齐“五运”并合成“好运卡”后，参与者完成线下预约即跳转“等待开奖页面”；\n②奖品于元宵节准点开出；\n③集齐“好运卡”后仅预约翻翻墙活动，元宵大奖获奖名单及领取地点视官方公布为准。\n\n5、活动时间\n①2023年1月28日-2月4日线上集“五运”；\n②2023年2月5日20:00线上开奖周大福星月兔吊坠；\n③2023年1月29日-2月5日（9:00——17:00）线下“好运制造局”活动（活动仅限预约成功后并在相应展示中心参与）。",
+            ruleDialog: false,
         };
     },
     methods: {
 
+        pauseMusic() {
+            if (this.musicPlay) {
+                document.getElementById('bgmAudio').pause();
+                this.musicPlay = false;
+            } else {
+                document.getElementById('bgmAudio').play();
+                this.musicPlay = true;
+            }
+        },
+
         rule() {
-            Dialog.alert({
-                title: '活动规则',
-                message: this.ruleText,
-                messageAlign: "left",
-                confirmButtonText: '我知道了',
-            }).then(() => {
-                // on close
-            });
+            // Dialog.alert({
+            //     title: '活动规则',
+            //     message: this.ruleText,
+            //     messageAlign: "left",
+            //     confirmButtonText: '我知道了',
+            // }).then(() => {
+            //     // on close
+            // });
+
+            this.ruleDialog = true;
         },
 
         onBeforeInfoClose(action, done) {
@@ -556,9 +727,12 @@ export default {
 
             } else {
                 //没集齐
-                location.replace(location.origin + "/drum/index.html");
+                this.goGame();
             }
 
+        },
+        goGame() {
+            location.replace(location.origin + "/drum/index.html");
         },
         getOpenId(string) {
             axios({
@@ -700,6 +874,10 @@ export default {
                     });
 
                     wx.ready(() => {
+
+                        document.getElementById('bgmAudio').play();
+                        this.musicPlay = true;
+
                         const url = 'https://www.sjzch.vip/zjhy';
 
                         wx.updateAppMessageShareData({
@@ -805,6 +983,7 @@ export default {
             console.log("当前不在微信浏览器中");
             window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${process.env.VUE_APP_APPID}&redirect_uri=${process.env.VUE_APP_DRUM_URL}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect`;
         };
+
     },
 };
 </script>
