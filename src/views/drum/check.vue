@@ -8,10 +8,10 @@
 
         <van-image width="100%" :src="picUrl" style="position: absolute;left: 0" />
 
-        <van-image width="30%" :src="logo" style="left: 20px;top: 20px;position: absolute;" />
+        <!-- <van-image width="30%" :src="logo" style="left: 20px;top: 20px;position: absolute;" /> -->
 
-        <div style="padding-top: 20vw">
-            <van-image width="90%" :src="title" />
+        <div style="padding-top: 80vw">
+            <!-- <van-image width="90%" :src="title" /> -->
         </div>
 
         <div v-if="!loading">

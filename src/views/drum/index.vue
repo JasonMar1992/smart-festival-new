@@ -876,8 +876,8 @@ export default {
                         const url = 'https://www.sjzch.vip/zjhy';
 
                         wx.updateAppMessageShareData({
-                            title: '“梓静华映·好运新年”击鼓集好运', // 分享标题
-                            desc: '快来跟我一起收集“运”吧~', // 分享描述
+                            title: '好运【兔】袭，击鼓集好运', // 分享标题
+                            desc: '2023向新而行，快来赢取新春好礼', // 分享描述
                             link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: 'https://www.sjzch.vip/img/sharepic_zjhy.png', // 分享图标
                             success() {
@@ -887,7 +887,7 @@ export default {
                         });
                         // 需在用户可能点击分享按钮前就先调用
                         wx.updateTimelineShareData({
-                            title: '“梓静华映·好运新年”击鼓集好运', // 分享标题
+                            title: '好运【兔】袭，击鼓集好运', // 分享标题
                             link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: 'https://www.sjzch.vip/img/sharepic_zjhy.png', // 分享图标
                             success() {
