@@ -22,7 +22,7 @@
         <div style="padding-top: 68vw">
         </div>
 
-        <div style="position: absolute">
+        <div v-if="!loading" style="position: absolute">
             <van-row style="padding-top: 50vw;width: 100%;">
                 <van-col span="5" style="padding-top: 2vw">
                     <div v-if="getAll" @click="goGame">
@@ -118,9 +118,10 @@
 
             <div v-if="getAll && userInfo.subscribe">
                 <div style="padding-top: 1vw">
-                    <van-image width="44%" :src="redbag" style="position: absolute;left: 28%" />
-                    <div
-                        style="position: absolute;left: 20%;width: 60%;text-align: center;padding-top: 38vw;color: white;font-size: 10px;font-weight: 300;">
+                    <van-image width="44%" :src="redbag" style="position: absolute;left: 28%;z-index: 1;"
+                        @click="openBag" />
+                    <div @click="openBag"
+                        style="z-index: 2;position: absolute;left: 28%;width: 44%;text-align: center;padding-top: 38vw;color: white;font-size: 10px;font-weight: 300;">
                         2023年2月5日12:00<br />准时开奖
                     </div>
                 </div>
@@ -297,7 +298,7 @@
                     ②来访即可参与线下抓娃娃活动并可获得大白兔甜蜜小礼一份；</div>
                 <div class="rule-title">活动三：元宵抽大奖</div>
                 <div class="rule-detail">①集齐“五运”并合成“好运卡”后，完成线下预约即跳转“等待开奖页面”（是否参与“好运制造局”并不影响元宵开奖）；</div>
-                <div class="rule-detail">②奖品于元宵节晚上开出；</div>
+                <div class="rule-detail">②奖品于元宵节开出；</div>
                 <div class="rule-detail">③元宵大奖获奖名单及领取地点视官方公布为准。</div>
 
                 <div class="rule-tag">2、活动礼品</div>
@@ -327,7 +328,7 @@
                 <div class="rule-tag">
                     4、活动时间</div>
                 <div class="rule-detail">①2023年1月30日-2月4日线上集“五运”活动；</div>
-                <div class="rule-detail">②2023年2月5日20:00线上开奖周大福星月兔吊坠；</div>
+                <div class="rule-detail">②2023年2月5日12:00线上开奖周大福星月兔吊坠；</div>
                 <div class="rule-detail">③2023年1月31日-2月5日（9:00--17:00）线下翻翻墙活动（活动仅限预约成功后并在相应展示中心参与）。</div>
 
             </div>
@@ -564,9 +565,34 @@ export default {
             limit: [0, 0, 0],
 
             ruleDialog: false,
+
+            rewards: [
+                "oU6oU55XQMHJoIvRp1wtYii7CdQE",
+                "oU6oU55uKKuDDJiUmUpIZ1NnlBeA",
+                "oU6oU5wzZZJLfTY6ho5L2hb4nIfY",
+                "oU6oU55v3NKjYSi1ewWxj3_TgfkA",
+                "oU6oU54qI8TYAW9KwoT9bXu-i-nE",
+                "oU6oU58dDY7keJwFfHrhW_oJE0iE",
+            ]
         };
     },
     methods: {
+        openBag() {
+            if (new Date().getTime() > 1675569599000) {
+                if (this.rewards.indexOf(window.localStorage.getItem('drum_openid')) > -1) {
+                    Dialog.alert({
+                        title: '恭喜您中奖啦！',
+                        message: `${this.userInfo.realname}，请于2月19日17:00前，前往海昌南路650号静悦府展示中心，领取周大福星月兔吊坠一个。`,
+                    }).then(() => {
+                        // on close
+                    });
+                } else {
+                    Toast('很遗憾，您未中奖');
+                }
+            } else {
+                Toast('时间未到');
+            }
+        },
 
         pauseMusic() {
             if (this.musicPlay) {
@@ -727,7 +753,8 @@ export default {
 
         },
         goGame() {
-            location.replace(location.origin + "/drum/index.html");
+            // location.replace(location.origin + "/drum/index.html");
+            Toast('游戏时间已截止');
         },
         getOpenId(string) {
             axios({
@@ -819,6 +846,49 @@ export default {
 
                     this.checkCards();
                     this.loading = false;
+
+                    if (this.getAll && !this.userInfo.subscribe) {
+                        var btn = document.getElementById('subscribe-btn');
+                        btn.addEventListener('success', function (e) {
+                            console.log('success', e.detail);
+                            let flag = false
+                            let data = JSON.parse(e.detail.subscribeDetails)
+                            for (let a in data) {
+                                let status = JSON.parse(data[a]).status
+                                if (status == 'accept') {
+                                    flag = true
+                                }
+                            }
+                            if (flag) {
+                                console.log('用户点击确定');
+
+                                self.loading = true;
+                                axios({
+                                    method: 'post',
+                                    url: self.ports.drum.subscribe,
+                                    data: {
+                                        openid: window.localStorage.getItem('drum_openid'),
+                                    },
+                                })
+                                    .then((res) => {
+                                        self.loading = false;
+                                        Toast.success(res.data.msg);
+                                        self.userInfo.subscribe = 1;
+                                    })
+                                    .catch((error) => {
+                                        self.loading = false;
+                                        console.log(error);
+                                        Toast.fail(error.response.data.msg);
+                                    });
+
+                            } else {
+                                Toast('请订阅后开启');
+                            }
+                        });
+                        btn.addEventListener('error', function (e) {
+                            console.log('fail', e.detail);
+                        });
+                    }
                 })
                 .catch((error) => {
                     console.log(error);
@@ -876,7 +946,7 @@ export default {
                         const url = 'https://www.sjzch.vip/zjhy';
 
                         wx.updateAppMessageShareData({
-                            title: '好运【兔】袭，击鼓集好运', // 分享标题
+                            title: '瑞兔送福！击鼓集好运', // 分享标题
                             desc: '2023向新而行，快来赢取新春好礼', // 分享描述
                             link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: 'https://www.sjzch.vip/img/sharepic_zjhy.png', // 分享图标
@@ -887,7 +957,7 @@ export default {
                         });
                         // 需在用户可能点击分享按钮前就先调用
                         wx.updateTimelineShareData({
-                            title: '好运【兔】袭，击鼓集好运', // 分享标题
+                            title: '瑞兔送福！击鼓集好运', // 分享标题
                             link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: 'https://www.sjzch.vip/img/sharepic_zjhy.png', // 分享图标
                             success() {
@@ -896,47 +966,6 @@ export default {
                             },
                         });
 
-
-                        var btn = document.getElementById('subscribe-btn');
-                        btn.addEventListener('success', function (e) {
-                            console.log('success', e.detail);
-                            let flag = false
-                            let data = JSON.parse(e.detail.subscribeDetails)
-                            for (let a in data) {
-                                let status = JSON.parse(data[a]).status
-                                if (status == 'accept') {
-                                    flag = true
-                                }
-                            }
-                            if (flag) {
-                                console.log('用户点击确定');
-
-                                self.loading = true;
-                                axios({
-                                    method: 'post',
-                                    url: self.ports.drum.subscribe,
-                                    data: {
-                                        openid: window.localStorage.getItem('drum_openid'),
-                                    },
-                                })
-                                    .then((res) => {
-                                        self.loading = false;
-                                        Toast.success(res.data.msg);
-                                        self.userInfo.subscribe = 1;
-                                    })
-                                    .catch((error) => {
-                                        self.loading = false;
-                                        console.log(error);
-                                        Toast.fail(error.response.data.msg);
-                                    });
-
-                            } else {
-                                Toast('请订阅后开启');
-                            }
-                        });
-                        btn.addEventListener('error', function (e) {
-                            console.log('fail', e.detail);
-                        });
                     });
                 })
                 .catch((error) => {
