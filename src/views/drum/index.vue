@@ -22,7 +22,7 @@
         <div style="padding-top: 68vw">
         </div>
 
-        <div v-if="!loading" style="position: absolute">
+        <div style="position: absolute">
             <van-row style="padding-top: 50vw;width: 100%;">
                 <van-col span="5" style="padding-top: 2vw">
                     <div v-if="getAll" @click="goGame">
@@ -848,46 +848,6 @@ export default {
                     this.loading = false;
 
                     if (this.getAll && !this.userInfo.subscribe) {
-                        var btn = document.getElementById('subscribe-btn');
-                        btn.addEventListener('success', function (e) {
-                            console.log('success', e.detail);
-                            let flag = false
-                            let data = JSON.parse(e.detail.subscribeDetails)
-                            for (let a in data) {
-                                let status = JSON.parse(data[a]).status
-                                if (status == 'accept') {
-                                    flag = true
-                                }
-                            }
-                            if (flag) {
-                                console.log('用户点击确定');
-
-                                self.loading = true;
-                                axios({
-                                    method: 'post',
-                                    url: self.ports.drum.subscribe,
-                                    data: {
-                                        openid: window.localStorage.getItem('drum_openid'),
-                                    },
-                                })
-                                    .then((res) => {
-                                        self.loading = false;
-                                        Toast.success(res.data.msg);
-                                        self.userInfo.subscribe = 1;
-                                    })
-                                    .catch((error) => {
-                                        self.loading = false;
-                                        console.log(error);
-                                        Toast.fail(error.response.data.msg);
-                                    });
-
-                            } else {
-                                Toast('请订阅后开启');
-                            }
-                        });
-                        btn.addEventListener('error', function (e) {
-                            console.log('fail', e.detail);
-                        });
                     }
                 })
                 .catch((error) => {
