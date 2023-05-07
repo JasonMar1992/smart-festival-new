@@ -19,6 +19,58 @@
         <div style="position: absolute;bottom: 10px;right: 30px;width: 20vw;">
             <van-image width="100%" :src="rule" @click="showRule" />
         </div>
+
+
+        <van-dialog v-model="ruleDialog" width="90%">
+            <template slot="title">
+                <div style="font-size: 22px;padding-bottom: 10px;">
+                    游戏介绍
+                </div>
+            </template>
+            <div style="height: 60vh;overflow:scroll;padding:2vw 4vw;text-align: start;">
+                <div class="rule-tag">1、“捕虾达人”游戏规则</div>
+                <div class="rule-title">玩法介绍</div>
+                <div class="rule-detail">
+                    ①手指点击屏幕中海洋区域内任意位置，炮筒即可向该位置方向发射炮弹
+                </div>
+                <div class="rule-detail">
+                    ②每次游戏开始拥有50发炮弹，打完则游戏结束
+                </div>
+                <div class="rule-detail">
+                    ③炮弹击中目标并成功捕捉，可累计相应分值
+                </div>
+                <div class="rule-detail">
+                    ④游戏结束后，分数超过800方可参与抽奖
+                </div>
+                <div class="rule-title">分值介绍</div>
+                <div class="rule-detail">
+                    <div class="rule-detail">
+                        ①蓝色小鱼。分值：10分；捕捉：击中1次
+                    </div>
+                    <div class="rule-detail">
+                        ②红色小鱼。分值：10分；捕捉：击中1次
+                    </div>
+                    <div class="rule-detail">
+                        ③小龙虾。分值：40分；捕捉：击中1次
+                    </div>
+                    <div class="rule-detail">
+                        ④大龙虾。分值：80分；捕捉：击中2次
+                    </div>
+
+                    <div class="rule-tag">2、活动礼品</div>
+                    <div>
+                        <div class="rule-title">龙虾提货券（5斤）</div>
+                        <div class="rule-title">大米提货券（10斤）</div>
+                        <div class="rule-title">龙虾垂钓券（20元）</div>
+                        <div class="rule-title">野饭券（50元）</div>
+                        <div class="rule-title">集市消费券（5元、10元、20元）</div>
+                    </div>
+                    <div class="rule-tag">
+                        3、活动时间</div>
+                    <div class="rule-detail">2023年5月9日</div>
+                </div>
+            </div>
+        </van-dialog>
     </div>
 </template>
 <script>
@@ -33,15 +85,26 @@ export default {
             picUrl,
             button,
             rule,
-            title
+            title,
+
+            ruleDialog: false,
         };
     },
     methods: {
         go() {
-            window.location.href = "https://www.sjzch.vip/fish";
+
+            let old = localStorage.getItem("fishGamePlayed");
+
+            if (old) {
+                window.location.href = "https://www.sjzch.vip/fish";
+            } else {
+                localStorage.setItem("fishGamePlayed", "true");
+                this.showRule();
+            }
+
         },
         showRule() {
-
+            this.ruleDialog = true;
         }
     }
 
@@ -78,5 +141,23 @@ export default {
     75% {
         transform: scale(0.9);
     }
+}
+
+.rule-tag {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.rule-title {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+}
+
+.rule-detail {
+    font-size: 13px;
+    line-height: 20px;
+    color: gray;
 }
 </style>
