@@ -30,6 +30,9 @@
                 <div class="rule-detail" style="text-align: center;color:black">暨海宁市黄湾镇稻虾旅游节</div>
             </template>
             <div style="height: 60vh;overflow:scroll;padding:2vw 4vw;text-align: start;">
+                <div class="rule-title" style="text-align: center;color:black;font-size: 16px;font-weight: bold;">
+                    “捕虾达人”游戏介绍
+                </div>
                 <div class="rule-tag">1、游戏规则</div>
                 <div class="rule-title">玩法介绍</div>
                 <div class="rule-detail">
@@ -76,15 +79,15 @@
                     4、组织机构
                 </div>
                 <!-- <div style="text-align: center;"> -->
-                    <div class="rule-title">主办单位</div>
-                    <div class="rule-detail">嘉兴市农业农村局 </div>
-                    <div class="rule-title">承办单位</div>
-                    <div class="rule-detail">海宁市农业农村局</div>
-                    <div class="rule-detail">海宁市文化和广电旅游体育局</div>
-                    <div class="rule-detail">海宁市黄湾镇人民政府</div>
-                    <div class="rule-title">协办单位</div>
-                    <div class="rule-detail">黄山村、五丰村、大临村</div>
-                    <div class="rule-detail">潮禾科技农业开发有限公司</div>
+                <div class="rule-title">主办单位</div>
+                <div class="rule-detail">嘉兴市农业农村局 </div>
+                <div class="rule-title">承办单位</div>
+                <div class="rule-detail">海宁市农业农村局</div>
+                <div class="rule-detail">海宁市文化和广电旅游体育局</div>
+                <div class="rule-detail">海宁市黄湾镇人民政府</div>
+                <div class="rule-title">协办单位</div>
+                <div class="rule-detail">黄山村、五丰村、大临村</div>
+                <div class="rule-detail">潮禾科技农业开发有限公司</div>
                 <!-- </div> -->
             </div>
         </van-dialog>
