@@ -24,11 +24,13 @@
         <van-dialog v-model="ruleDialog" width="90%">
             <template slot="title">
                 <div style="font-size: 22px;padding-bottom: 10px;">
-                    游戏介绍
+                    “虾”路相逢 “香”约黄湾
                 </div>
+                <div class="rule-detail" style="text-align: center;color:black">2023嘉兴市第五届龙虾王争霸赛</div>
+                <div class="rule-detail" style="text-align: center;color:black">暨海宁市黄湾镇稻虾旅游节</div>
             </template>
             <div style="height: 60vh;overflow:scroll;padding:2vw 4vw;text-align: start;">
-                <div class="rule-tag">1、“捕虾达人”游戏规则</div>
+                <div class="rule-tag">1、游戏规则</div>
                 <div class="rule-title">玩法介绍</div>
                 <div class="rule-detail">
                     ①手指点击屏幕中海洋区域内任意位置，炮筒即可向该位置方向发射炮弹
@@ -67,8 +69,23 @@
                     <div class="rule-detail">集市消费券（5元、10元、20元）</div>
                 </div>
                 <div class="rule-tag">
-                    3、活动时间</div>
+                    3、活动时间
+                </div>
                 <div class="rule-detail">2023年5月9日-5月13日</div>
+                <div class="rule-tag">
+                    4、组织机构
+                </div>
+                <!-- <div style="text-align: center;"> -->
+                    <div class="rule-title">主办单位</div>
+                    <div class="rule-detail">嘉兴市农业农村局 </div>
+                    <div class="rule-title">承办单位</div>
+                    <div class="rule-detail">海宁市农业农村局</div>
+                    <div class="rule-detail">海宁市文化和广电旅游体育局</div>
+                    <div class="rule-detail">海宁市黄湾镇人民政府</div>
+                    <div class="rule-title">协办单位</div>
+                    <div class="rule-detail">黄山村、五丰村、大临村</div>
+                    <div class="rule-detail">潮禾科技农业开发有限公司</div>
+                <!-- </div> -->
             </div>
         </van-dialog>
     </div>
