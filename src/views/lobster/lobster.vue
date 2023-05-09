@@ -60,11 +60,11 @@
 
                 <div class="rule-tag">2、活动礼品</div>
                 <div>
-                    <div class="rule-title">龙虾提货券（5斤）</div>
-                    <div class="rule-title">大米提货券（10斤）</div>
-                    <div class="rule-title">龙虾垂钓券（20元）</div>
-                    <div class="rule-title">野饭券（50元）</div>
-                    <div class="rule-title">集市消费券（5元、10元、20元）</div>
+                    <div class="rule-detail">龙虾提货券（5斤）</div>
+                    <div class="rule-detail">大米提货券（10斤）</div>
+                    <div class="rule-detail">龙虾垂钓券（20元）</div>
+                    <div class="rule-detail">野饭券（50元）</div>
+                    <div class="rule-detail">集市消费券（5元、10元、20元）</div>
                 </div>
                 <div class="rule-tag">
                     3、活动时间</div>
