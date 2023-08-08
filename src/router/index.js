@@ -307,6 +307,25 @@ const routes = [
     },
     component: () => import("../views/lobster/lobster.vue"),
   },
+  // 循迹溯源学思想促践行
+  {
+    path: "/sourceRoad",
+    name: "sourceRoad",
+    meta: {
+      title: "循迹溯源·学思想促践行",
+      requiresAuth: false,
+    },
+    component: () => import("../views/sourceRoad/index.vue"),
+  },
+  {
+    path: "/sourceDetail/:id",
+    name: "sourceDetail",
+    meta: {
+      title: "循迹溯源·学思想促践行",
+      requiresAuth: false,
+    },
+    component: () => import("../views/sourceRoad/detail.vue"),
+  },
   // 测试页面
   {
     path: "/test",
