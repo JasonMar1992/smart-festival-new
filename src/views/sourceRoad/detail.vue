@@ -10,31 +10,21 @@
         }">
             <div style="overflow: scroll;height: 100%;">
                 <div style="padding: 30px 12px;">
-                    <div style="
-            font-size: 20px;
-            text-align: center;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: black;
-          ">
+                    <div style="font-size: 20px;text-align: center;font-weight: 600;margin-bottom: 12px;color: black;">
                         {{ single.title }}
                     </div>
                     <div v-for="(detail, j) in single.detail" :key="j">
                         <div v-if="detail.type == 'txt'"
                             style="border-radius: 8px;padding: 0 4px;margin-bottom: 4px;background-color: rgba(255, 255, 255, 0.6);">
-                            <div style="
-                        line-height: 26px;
-                        font-weight: 500;
-                        color: #323233;
-                        " v-html="detail.value">
+                            <div style="line-height: 26px;font-weight: 500;color: #323233;" v-html="detail.value">
                             </div>
                         </div>
                         <van-image lazy-load v-else-if="detail.type == 'img'" style="width: 100%; margin-bottom: 4px;"
                             :src="require('./../../assets/sourceRoad/detail/' + detail.value)" fit="contain"
                             @click="getImg(require('./../../assets/sourceRoad/detail/' + detail.value))" />
 
-                        <van-divider v-else-if="detail.type == 'tip'" content-position="left" dashed
-                            style="border-color: #969799;color: black;font-size: 18px;font-weight: bold;">
+                        <van-divider v-else-if="detail.type == 'tip'" dashed
+                            style="border-color: #969799;color: black;font-size: 18px;font-weight: 500;">
                             {{ detail.value }}
                         </van-divider>
                     </div>
@@ -44,7 +34,7 @@
     </div>
 </template>
 <script>
-import { Toast, ImagePreview } from 'vant';
+import { ImagePreview } from 'vant';
 import picUrl from '../../assets/sourceRoad/bg2.jpg';
 export default {
     name: 'sourceDetail',

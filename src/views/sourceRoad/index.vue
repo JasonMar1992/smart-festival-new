@@ -8,44 +8,26 @@
         '-moz-background-size': '100% 100%',
     }">
 
-        <div style="position: absolute;top: 133vw;left: 26vw">
-            <van-image width="24vw" :src="yanguan1" />
+        <div>
+            <van-image class="elementMove" width="30vw" :src="leader" />
         </div>
 
-        <div style="position: absolute;top: 122vw;left: 2vw">
-            <van-image width="28vw" :src="yanguan2" />
-        </div>
-
-        <div style="position: absolute;top: 122vw;left: 50vw">
-            <van-image width="14vw" :src="yanguan3" />
-        </div>
-
-        <div style="position: absolute;top: 142vw;left: 24vw">
-            <van-image width="20vw" :src="yanguan" @click="go('yg')" />
-        </div>
-
-        <div style="position: absolute;top: 138vw;left: 1vw">
-            <van-image width="30vw" :src="leader" @click="go('yg')" />
+        <div style="position: absolute;top: 152vw;left: 2vw">
+            <van-image width="60vw" class="buttonStyle" :src="station1" @click="go('yg')" />
         </div>
     </div>
 </template>
 <script>
 import picUrl from '../../assets/sourceRoad/bg.jpg';
-import leader from '../../assets/sourceRoad/leader.gif';
-import yanguan1 from '../../assets/sourceRoad/yanguan1.png';
-import yanguan2 from '../../assets/sourceRoad/yanguan2.png';
-import yanguan3 from '../../assets/sourceRoad/yanguan3.png';
-import yanguan from '../../assets/sourceRoad/yanguan.png';
+import leader from '../../assets/sourceRoad/leader2.gif';
+import station1 from '../../assets/sourceRoad/station1.png';
 export default {
     name: 'sourceRoad',
     data() {
         return {
             picUrl,
             leader,
-            yanguan1,
-            yanguan2,
-            yanguan3,
-            yanguan,
+            station1,
         };
     },
     methods: {
@@ -60,6 +42,28 @@ export default {
 };
 </script>
 <style scoped>
+/* 指定轨迹路径 */
+@keyframes move {
+    0% {
+        transform: translate(2vw, 104vw) scale(0.5);
+    }
+
+    80% {
+        transform: translate(68vw, 110vw) scale(0.86);
+    }
+
+    100% {
+        transform: translate(72vw, 122vw) scale(0.92);
+    }
+}
+
+/* 应用轨迹动画 */
+.elementMove {
+    animation: move 8s linear;
+    animation-fill-mode: forwards;
+}
+
+
 .buttonStyle {
     -webkit-animation-name: scaleDraw;
     /*关键帧名称*/
