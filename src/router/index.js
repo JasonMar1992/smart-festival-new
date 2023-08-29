@@ -312,7 +312,7 @@ const routes = [
     path: "/sourceRoad",
     name: "sourceRoad",
     meta: {
-      title: "循迹溯源·学思想促践行",
+      title: "循迹溯源学思想",
       requiresAuth: false,
     },
     component: () => import("../views/sourceRoad/index.vue"),
@@ -321,7 +321,7 @@ const routes = [
     path: "/sourceDetail/:id",
     name: "sourceDetail",
     meta: {
-      title: "循迹溯源·学思想促践行",
+      title: "循迹溯源学思想",
       requiresAuth: false,
     },
     component: () => import("../views/sourceRoad/detail.vue"),

@@ -12,14 +12,14 @@
             <van-image class="elementMove" width="30vw" :src="leader" />
         </div>
 
-        <div style="position: absolute;top: 152vw;left: 2vw">
+        <div style="position: absolute;top: 164vw;left: 2vw">
             <van-image width="60vw" class="buttonStyle" :src="station1" @click="go('yg')" />
         </div>
     </div>
 </template>
 <script>
-import picUrl from '../../assets/sourceRoad/bg.jpg';
-import leader from '../../assets/sourceRoad/leader2.gif';
+import picUrl from '../../assets/sourceRoad/bg_new.jpg';
+import leader from '../../assets/sourceRoad/gif1.gif';
 import station1 from '../../assets/sourceRoad/station1.png';
 export default {
     name: 'sourceRoad',
@@ -45,15 +45,15 @@ export default {
 /* 指定轨迹路径 */
 @keyframes move {
     0% {
-        transform: translate(2vw, 104vw) scale(0.5);
+        transform: translate(2vw, 102vw) scale(0.5);
     }
 
     80% {
-        transform: translate(68vw, 110vw) scale(0.86);
+        transform: translate(68vw, 108vw) scale(0.86);
     }
 
     100% {
-        transform: translate(72vw, 122vw) scale(0.92);
+        transform: translate(72vw, 120vw) scale(0.92);
     }
 }
 
