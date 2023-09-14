@@ -9,16 +9,15 @@
             '-moz-background-size': '100% 100%',
         }">
             <div style="overflow: scroll;height: 100%;">
-                <div style="padding: 80px 12px 12px 12px;">
+                <div style="padding: 20px 12px 12px 12px;">
                     <div class="title">
-                        <span :style="{
+                        <div :style="{
                             'background-image': 'url(' + title + ')',
                             'background-size': '100% 100%',
                             'background-repeat': 'no-repeat',
-                            'padding': '50px 30px 20px 30px',
-                        }">
-                            {{ single.title }}
-                        </span>
+                            'padding': '60px 36px 30px 36px',
+                        }" v-html="single.title">
+                        </div>
                     </div>
                     <div v-for="(detail, j) in single.detail" :key="j">
                         <div v-if="detail.type == 'txt'"
@@ -41,7 +40,7 @@
                             </div>
                             <div
                                 style="border-radius: 8px;padding: 8px;margin-top: 12px;background-color: rgba(255, 255, 255, 0.8);">
-                                <div v-for="(item, i) in detail.children">
+                                <div v-for="(item, i) in detail.children" :key="'item' + i">
                                     <div v-if="item.type == 'txt'">
                                         <div style="line-height: 26px;font-weight: 500;color: #323233;" v-html="item.value">
                                         </div>
@@ -105,8 +104,10 @@ export default {
     font-size: 20px;
     text-align: center;
     font-weight: 600;
-    padding-bottom: 20px;
+    /* padding-bottom: 16px; */
     color: black;
+    display: flex;
+    justify-content: center;
 }
 
 .tip {
