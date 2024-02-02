@@ -89,7 +89,7 @@
                                    .subscribe-btn {
                                      border: none;
                                      background: transparent;
-                                     background-image: url('https://www.sjzch.vip/img/zjhy_btn.png');
+                                     background-image: url('https://www.hnmzs.cn/img/zjhy_btn.png');
                                      width: 180px;
                                      height: 56px;
                                      background-repeat: no-repeat;
@@ -708,7 +708,7 @@ export default {
 
                 if (this.userInfo.offline) {
                     this.showQrcode = true;
-                    const url = `https://www.sjzch.vip/zjhyCheck/${this.userInfo.id}/${this.userInfo.mobile}`;
+                    const url = `https://www.hnmzs.cn/zjhyCheck/${this.userInfo.id}/${this.userInfo.mobile}`;
                     const self = this;
                     setTimeout(() => {
                         self.$refs.qrCodeUrl.innerHTML = "";
@@ -903,13 +903,13 @@ export default {
                         document.getElementById('bgmAudio').play();
                         this.musicPlay = true;
 
-                        const url = 'https://www.sjzch.vip/zjhy';
+                        const url = 'https://www.hnmzs.cn/zjhy';
 
                         wx.updateAppMessageShareData({
                             title: '瑞兔送福！击鼓集好运', // 分享标题
                             desc: '2023向新而行，快来赢取新春好礼', // 分享描述
                             link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                            imgUrl: 'https://www.sjzch.vip/img/sharepic_zjhy.png', // 分享图标
+                            imgUrl: 'https://www.hnmzs.cn/img/sharepic_zjhy.png', // 分享图标
                             success() {
                                 // 设置成功
                                 console.log('配置验证成功');
@@ -919,7 +919,7 @@ export default {
                         wx.updateTimelineShareData({
                             title: '瑞兔送福！击鼓集好运', // 分享标题
                             link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                            imgUrl: 'https://www.sjzch.vip/img/sharepic_zjhy.png', // 分享图标
+                            imgUrl: 'https://www.hnmzs.cn/img/sharepic_zjhy.png', // 分享图标
                             success() {
                                 // 设置成功
                                 console.log('配置验证成功');

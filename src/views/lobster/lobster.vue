@@ -116,7 +116,7 @@ export default {
             let old = localStorage.getItem("fishGamePlayed");
 
             if (old) {
-                window.location.href = "https://www.sjzch.vip/fish";
+                window.location.href = "https://www.hnmzs.cn/fish";
             } else {
                 localStorage.setItem("fishGamePlayed", "true");
                 this.showRule();

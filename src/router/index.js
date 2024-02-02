@@ -297,6 +297,17 @@ const routes = [
     },
     component: () => import("../views/2023newyearcard/index.vue"),
   },
+
+  // 2024新年贺卡
+  {
+    path: "/2024card/:name",
+    name: "2024card",
+    meta: {
+      title: "海宁驻沪工作部·新年贺卡",
+      requiresAuth: false,
+    },
+    component: () => import("../views/2024newyearcard/index.vue"),
+  },
   // 龙虾节
   {
     path: "/lobster",

@@ -143,7 +143,7 @@ export default {
   methods: {
     qrcode(prize) {
       this.showQrcode = true;
-      const url = `https://www.sjzch.vip/check?shopCode=${
+      const url = `https://www.hnmzs.cn/check?shopCode=${
         prize.shop_id
       }&mobile=${window.localStorage.getItem("mobile")}`;
       const self = this;

@@ -5,7 +5,7 @@
         <div style="padding: 20px;position:absolute;">
             <div v-for="(item, i) in images[index]" :key="index + 'image' + i">
                 <van-image width="100%" lazy-load
-                    :src="`https://www.sjzch.vip/img/huangwan/folder${Number(index) + 1}/pic${i + 1}.jpg`" />
+                    :src="`https://www.hnmzs.cn/img/huangwan/folder${Number(index) + 1}/pic${i + 1}.jpg`" />
                 <div style="padding: 8px 0;color:white;font-size:small;">{{ item.desc }}</div>
             </div>
         </div>
@@ -60,7 +60,7 @@ export default {
                             title: '黄湾镇2022年工作回眸', // 分享标题
                             desc: '砥砺奋进新征程 跨越发展冲千亿', // 分享描述
                             link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                            imgUrl: 'https://www.sjzch.vip/img/sharepic_huangwan.jpg', // 分享图标
+                            imgUrl: 'https://www.hnmzs.cn/img/sharepic_huangwan.jpg', // 分享图标
                             success() {
                                 // 设置成功
                                 console.log('配置验证成功');
@@ -70,7 +70,7 @@ export default {
                         wx.updateTimelineShareData({
                             title: '黄湾镇2022年工作回眸', // 分享标题
                             link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                            imgUrl: 'https://www.sjzch.vip/img/sharepic_huangwan.jpg', // 分享图标
+                            imgUrl: 'https://www.hnmzs.cn/img/sharepic_huangwan.jpg', // 分享图标
                             success() {
                                 // 设置成功
                                 console.log('配置验证成功');

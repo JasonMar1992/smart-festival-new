@@ -147,7 +147,7 @@ export default {
           });
 
           wx.ready(() => {
-            let url = 'https://www.sjzch.vip/newyear';
+            let url = 'https://www.hnmzs.cn/newyear';
             if (window.localStorage.getItem('newyear_openid')) {
               url = `${url}?share_id=${window.localStorage.getItem(
                 'newyear_openid',
@@ -158,7 +158,7 @@ export default {
               title: '快参与｜和我一起集年俗卡', // 分享标题
               desc: '马桥街道“寻找新年味”集卡活动', // 分享描述
               link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: 'https://www.sjzch.vip/img/sharepic_newyear.png', // 分享图标
+              imgUrl: 'https://www.hnmzs.cn/img/sharepic_newyear.png', // 分享图标
               success() {
                 // 设置成功
                 console.log('配置验证成功');
@@ -168,7 +168,7 @@ export default {
             wx.updateTimelineShareData({
               title: '快参与｜和我一起集年俗卡', // 分享标题
               link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: 'https://www.sjzch.vip/img/sharepic_newyear.png', // 分享图标
+              imgUrl: 'https://www.hnmzs.cn/img/sharepic_newyear.png', // 分享图标
               success() {
                 // 设置成功
                 console.log('配置验证成功');

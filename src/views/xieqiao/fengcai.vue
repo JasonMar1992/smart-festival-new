@@ -6,11 +6,11 @@
       width="100%"
       lazy-load
       :src="
-        'https://www.sjzch.vip/xieqiaoPdfImg/ding/ding_' + (i < 10 ? '0' + i : i) + '.jpg'
+        'https://www.hnmzs.cn/xieqiaoPdfImg/ding/ding_' + (i < 10 ? '0' + i : i) + '.jpg'
       "
       @click="
         showPic([
-          'https://www.sjzch.vip/xieqiaoPdfImg/ding/ding_' + (i < 10 ? '0' + i : i) + '.jpg',
+          'https://www.hnmzs.cn/xieqiaoPdfImg/ding/ding_' + (i < 10 ? '0' + i : i) + '.jpg',
         ])
       "
     />

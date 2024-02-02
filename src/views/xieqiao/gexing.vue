@@ -6,11 +6,11 @@
       width="100%"
       lazy-load
       :src="
-        'https://www.sjzch.vip/xieqiaoPdfImg/gexing/gexing_' + (i < 11 ? '0' + (i - 1) : i - 1) + '.jpg'
+        'https://www.hnmzs.cn/xieqiaoPdfImg/gexing/gexing_' + (i < 11 ? '0' + (i - 1) : i - 1) + '.jpg'
       "
       @click="
         showPic([
-          'https://www.sjzch.vip/xieqiaoPdfImg/gexing/gexing_' + (i < 11 ? '0' + (i - 1) : i - 1) + '.jpg',
+          'https://www.hnmzs.cn/xieqiaoPdfImg/gexing/gexing_' + (i < 11 ? '0' + (i - 1) : i - 1) + '.jpg',
         ])
       "
     />

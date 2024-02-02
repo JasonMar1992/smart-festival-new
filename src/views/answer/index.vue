@@ -541,13 +541,13 @@ export default {
           });
 
           wx.ready(() => {
-            const url = "https://www.sjzch.vip/answer";
+            const url = "https://www.hnmzs.cn/answer";
 
             wx.updateAppMessageShareData({
               title: "海洲街道第三届楼宇社区邻里节 党的二十大精神 答题活动", // 分享标题
               desc: "快来跟我一起答题吧~", // 分享描述
               link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: "https://www.sjzch.vip/img/sharepic_answer.png", // 分享图标
+              imgUrl: "https://www.hnmzs.cn/img/sharepic_answer.png", // 分享图标
               success() {
                 // 设置成功
                 console.log("配置验证成功");
@@ -557,7 +557,7 @@ export default {
             wx.updateTimelineShareData({
               title: "海洲街道第三届楼宇社区邻里节 党的二十大精神 答题活动", // 分享标题
               link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: "https://www.sjzch.vip/img/sharepic_answer.png", // 分享图标
+              imgUrl: "https://www.hnmzs.cn/img/sharepic_answer.png", // 分享图标
               success() {
                 // 设置成功
                 console.log("配置验证成功");

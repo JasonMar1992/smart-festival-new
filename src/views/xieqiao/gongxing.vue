@@ -6,13 +6,13 @@
       width="100%"
       lazy-load
       :src="
-        'https://www.sjzch.vip/xieqiaoPdfImg/gongxing/gongxing_' +
+        'https://www.hnmzs.cn/xieqiaoPdfImg/gongxing/gongxing_' +
         (i < 11 ? '0' + (i - 1) : i - 1) +
         '.jpg'
       "
       @click="
         showPic([
-          'https://www.sjzch.vip/xieqiaoPdfImg/gongxing/gongxing_' +
+          'https://www.hnmzs.cn/xieqiaoPdfImg/gongxing/gongxing_' +
             (i < 11 ? '0' + (i - 1) : i - 1) +
             '.jpg',
         ])

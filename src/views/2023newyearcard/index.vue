@@ -120,7 +120,7 @@ export default {
                             title: '海宁驻沪工作部给您拜年啦！', // 分享标题
                             desc: '新岁启封，同跨新年', // 分享描述
                             link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                            imgUrl: 'https://www.sjzch.vip/img/sharepic_2023card.jpg', // 分享图标
+                            imgUrl: 'https://www.hnmzs.cn/img/sharepic_2023card.jpg', // 分享图标
                             success() {
                                 // 设置成功
                                 console.log('配置验证成功');
@@ -130,7 +130,7 @@ export default {
                         wx.updateTimelineShareData({
                             title: '海宁驻沪工作部给您拜年啦！', // 分享标题
                             link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                            imgUrl: 'https://www.sjzch.vip/img/sharepic_2023card.jpg', // 分享图标
+                            imgUrl: 'https://www.hnmzs.cn/img/sharepic_2023card.jpg', // 分享图标
                             success() {
                                 // 设置成功
                                 console.log('配置验证成功');

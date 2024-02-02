@@ -42,13 +42,13 @@ export default {
           });
 
           wx.ready(() => {
-            const url = 'https://www.sjzch.vip/xieqiao';
+            const url = 'https://www.hnmzs.cn/xieqiao';
 
             wx.updateAppMessageShareData({
               title: '海宁市斜桥镇农业特色型美丽城镇省级样板镇创建工作', // 分享标题
               desc: '农业特色型浙江省美丽城镇建设', // 分享描述
               link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: 'https://www.sjzch.vip/img/sharepic_xieqiao.png', // 分享图标
+              imgUrl: 'https://www.hnmzs.cn/img/sharepic_xieqiao.png', // 分享图标
               success() {
                 // 设置成功
                 console.log('配置验证成功');
@@ -58,7 +58,7 @@ export default {
             wx.updateTimelineShareData({
               title: '斜桥美镇会务系统', // 分享标题
               link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: 'https://www.sjzch.vip/img/sharepic_xieqiao.png', // 分享图标
+              imgUrl: 'https://www.hnmzs.cn/img/sharepic_xieqiao.png', // 分享图标
               success() {
                 // 设置成功
                 console.log('配置验证成功');
