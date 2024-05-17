@@ -337,6 +337,16 @@ const routes = [
     },
     component: () => import("../views/sourceRoad/detail.vue"),
   },
+  // 龙虾节
+  {
+    path: "/bydr",
+    name: "bydr",
+    meta: {
+      title: "捕鱼达人",
+      requiresAuth: false,
+    },
+    component: () => import("../views/bydr/index.vue"),
+  },
   // 测试页面
   {
     path: "/test",

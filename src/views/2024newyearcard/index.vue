@@ -9,7 +9,7 @@
     <van-popup v-model="show">
       <div style="width: 90vw; height: 126vw">
         <div style="position: absolute">
-          <van-image width="90vw" height="126vw" :src="card" fit="fill" />
+          <van-image width="90vw" height="126vw" :src="mail" fit="fill" />
         </div>
         <div style="position: absolute; padding: 54vw 10vw; z-index: 9">
           <div
@@ -69,7 +69,7 @@ import axios from "axios";
 import wx from "weixin-js-sdk";
 import picUrl from "../../assets/2024newyearcard/bg.jpg";
 import button from "../../assets/2024newyearcard/btn.png";
-import card from "../../assets/2024newyearcard/card.jpg";
+import mail from "../../assets/2024newyearcard/mail.jpg";
 import denglong from "../../assets/2024newyearcard/denglong.png";
 export default {
   name: "shanghai2024card",
@@ -77,7 +77,7 @@ export default {
     return {
       picUrl,
       button,
-      card,
+      mail,
       denglong,
 
       name: "请填写",
