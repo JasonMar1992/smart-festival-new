@@ -337,7 +337,7 @@ const routes = [
     },
     component: () => import("../views/sourceRoad/detail.vue"),
   },
-  // 龙虾节
+  // 捕鱼达人
   {
     path: "/bydr",
     name: "bydr",
@@ -346,6 +346,16 @@ const routes = [
       requiresAuth: false,
     },
     component: () => import("../views/bydr/index.vue"),
+  },
+  // 勾鱼游戏
+  {
+    path: "/hookfish",
+    name: "hookfish",
+    meta: {
+      title: "“渔”你相遇在斜西",
+      requiresAuth: false,
+    },
+    component: () => import("../views/hookfish/index.vue"),
   },
   // 测试页面
   {
