@@ -46,7 +46,7 @@
 
         <div class="rule-tag">2、奖品设置</div>
         <div>
-          <div class="rule-detail">活动共持续3天，每天抽出2个鱼形抱枕和N个0.5-0.8元现金红包</div>
+          <div class="rule-detail">活动共持续3天，每天抽出2个鱼形抱枕和若干个现金红包</div>
         </div>
         <div class="rule-tag">3、线上游戏时间</div>
         <div class="rule-detail">2024年5月31日-6月2日</div>
